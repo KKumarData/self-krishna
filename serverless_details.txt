@@ -16,6 +16,7 @@ Benefits:
 	Realt time alterts/Notifications first 1 million invocation is free and pay as you go
 	Local emulation
 	Plugin architecture and serverless plugin grows with serverless
+	Scalable as per website
 
   
 Components to be considered in serverless:
@@ -37,12 +38,16 @@ Alternatives / options to implement Serverless:
 	serverless = Terraform + CF or SAM
 
 Current Challenges of Serverless & beyond Serverless:
+	Serverless Cloud currently supports JavaScript and TypeScript.
+
+	Serverless Cloud is backed by bleeding edge services running on the world’s largest and most trusted Cloud Service Providers. Applications on Serverless Cloud can dynamically scale to meet the compute and bandwidth requirements of most applications right out of the box. For applications that require more than 2,000 requests/second, please contact Sales.
+
 	Limited documentations and online support to find solutions i.e not extensive as AWS
+	Is serverless open source for exploration as the cost is known only by sales. https://www.serverless.com/cloud-faq
 	Unit testing is possible with Mocking API functionality using AWS SDK (as per 2019 version)
 	No Automated testing by itself, but continuous integration is possible.
 	In general its an additional layer outside of AWS and hence adaptability to Product evolution would be a risk
+	Less visibility / steps on interacting with Cloud Containeriztion services
 
 
 
-
-Is serverless open source as the cost is known only by sales.
