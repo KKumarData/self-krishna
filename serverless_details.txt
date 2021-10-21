@@ -1,0 +1,48 @@
+Current Landscape without serverless and its challenges:
+	
+	Nothing
+
+
+Benefits:
+	Its development centric building mcroservices in declarative format like AWS SAM or CF using serverless 
+	Primarily acts as Microservices (a wrapper) on prominent Cloud server-less services with focus on development.
+	Cross language Runtime support like node JS, Go lang and python.
+	Multi Cloud capability / itegration like AWS,GCP with yaml templates. like Terraform
+		i.e serverless = Terraform + CF or SAM with focus on Development
+	
+	Controls acces by Roles , set deployment/Runtime policies using safeguard and can manage secrets like AWS SSM parameter stores.
+	Serverless dashboad has grids/charts to track the API request/response/stack trace/errors like AWS Xray / Monitoring
+	Vendor Agnostic
+	Realt time alterts/Notifications first 1 million invocation is free and pay as you go
+	Local emulation
+	Plugin architecture and serverless plugin grows with serverless
+
+  
+Components to be considered in serverless:
+	Node.js version 6 and above installation	
+	Install serverless using node pack manager (npm install -g serverless)
+	Setup AWS account
+	Configure serverless using AWS server access key and secret access key ( 	  serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY )
+
+	Add necessary plugins
+	Configure serverless.yaml per project (Usually 6 functions per yml file)
+	function runtime handler for develop code
+
+	Dashboard
+	- To see API Calls/stack trace/errors 
+	- To CI/CD
+	- To stage / 
+
+Alternatives / options to implement Serverless:
+	serverless = Terraform + CF or SAM
+
+Current Challenges of Serverless & beyond Serverless:
+	Limited documentations and online support to find solutions i.e not extensive as AWS
+	Unit testing is possible with Mocking API functionality using AWS SDK (as per 2019 version)
+	No Automated testing by itself, but continuous integration is possible.
+	In general its an additional layer outside of AWS and hence adaptability to Product evolution would be a risk
+
+
+
+
+Is serverless open source as the cost is known only by sales.
