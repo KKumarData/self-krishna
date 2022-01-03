@@ -1,0 +1,28 @@
+python is a dynamically typed language as it does evaluate the type compatability of variables/objects etc at runtime. while Java/C evaluates at compile time and stops execution when it encounters incompatible data tyes.
+
+mypy is type checker/hinting/annotation for python itroduced after 3.6
+After 3.6/3.9 it has lot improved 
+prior to 3.5 it was type hinting using comment (# eg: a #type int )
+intall myypy -> pip install mypy
+type hinting fails on compile time only when explicitly invoked using mypy library(package). eg : mypy ./src
+
+
+from typing import Dict, List, Set, Optional, TypeVar,Callable, Union, Any etc can be used
+reveal_type(obj) helps to reveal the type mypy is thinking. --- used only to evaluate.. should be deleted from code before checkin
+reveal_locals(obj) helps to reveal the type mypy of local variables. --- used only to evaluate.. should be deleted from code before checkin
+
+It can be more commonly used when we check-in to GIT or integrated with CI pipelines to enable code quality checking
+It can be integrated with pycharm,Visual Studio as well
+
+
+Google, microsoft and facebook as their own static type checker modules like pytype,pyright,typere etc 
+
+[mypy] ### config  
+	check_untype_defs=true
+	disallow_any_generics=true
+	disallow_incompleteDefs=true
+	disallow_untyped_defs=true
+	no_implicit_optional=true
+  
+  
+  
