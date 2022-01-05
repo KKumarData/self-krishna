@@ -24,5 +24,38 @@ Google, microsoft and facebook as their own static type checker modules like pyt
 	disallow_untyped_defs=true
 	no_implicit_optional=true
   
-  
-  
+  mypy --strict filename.py
+
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent",
+    "--show-column-numbers",
+    "--strict"
+  ],
+ 
+ [mypy]
+follow_imports = silent
+strict_optional = True
+warn_redundant_casts = True
+warn_unused_ignores = True
+disallow_any_generics = True
+check_untyped_defs = True
+no_implicit_reexport = True
+disallow_untyped_defs = True
+ignore_missing_imports = True
+disallow_any_unimported = True
+warn_return_any = True
+show_error_codes = True 
+
+
+Reference: 
+https://calpaterson.com/mypy-hints.html
+https://sunscrapers.com/blog/python-best-practices-static-typing-in-python-with-mypy/#Heres_a_basic_example_of_static_typing_in_Python
+https://pypi.org/project/moto/  
+https://www.quora.com/What-are-the-best-practices-in-using-Python-type-hinting-e-g-mypy
+https://dev.to/tusharsadhwani/the-comprehensive-guide-to-mypy-561m
+
+awesome--
+https://blog.wolt.com/engineering/2021/09/30/professional-grade-mypy-configuration/
+https://mitelman.engineering/blog/python-best-practice/automating-python-best-practices-for-a-new-project/
