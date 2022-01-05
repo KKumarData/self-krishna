@@ -1,0 +1,5 @@
+python style  guidelines
+
+1, PEP8 is the standard we follow
+2, pylint, pycodesyle helps us to find the code style issues/errors like bad indentiation etc
+3, blcak package will fix most of the  know code style issues
