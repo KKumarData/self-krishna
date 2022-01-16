@@ -1,0 +1,24 @@
+https://www.cloudbees.com/blog/8-cicd-best-practices-your-devops-journey
+
+https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices
+
+
+Commit early, commit often. ...
+Keep the builds green. ...
+Build only once. ...
+Streamline your tests. ...
+Clean your environments. ...
+Make it the only way to deploy to production. ...
+Monitor and measure your pipeline. ...
+Make it a team effort.
+
+
+Keep Your Pipelines Fast
+Isolate and Secure Your CI/CD Environment
+Make the CI/CD Pipeline the Only Way to Deploy to Production
+Maintain Parity with Production Wherever Possible
+Build Only Once and Promote the Result Through the Pipeline
+Run Your Fastest Tests Early
+Minimize Branching in Your Version Control System
+Run Tests Locally Before Committing to the CI/CD Pipeline
+Run Tests in Ephemeral Environments When Possible
