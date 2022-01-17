@@ -3,9 +3,9 @@ https://www.cloudbees.com/blog/8-cicd-best-practices-your-devops-journey
 https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices
 
 
-Commit early, commit often. ...
+Commit early, commit often. ...   
 Keep the builds green. ...
-Build only once. ...
+Build only once. ...  
 Streamline your tests. ...
 Clean your environments. ...
 Make it the only way to deploy to production. ...
@@ -22,3 +22,37 @@ Run Your Fastest Tests Early
 Minimize Branching in Your Version Control System
 Run Tests Locally Before Committing to the CI/CD Pipeline
 Run Tests in Ephemeral Environments When Possible
+
+
+
+Monorepos are known for the following benefits:
+	Everything at that current commit works together. Changes can be verified across all affected parts of the organization.
+	Easy to split code into composable modules
+	Easier dependency management
+	One toolchain setup
+	Code editors and IDEs are “workspace” aware
+	Consistent developer experience
+In spite of what folks say, they also:
+	Give you more deployment flexibility
+	Allow you to set up precise ownership policies
+	Provide more structure to your source code
+	Scale well using familiar tools
+But they come with some challenges:
+	Trunk-based development is a lot more important
+	Not all services work well with monorepos
+	Require more sophisticated CI setup
+	Require you to think about large-scale changes
+	
+##############################
+Take away:
+	
+  Build all the services at once
+  Ensure tests modules are run parallel to speedup CI pipelines
+  Run Your Fastest Tests Early
+  Run Tests Locally Before Committing to the CI/CD Pipeline
+  Clean unwanted/unnecessary builds/cache in pipelines
+  Pipeline is the only way to deploy to production
+  Monitor and measure your pipeline
+  Keep Your Pipelines Fast
+  Isolate and Secure Your CI/CD Environment
+  Maintain Parity with Production Wherever Possible
