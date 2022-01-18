@@ -2,6 +2,9 @@ https://www.cloudbees.com/blog/8-cicd-best-practices-your-devops-journey
 
 https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-practices
 
+https://stackoverflow.com/questions/3612599/branch-per-release-versus-code-promotion-branches
+
+
 
 Commit early, commit often. ...   
 Keep the builds green. ...
