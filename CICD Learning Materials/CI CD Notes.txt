@@ -59,3 +59,11 @@ Take away:
   Keep Your Pipelines Fast
   Isolate and Secure Your CI/CD Environment
   Maintain Parity with Production Wherever Possible
+  
+  
+######################################################
+
+This documents highlights CICD flow from Dev to Production
+
+Dev ---> QA ---> Prod
+
