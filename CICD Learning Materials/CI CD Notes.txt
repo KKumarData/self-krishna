@@ -4,7 +4,11 @@ https://www.digitalocean.com/community/tutorials/an-introduction-to-ci-cd-best-p
 
 https://stackoverflow.com/questions/3612599/branch-per-release-versus-code-promotion-branches
 
+https://oskari.org/documentation/development/oskari-git-process
 
+https://deepsource.io/blog/git-branch-naming-conventions/
+
+https://www.atlassian.com/git/tutorials/what-is-version-control
 
 Commit early, commit often. ...   
 Keep the builds green. ...
@@ -63,7 +67,17 @@ Take away:
   
 ######################################################
 
-This documents highlights CICD flow from Dev to Production
+Development Life Cycle
 
-Dev ---> QA ---> Prod
 
+We can use the following steps:
+
+1. Clone prod to dev ( this ensures a pristine development environment )
+2. Develop and "unit test" in dev. ( unit test is actually a functional test by the developer, with system testing by QA )
+3. When the development is complete, we "promote to test" by:
+	3.1   clone prod to test.
+	3.2 promote the changes from dev to test ( usually one or more update sets )
+4.0 Conduct user acceptance testing and QA testing in the test instance.
+	4.1 If we need to fix, we do so in dev with a new update set.   Then apply the update set to test.
+5.0 When we receive an acceptance from the user representatives for each change, we promote to prod.
+6.0 Gather requirements for next release and repeat
