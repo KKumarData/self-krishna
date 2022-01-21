@@ -83,3 +83,9 @@ We can use the following steps:
 	4.1 If we need to fix, we do so in dev with a new update set.   Then apply the update set to test.
 5.0 When we receive an acceptance from the user representatives for each change, we promote to prod.
 6.0 Gather requirements for next release and repeat
+
+
+############################################################################################
+
+https://stackoverflow.com/questions/60130103/generating-automatic-release-notes-in-gitlab-for-new-releases
+https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-devutils/-/blob/release-notes-script/Scripts/generate_release_notes_from_gitlab.py
