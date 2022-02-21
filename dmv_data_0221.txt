@@ -1,0 +1,780 @@
+	Availability in Days	Average In Office Wait in Hours and Minutes
+Abilene	CDL Drive Test	10	00:08
+	Non CDL Drive Test	41	00:00
+	Original	34	00:04
+	Renewal/Replacement	2	00:14
+Alice	CDL Renewal	0	00:00
+	Non CDL Drive Test	1	00:00
+	Original	1	00:00
+	Renewal/Replacement	0	00:00
+Alpine	Non CDL Drive Test	2	*
+	Original	1	00:05
+	Renewal/Replacement	0	00:00
+Amarillo	CDL Drive Test	9	00:00
+	CDL Renewal	4	00:00
+	Non CDL Drive Test	8	00:27
+	Original	7	00:03
+	Renewal/Replacement	4	00:07
+Andrews	CDL Renewal	2	*
+	Non CDL Drive Test	3	00:00
+	Original	4	00:00
+	Renewal/Replacement	1	00:00
+Angleton	CDL Drive Test	9	00:00
+	CDL Renewal	1	00:17
+	Non CDL Drive Test	11	00:00
+	Original	2	00:13
+	Renewal/Replacement	5	00:09
+Anson	Original	18	04:06
+	Renewal/Replacement	6	00:47
+Aransas Pass	CDL Renewal	1	00:07
+	Non CDL Drive Test	4	00:08
+	Original	2	00:27
+	Renewal/Replacement	1	00:13
+Athens	Non CDL Drive Test	69	00:00
+	Original	47	00:14
+	Renewal/Replacement	11	00:00
+Austin Capitol	Original	2	00:13
+	Renewal/Replacement	1	00:00
+Austin North	CDL Renewal	66	00:15
+	Non CDL Drive Test	18	00:08
+	Original	33	00:16
+	Renewal/Replacement	7	00:16
+Austin Northwest	CDL Renewal	5	00:27
+	Non CDL Drive Test	40	00:03
+	Original	49	00:16
+	Renewal/Replacement	5	00:13
+Austin South	CDL Renewal	164	00:09
+	Non CDL Drive Test	36	00:21
+	Original	42	00:20
+	Renewal/Replacement	7	00:17
+Baird	Renewal/Replacement	21	00:00
+Ballinger	Non CDL Drive Test	21	00:00
+	Original	37	00:02
+	Renewal/Replacement	29	00:00
+Bastrop	CDL Renewal	74	00:00
+	Non CDL Drive Test	14	00:01
+	Original	37	00:02
+	Renewal/Replacement	3	00:02
+Bay City	Non CDL Drive Test	5	*
+	Original	2	00:15
+	Renewal/Replacement	1	00:06
+Baytown	CDL Renewal	4	*
+	Non CDL Drive Test	20	00:08
+	Original	4	00:13
+	Renewal/Replacement	3	00:09
+Beaumont	CDL Renewal	6	00:20
+	Non CDL Drive Test	9	00:00
+	Original	2	00:11
+	Renewal/Replacement	2	00:09
+Beeville	CDL Renewal	1	00:00
+	Non CDL Drive Test	2	00:04
+	Original	4	00:00
+	Renewal/Replacement	1	00:00
+Big Lake	CDL Renewal	2	00:19
+	Original	5	00:14
+	Renewal/Replacement	1	00:00
+Big Spring	CDL Renewal	4	*
+	Non CDL Drive Test	4	00:02
+	Original	3	00:09
+	Renewal/Replacement	2	00:05
+Boerne	Non CDL Drive Test	27	00:04
+	Original	37	00:03
+	Renewal/Replacement	9	00:11
+Bonham	CDL Renewal	27	00:51
+	Non CDL Drive Test	42	00:46
+	Original	56	00:37
+	Renewal/Replacement	4	00:44
+Borger	Non CDL Drive Test	9	00:00
+	Original	6	00:00
+	Renewal/Replacement	1	00:00
+Bowie	Non CDL Drive Test	22	00:00
+	Original	40	00:11
+	Renewal/Replacement	3	00:22
+Brady	Original	8	00:00
+	Renewal/Replacement	0	00:00
+Breckenridge	Non CDL Drive Test	97	00:03
+	Original	12	00:06
+	Renewal/Replacement	6	00:00
+Brenham	Non CDL Drive Test	14	00:00
+	Original	4	00:09
+	Renewal/Replacement	3	00:07
+Brownfield	Non CDL Drive Test	27	00:00
+	Original	2	00:13
+	Renewal/Replacement	0	00:00
+Brownsville	CDL Renewal	12	00:04
+	Non CDL Drive Test	9	00:08
+	Original	14	00:15
+	Renewal/Replacement	8	00:07
+Brownwood	Non CDL Drive Test	10	00:00
+	Original	19	00:00
+	Renewal/Replacement	3	00:00
+Bryan	CDL Renewal	21	00:17
+	Non CDL Drive Test	18	00:40
+	Original	6	00:23
+	Renewal/Replacement	5	00:10
+Caldwell	Non CDL Drive Test	21	00:02
+	Original	5	00:00
+	Renewal/Replacement	3	00:00
+Cameron	Non CDL Drive Test	125	00:13
+	Original	35	00:10
+	Renewal/Replacement	4	00:06
+Canadian	Non CDL Drive Test	14	00:00
+	Original	13	00:09
+	Renewal/Replacement	7	00:00
+Canton	Non CDL Drive Test	11	00:05
+	Original	94	00:09
+	Renewal/Replacement	1	00:00
+Carrollton Mega Center	CDL Drive Test	16	00:03
+	CDL Renewal	109	00:18
+	Non CDL Drive Test	37	00:06
+	Original	83	00:29
+	Renewal/Replacement	14	00:27
+Carthage	Original	20	00:12
+	Renewal/Replacement	11	00:02
+Castroville	CDL Drive Test	42	00:28
+	CDL Renewal	143	*
+	Non CDL Drive Test	19	00:10
+	Original	42	00:08
+	Renewal/Replacement	17	00:02
+Center	Non CDL Drive Test	23	00:10
+	Original	8	00:00
+	Renewal/Replacement	0	00:00
+Centerville	Non CDL Drive Test	13	00:09
+	Original	18	00:12
+	Renewal/Replacement	3	00:22
+Childress	Non CDL Drive Test	2	00:20
+	Original	14	00:10
+	Renewal/Replacement	6	00:14
+Clarendon	Non CDL Drive Test	7	00:22
+	Original	22	00:07
+	Renewal/Replacement	2	00:00
+Clarksville	Non CDL Drive Test	33	00:19
+	Original	36	00:08
+	Renewal/Replacement	4	00:26
+Cleburne	CDL Renewal	55	04:39
+	Non CDL Drive Test	24	00:05
+	Original	53	00:21
+	Renewal/Replacement	13	00:35
+Cleveland	Non CDL Drive Test	4	00:15
+	Original	7	00:11
+	Renewal/Replacement	4	00:00
+Coleman	Non CDL Drive Test	41	00:00
+	Original	35	00:00
+	Renewal/Replacement	5	00:00
+Colorado City	Original	13	00:04
+	Renewal/Replacement	2	00:19
+Columbus	CDL Renewal	7	00:04
+	Non CDL Drive Test	47	00:00
+	Original	4	00:00
+	Renewal/Replacement	4	00:15
+Comanche	Non CDL Drive Test	8	*
+	Original	30	*
+	Renewal/Replacement	7	00:00
+Conroe	Non CDL Drive Test	19	00:00
+	Original	10	00:24
+	Renewal/Replacement	12	00:03
+Corpus Christi Mega Center	CDL Drive Test	20	00:00
+	CDL Renewal	1	00:00
+	Non CDL Drive Test	3	00:00
+	Original	2	00:15
+	Renewal/Replacement	2	00:08
+Corsicana	CDL Renewal	51	*
+	Non CDL Drive Test	40	*
+	Original	62	*
+	Renewal/Replacement	12	00:00
+Cotulla	Renewal/Replacement	1	00:00
+Crane	Non CDL Drive Test	5	00:14
+	Original	2	00:00
+	Renewal/Replacement	4	00:04
+Crockett	Non CDL Drive Test	21	00:21
+	Original	9	00:00
+	Renewal/Replacement	3	00:01
+Crosbyton	Non CDL Drive Test	18	00:00
+	Renewal/Replacement	7	00:00
+Crystal City	Original	6	00:27
+	Renewal/Replacement	3	00:00
+Cuero	CDL Drive Test	15	00:09
+	CDL Renewal	2	00:17
+	Non CDL Drive Test	2	00:10
+	Original	4	00:19
+	Renewal/Replacement	1	00:11
+Daingerfield	Non CDL Drive Test	45	00:00
+	Original	31	00:00
+	Renewal/Replacement	2	00:00
+Dalhart	Non CDL Drive Test	16	00:07
+	Original	14	00:09
+	Renewal/Replacement	36	00:00
+Dallas South Mega Center	CDL Drive Test	17	00:03
+	CDL Renewal	52	00:11
+	Non CDL Drive Test	16	00:19
+	Original	62	00:19
+	Renewal/Replacement	7	00:18
+Decatur	CDL Renewal	58	00:00
+	Non CDL Drive Test	21	00:00
+	Original	59	00:07
+	Renewal/Replacement	7	00:06
+Del Rio	Non CDL Drive Test	2	00:00
+	Original	3	00:00
+	Renewal/Replacement	2	00:00
+Denton	CDL Renewal	1	00:21
+	Non CDL Drive Test	29	00:12
+	Original	72	00:37
+	Renewal/Replacement	5	00:37
+Denver City	Non CDL Drive Test	1	00:04
+	Original	9	00:16
+	Renewal/Replacement	1	00:16
+Dimmitt	Non CDL Drive Test	6	00:00
+	Original	7	00:35
+	Renewal/Replacement	5	00:00
+Dumas	CDL Renewal	33	00:12
+	Non CDL Drive Test	16	00:07
+	Original	7	00:19
+	Renewal/Replacement	2	00:06
+Eagle Pass	CDL Drive Test	4	00:00
+	CDL Renewal	7	00:20
+	Non CDL Drive Test	2	00:00
+	Original	2	00:07
+	Renewal/Replacement	4	00:08
+Eastland	Non CDL Drive Test	17	00:00
+	Original	47	00:00
+	Renewal/Replacement	4	00:00
+Edinburg Mega Center	CDL Drive Test	5	00:00
+	CDL Renewal	1	00:04
+	Non CDL Drive Test	3	00:08
+	Original	2	00:17
+	Renewal/Replacement	1	00:11
+El Paso Gateway	CDL Renewal	52	01:03
+	Non CDL Drive Test	10	01:11
+	Original	49	01:22
+	Renewal/Replacement	7	01:40
+El Paso Hondo Pass	CDL Renewal	48	01:02
+	Non CDL Drive Test	6	01:10
+	Original	24	01:05
+	Renewal/Replacement	6	01:01
+El Paso Northwest	CDL Drive Test	8	01:27
+	CDL Renewal	7	01:08
+	Non CDL Drive Test	9	01:08
+	Original	30	01:11
+	Renewal/Replacement	4	01:10
+El Paso Scott Simpson	CDL Renewal	15	01:13
+	Non CDL Drive Test	8	01:11
+	Original	40	01:19
+	Renewal/Replacement	8	01:17
+Emory	Original	61	00:13
+	Renewal/Replacement	3	00:00
+Fairfield	Non CDL Drive Test	14	*
+	Original	19	*
+	Renewal/Replacement	16	00:14
+Floresville	Non CDL Drive Test	11	00:01
+	Original	10	00:00
+	Renewal/Replacement	4	00:05
+Flower Mound	CDL Renewal	1	00:07
+	Non CDL Drive Test	19	00:13
+	Original	80	00:13
+	Renewal/Replacement	29	00:20
+Floydada	Non CDL Drive Test	5	01:05
+	Renewal/Replacement	9	00:05
+Fort Bliss - MUST HAVE ACCESS TO MILITARY BASE	Original	31	00:53
+	Renewal/Replacement	9	00:40
+Fort Hood	Original	19	00:00
+	Renewal/Replacement	4	00:00
+Fort Stockton	Non CDL Drive Test	2	00:00
+	Original	1	00:00
+	Renewal/Replacement	1	00:02
+Fort Worth East	Original	88	00:09
+	Renewal/Replacement	82	00:12
+Fort Worth Mega Center	CDL Drive Test	8	00:11
+	CDL Renewal	47	00:29
+	Non CDL Drive Test	17	00:15
+	Original	66	00:15
+	Renewal/Replacement	12	00:07
+Fort Worth South	CDL Renewal	9	00:46
+	Non CDL Drive Test	42	00:16
+	Original	47	00:32
+	Renewal/Replacement	19	00:37
+Fredericksburg	Non CDL Drive Test	22	00:00
+	Original	38	00:00
+	Renewal/Replacement	3	00:00
+Friona	CDL Renewal	7	00:00
+	Non CDL Drive Test	1	00:50
+	Original	3	00:00
+	Renewal/Replacement	4	00:00
+Gainesville	Non CDL Drive Test	65	00:13
+	Original	23	00:28
+	Renewal/Replacement	3	00:27
+Galveston	CDL Renewal	7	00:09
+	Original	5	00:00
+	Renewal/Replacement	1	00:02
+Garland	CDL Renewal	41	00:10
+	Non CDL Drive Test	61	00:02
+	Original	63	00:28
+	Renewal/Replacement	11	00:15
+Garland Mega Center	CDL Renewal	21	00:00
+	Non CDL Drive Test	50	00:01
+	Original	39	00:11
+	Renewal/Replacement	11	00:03
+Gatesville	Non CDL Drive Test	37	00:00
+	Original	14	00:25
+	Renewal/Replacement	4	00:11
+George West	CDL Renewal	0	00:00
+	Non CDL Drive Test	1	00:00
+	Original	1	00:00
+	Renewal/Replacement	0	00:00
+Georgetown	CDL Drive Test	20	00:10
+	CDL Renewal	3	00:11
+	Non CDL Drive Test	32	00:00
+	Original	36	00:18
+	Renewal/Replacement	9	00:14
+Giddings	Non CDL Drive Test	29	00:03
+	Original	21	00:02
+	Renewal/Replacement	8	00:00
+Gilmer	CDL Renewal	8	*
+	Non CDL Drive Test	41	00:00
+	Original	70	00:12
+	Renewal/Replacement	2	00:01
+Goldthwaite	CDL Renewal	8	00:01
+	Non CDL Drive Test	30	00:13
+	Original	38	00:00
+	Renewal/Replacement	4	00:00
+Gonzales	CDL Renewal	2	00:10
+	Non CDL Drive Test	3	00:13
+	Original	3	00:04
+	Renewal/Replacement	1	00:10
+Graham	Non CDL Drive Test	9	00:00
+	Original	17	00:00
+	Renewal/Replacement	1	00:00
+Grand Prairie	CDL Drive Test	16	00:34
+	CDL Renewal	92	01:07
+	Non CDL Drive Test	26	00:36
+	Original	52	01:16
+	Renewal/Replacement	28	00:04
+Groesbeck	CDL Renewal	1	*
+	Non CDL Drive Test	32	*
+	Original	35	00:27
+	Renewal/Replacement	2	00:00
+Hallettsville	Non CDL Drive Test	19	00:35
+	Original	17	00:22
+	Renewal/Replacement	0	00:20
+Hamilton	CDL Renewal	12	00:52
+	Non CDL Drive Test	58	00:06
+	Original	31	00:32
+	Renewal/Replacement	7	00:22
+Harlingen	CDL Renewal	12	00:13
+	Non CDL Drive Test	8	00:00
+	Original	10	00:00
+	Renewal/Replacement	8	00:00
+Haskell	CDL Renewal	0	00:00
+	Non CDL Drive Test	8	00:22
+	Original	21	00:00
+Hearne	CDL Drive Test	3	00:00
+	Original	4	00:00
+	Renewal/Replacement	2	00:00
+Hebbronville	Non CDL Drive Test	8	00:27
+	Original	16	00:14
+	Renewal/Replacement	7	00:18
+Hemphill	CDL Renewal	0	00:00
+	Non CDL Drive Test	21	00:00
+	Original	1	00:00
+	Renewal/Replacement	1	00:00
+Hempstead	Non CDL Drive Test	26	00:27
+	Original	14	00:42
+	Renewal/Replacement	2	00:37
+Henderson	Original	33	00:17
+	Renewal/Replacement	12	00:16
+Hereford	CDL Renewal	2	00:00
+	Non CDL Drive Test	9	00:00
+	Original	7	00:00
+	Renewal/Replacement	6	00:00
+Hillsboro	Original	46	00:11
+	Renewal/Replacement	4	00:00
+Houston Dacoma	CDL Renewal	20	00:00
+	Non CDL Drive Test	7	00:00
+	Original	27	00:06
+	Renewal/Replacement	4	00:07
+Houston East (Tidwell)	CDL Renewal	3	00:00
+	Non CDL Drive Test	4	00:02
+	Original	5	00:02
+	Renewal/Replacement	6	00:00
+Houston Gessner COMMERCIAL LICENSE ONLY	CDL Drive Test	15	*
+	CDL Renewal	0	*
+	Non CDL Drive Test	28	*
+	Original	29	00:00
+	Renewal/Replacement	11	00:00
+Houston Gessner Mega Center	CDL Renewal	5	*
+	Non CDL Drive Test	7	00:32
+	Original	7	00:28
+	Renewal/Replacement	3	00:15
+Houston North Mega Center	CDL Drive Test	16	00:07
+	CDL Renewal	3	00:00
+	Non CDL Drive Test	8	00:20
+	Original	7	00:09
+	Renewal/Replacement	3	00:05
+Houston Southeast	CDL Drive Test	31	00:00
+	CDL Renewal	19	00:00
+	Non CDL Drive Test	5	00:00
+	Original	4	00:06
+	Renewal/Replacement	3	00:05
+Humble	CDL Renewal	6	00:00
+	Non CDL Drive Test	16	00:00
+	Original	5	00:03
+	Renewal/Replacement	7	00:00
+Huntsville	CDL Renewal	6	00:12
+	Non CDL Drive Test	15	00:14
+	Original	7	00:45
+	Renewal/Replacement	5	00:23
+Hurst	Non CDL Drive Test	29	00:18
+	Original	117	00:12
+	Renewal/Replacement	24	00:08
+Jacksonville	Non CDL Drive Test	102	00:10
+	Original	34	00:08
+	Renewal/Replacement	4	00:01
+Jasper	CDL Renewal	2	00:28
+	Non CDL Drive Test	5	00:14
+	Original	3	00:05
+	Renewal/Replacement	6	00:02
+Jourdanton	CDL Renewal	14	00:00
+	Non CDL Drive Test	16	00:11
+	Original	10	00:20
+	Renewal/Replacement	7	00:16
+Junction	Non CDL Drive Test	4	00:19
+Karnes City	Renewal/Replacement	1	00:00
+Kerrville	Non CDL Drive Test	11	00:00
+	Original	33	00:00
+	Renewal/Replacement	3	00:00
+Kilgore	CDL Renewal	22	00:06
+	Original	53	00:22
+Killeen	CDL Renewal	2	00:02
+	Non CDL Drive Test	35	00:00
+	Original	11	00:05
+	Renewal/Replacement	9	00:11
+Kingsville	Non CDL Drive Test	3	00:05
+	Original	0	00:03
+	Renewal/Replacement	1	00:00
+Lake Worth	CDL Renewal	42	00:22
+	Non CDL Drive Test	25	00:43
+	Original	52	00:37
+	Renewal/Replacement	24	00:44
+Lamesa	Non CDL Drive Test	3	00:03
+	Original	2	00:00
+	Renewal/Replacement	3	00:00
+Lampasas	Original	20	00:06
+	Renewal/Replacement	5	00:00
+Laredo	CDL Drive Test	4	00:00
+	CDL Renewal	11	00:53
+	Non CDL Drive Test	8	00:05
+	Original	19	00:23
+	Renewal/Replacement	9	00:40
+Leon Valley Mega Center	Non CDL Drive Test	21	00:03
+	Original	37	00:20
+	Renewal/Replacement	11	00:11
+Levelland	Non CDL Drive Test	6	00:00
+	Original	2	00:23
+	Renewal/Replacement	0	00:10
+Lewisville	CDL Renewal	111	00:16
+	Non CDL Drive Test	35	00:02
+	Original	73	00:28
+	Renewal/Replacement	25	00:18
+Liberty	CDL Renewal	1	00:00
+	Original	4	00:04
+	Renewal/Replacement	3	00:00
+Linden	Non CDL Drive Test	11	00:14
+	Original	20	00:03
+	Renewal/Replacement	2	00:00
+Littlefield	Non CDL Drive Test	1	00:00
+	Original	3	00:00
+	Renewal/Replacement	10	00:02
+Livingston	CDL Drive Test	25	00:00
+	CDL Renewal	4	00:05
+	Non CDL Drive Test	17	00:02
+	Original	3	00:00
+	Renewal/Replacement	7	00:00
+Llano	Original	29	00:35
+	Renewal/Replacement	6	00:17
+Lockhart	Original	71	00:16
+	Renewal/Replacement	3	00:05
+Longview	CDL Renewal	9	00:00
+	Non CDL Drive Test	56	00:02
+	Original	41	00:05
+	Renewal/Replacement	14	00:08
+Lubbock	CDL Drive Test	8	00:00
+	CDL Renewal	3	00:00
+	Non CDL Drive Test	5	00:00
+	Original	5	00:00
+	Renewal/Replacement	3	00:00
+Lufkin	CDL Renewal	23	00:03
+	Non CDL Drive Test	8	00:03
+	Original	7	00:13
+	Renewal/Replacement	2	00:00
+Madisonville	Non CDL Drive Test	10	00:18
+	Original	17	00:13
+	Renewal/Replacement	0	00:02
+Marble Falls	CDL Renewal	15	00:29
+	Non CDL Drive Test	89	00:00
+	Original	33	00:00
+	Renewal/Replacement	2	00:10
+Marlin	Renewal/Replacement	3	00:00
+Marshall	CDL Renewal	0	00:00
+	Non CDL Drive Test	32	00:07
+	Original	45	00:05
+	Renewal/Replacement	3	00:08
+McAllen	CDL Renewal	9	00:05
+	Non CDL Drive Test	12	00:00
+	Original	8	00:17
+	Renewal/Replacement	3	00:12
+McKinney	Non CDL Drive Test	53	00:17
+	Original	97	00:28
+	Renewal/Replacement	23	00:19
+Meridian	CDL Renewal	43	00:06
+	Non CDL Drive Test	34	00:01
+	Original	42	00:03
+	Renewal/Replacement	8	00:07
+Midland Mega Center	CDL Drive Test	13	00:04
+	CDL Renewal	6	00:00
+	Non CDL Drive Test	3	00:00
+	Original	5	00:00
+	Renewal/Replacement	2	00:00
+Mineral Wells	Non CDL Drive Test	14	00:00
+	Original	41	00:14
+	Renewal/Replacement	1	00:14
+Mission	Renewal/Replacement	1	00:00
+Monahans	CDL Renewal	1	00:22
+	Non CDL Drive Test	3	00:06
+	Original	2	00:15
+	Renewal/Replacement	4	00:09
+Mount Pleasant	CDL Renewal	16	00:26
+	Non CDL Drive Test	31	00:00
+	Original	41	00:00
+	Renewal/Replacement	4	00:00
+Muleshoe	Non CDL Drive Test	2	00:00
+	Original	2	00:08
+	Renewal/Replacement	10	00:01
+Munday	Non CDL Drive Test	9	00:16
+	Original	17	00:35
+	Renewal/Replacement	1	00:53
+Nacogdoches	CDL Renewal	0	00:00
+	Non CDL Drive Test	25	00:01
+	Original	18	00:09
+	Renewal/Replacement	2	00:02
+New Boston	Non CDL Drive Test	5	00:09
+	Original	19	00:18
+	Renewal/Replacement	6	00:00
+New Braunfels	CDL Drive Test	12	00:00
+	CDL Renewal	23	00:00
+	Non CDL Drive Test	18	00:06
+	Original	20	00:08
+	Renewal/Replacement	2	00:10
+New Caney	Renewal/Replacement	3	00:21
+Orange	CDL Renewal	1	00:00
+	Non CDL Drive Test	8	00:11
+	Original	3	00:00
+	Renewal/Replacement	2	00:00
+Ozona	CDL Renewal	2	00:00
+	Non CDL Drive Test	1	00:04
+	Original	4	00:00
+	Renewal/Replacement	0	00:16
+Palestine	Non CDL Drive Test	56	00:00
+	Original	34	00:00
+	Renewal/Replacement	3	00:00
+Pampa	Non CDL Drive Test	11	00:00
+	Original	3	00:04
+	Renewal/Replacement	1	00:09
+Panhandle	Non CDL Drive Test	64	00:00
+	Original	21	00:00
+	Renewal/Replacement	7	00:00
+Paris	CDL Drive Test	17	00:05
+	Non CDL Drive Test	30	00:00
+	Original	27	00:08
+	Renewal/Replacement	4	00:00
+Pearsall	CDL Renewal	5	00:26
+	Original	62	00:00
+	Renewal/Replacement	33	00:00
+Pecos	Non CDL Drive Test	10	00:01
+	Original	4	00:00
+	Renewal/Replacement	0	00:00
+Perryton	CDL Renewal	6	00:00
+	Non CDL Drive Test	5	00:06
+	Original	3	00:00
+	Renewal/Replacement	1	00:00
+Pflugerville Mega Center	CDL Renewal	6	00:31
+	Non CDL Drive Test	33	00:04
+	Original	37	00:26
+	Renewal/Replacement	6	00:20
+Pierce	CDL Renewal	8	*
+	Non CDL Drive Test	2	*
+	Original	5	00:02
+	Renewal/Replacement	1	00:02
+Plainview	Non CDL Drive Test	3	00:00
+	Original	11	00:00
+	Renewal/Replacement	7	00:10
+Plano	CDL Renewal	1	00:15
+	Non CDL Drive Test	49	00:29
+	Original	114	00:19
+	Renewal/Replacement	31	00:17
+Port Arthur	CDL Renewal	2	00:01
+	Non CDL Drive Test	10	00:10
+	Original	1	00:04
+	Renewal/Replacement	6	00:05
+Port Lavaca	Original	3	00:14
+	Renewal/Replacement	1	00:15
+Post	CDL Renewal	0	00:01
+	Non CDL Drive Test	9	00:00
+	Original	4	00:06
+	Renewal/Replacement	1	00:00
+Presidio	Non CDL Drive Test	9	00:06
+	Original	7	00:15
+	Renewal/Replacement	0	00:00
+Quanah	Non CDL Drive Test	0	00:00
+	Original	3	00:06
+	Renewal/Replacement	4	00:20
+Quitman	CDL Renewal	112	00:05
+	Original	62	00:12
+	Renewal/Replacement	4	00:00
+Rio Grande City	Non CDL Drive Test	6	00:00
+	Original	2	00:12
+	Renewal/Replacement	2	00:08
+Roby	Original	38	00:27
+	Renewal/Replacement	11	00:27
+Rockwall	CDL Renewal	147	00:20
+	Non CDL Drive Test	68	00:00
+	Original	119	00:17
+	Renewal/Replacement	29	00:05
+Rosenberg Mega Center	CDL Drive Test	30	00:01
+	CDL Renewal	12	00:05
+	Non CDL Drive Test	8	00:02
+	Original	7	00:06
+	Renewal/Replacement	6	00:06
+San Angelo	CDL Drive Test	6	*
+	CDL Renewal	10	*
+	Non CDL Drive Test	6	00:03
+	Original	6	00:01
+	Renewal/Replacement	1	00:04
+San Antonio Gen McMullen	CDL Renewal	16	00:37
+	Non CDL Drive Test	16	00:11
+	Original	28	00:23
+	Renewal/Replacement	10	00:16
+San Antonio Pat Booker	CDL Renewal	38	00:10
+	Non CDL Drive Test	14	00:07
+	Original	39	00:24
+	Renewal/Replacement	5	00:15
+San Antonio Southeast	CDL Drive Test	16	00:00
+	CDL Renewal	20	00:09
+	Non CDL Drive Test	12	00:11
+	Original	16	00:10
+	Renewal/Replacement	4	00:12
+San Marcos	Non CDL Drive Test	12	00:00
+	Original	56	00:01
+	Renewal/Replacement	5	00:00
+Seguin	CDL Renewal	1	00:08
+	Non CDL Drive Test	36	00:05
+	Original	22	00:17
+	Renewal/Replacement	0	00:41
+Seminole	Non CDL Drive Test	0	00:20
+	Original	8	00:14
+	Renewal/Replacement	0	00:00
+Seymour	Non CDL Drive Test	24	00:03
+	Original	14	00:00
+	Renewal/Replacement	1	00:09
+Sherman	Non CDL Drive Test	55	00:18
+	Original	73	00:00
+	Renewal/Replacement	9	00:04
+Sinton	CDL Renewal	0	*
+	Non CDL Drive Test	10	00:01
+	Original	3	00:00
+	Renewal/Replacement	1	00:00
+Snyder	CDL Renewal	2	00:00
+	Original	4	00:00
+	Renewal/Replacement	2	00:15
+Sonora	Non CDL Drive Test	8	00:00
+	Original	5	00:01
+	Renewal/Replacement	9	00:10
+Spearman	Renewal/Replacement	2	00:06
+Spring Mega Center	CDL Renewal	1	00:08
+	Non CDL Drive Test	13	00:09
+	Original	13	00:19
+	Renewal/Replacement	4	00:12
+Stanton	Non CDL Drive Test	16	00:00
+	Original	14	00:00
+	Renewal/Replacement	3	00:04
+Stephenville	Non CDL Drive Test	14	00:00
+	Original	33	00:08
+	Renewal/Replacement	12	00:00
+Sulphur Springs	CDL Renewal	3	*
+	Non CDL Drive Test	51	00:15
+	Original	80	00:00
+	Renewal/Replacement	5	00:00
+Sweetwater	Non CDL Drive Test	4	00:00
+	Original	8	00:00
+	Renewal/Replacement	1	00:00
+Taylor	Non CDL Drive Test	42	00:00
+	Original	32	00:13
+	Renewal/Replacement	2	00:18
+Temple	CDL Renewal	1	00:00
+	Non CDL Drive Test	31	00:13
+	Original	25	00:01
+	Renewal/Replacement	3	00:03
+Terrell	Non CDL Drive Test	46	00:00
+	Original	85	00:00
+	Renewal/Replacement	4	00:00
+Texarkana	CDL Renewal	4	00:00
+	Non CDL Drive Test	17	00:00
+	Original	30	00:30
+	Renewal/Replacement	5	00:03
+Texas City	CDL Renewal	4	00:11
+	Non CDL Drive Test	8	00:00
+	Original	6	00:10
+	Renewal/Replacement	1	00:04
+Tolar	Non CDL Drive Test	15	00:00
+	Original	26	00:00
+	Renewal/Replacement	9	00:09
+Tulia	Non CDL Drive Test	13	00:00
+	Original	13	00:00
+	Renewal/Replacement	2	00:00
+Tyler	Non CDL Drive Test	43	00:00
+	Original	45	00:00
+	Renewal/Replacement	6	00:02
+Uvalde	CDL Renewal	6	00:00
+	Non CDL Drive Test	5	00:05
+	Original	4	00:14
+	Renewal/Replacement	2	00:00
+Van Horn	CDL Renewal	10	00:43
+	Non CDL Drive Test	3	00:08
+	Original	28	00:47
+	Renewal/Replacement	11	00:30
+Vega	CDL Renewal	9	00:02
+	Original	10	00:00
+Vernon	Non CDL Drive Test	19	00:28
+	Original	18	00:00
+	Renewal/Replacement	0	00:29
+Victoria	CDL Renewal	0	00:01
+	Non CDL Drive Test	2	00:00
+	Original	2	00:00
+	Renewal/Replacement	2	00:02
+Waco	CDL Renewal	6	00:00
+	Non CDL Drive Test	32	00:25
+	Original	33	00:08
+	Renewal/Replacement	15	00:07
+Waco CDL	CDL Drive Test	16	00:00
+Wallisville	CDL Renewal	45	00:05
+	Original	2	00:13
+	Renewal/Replacement	1	00:20
+Waxahachie	Non CDL Drive Test	14	00:10
+	Original	49	00:23
+	Renewal/Replacement	16	00:24
+Weatherford	Non CDL Drive Test	33	00:26
+	Original	47	00:32
+	Renewal/Replacement	6	00:25
+Weslaco	CDL Renewal	8	00:00
+	Non CDL Drive Test	4	00:00
+	Original	4	00:02
+	Renewal/Replacement	2	00:00
+Wichita Falls	CDL Drive Test	17	*
+	CDL Renewal	21	00:00
+	Non CDL Drive Test	9	00:11
+	Original	17	00:15
+	Renewal/Replacement	2	00:10
+Woodville	CDL Renewal	2	00:32
+	Non CDL Drive Test	8	00:27
+	Original	2	00:21
+	Renewal/Replacement	0	00:00
+Zapata	Original	17	00:00
+	Renewal/Replacement	1	00:00
