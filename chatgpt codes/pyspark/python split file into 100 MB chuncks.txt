@@ -1,0 +1,85 @@
+
+####################################################################################
+##This script will split the large_file.txt file into smaller chunks of 100MB each. The chunk files will be named large_file.txt.chunk0, large_file.txt.chunk1, and so on. The chunk size can be changed by modifying the chunk_size variable.
+####################################################################################
+
+
+# Import the os and shutil modules
+import os
+import shutil
+
+# Set the file to be split
+file = 'large_file.txt'
+
+# Set the size of each chunk (in bytes)
+chunk_size = 100000000
+
+# Open the file in binary mode
+with open(file, 'rb') as f:
+  # Get the file size
+  file_size = os.path.getsize(file)
+
+  # Calculate the number of chunks
+  num_chunks = file_size // chunk_size
+
+  # Iterate over the chunks
+  for i in range(num_chunks):
+    # Read the current chunk
+    chunk = f.read(chunk_size)
+
+    # Create the new chunk file
+    chunk_file = f'{file}.chunk{i}'
+
+    # Write the chunk to the file
+    with open(chunk_file, 'wb') as chunk_file:
+      chunk_file.write(chunk)
+
+# Check if there is a remainder
+if file_size % chunk_size != 0:
+  # Read the remaining data
+  chunk = f.read()
+
+  # Create the new chunk file
+  chunk_file = f'{file}.chunk{num_chunks}'
+
+  # Write the chunk to the file
+  with open(chunk_file, 'wb') as chunk_file:
+    chunk_file.write(chunk)
+
+
+####################################################################################
+To split a large file into smaller chunks, you can use the split command in the command line. For example, if your file is called bigfile.txt and you want to split it into 100 MB chunks, you can use the following command:
+####################################################################################
+
+split -b 100m bigfile.txt
+This will create multiple files called xaa, xab, xac, and so on, each containing a chunk of the original file.
+
+If you want to do this in Python, you can use the os module to call the split command using the os.system function. For example:
+
+####################################################################################
+
+import os
+
+# Split the file into 100 MB chunks
+os.system('split -b 100m bigfile.txt')
+
+####################################################################################
+Alternatively, you can use the shutil module to copy the file in chunks. This approach allows you to specify a custom chunk size and can be more efficient than calling the split command. For example:
+####################################################################################
+
+import shutil
+
+# Set the chunk size to 100 MB
+CHUNK_SIZE = 100 * 1024 * 1024
+
+# Open the original file
+with open('bigfile.txt', 'rb') as infile:
+  # Split the file into chunks and write them to disk
+  while True:
+    chunk = infile.read(CHUNK_SIZE)
+    if not chunk:
+      break
+    with open('bigfile-chunk-{}'.format(i), 'wb') as outfile:
+      outfile.write(chunk)
+
+#In this code, the file is read in chunks of 100 MB, and each chunk is written to a separate file. You can adjust the CHUNK_SIZE variable to control the size of the chunks. Note that you'll need to keep track of the chunk number (i in this example) and increment it each time you write a new chunk to a file.

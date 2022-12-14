@@ -1,0 +1,22 @@
+#To split a large XML file into smaller ones using PySpark, you can use the coalesce and repartition methods. For example, if you have an XML file called "big_file.xml" and you want to split it into smaller files with a maximum size of 100 MB, you can use the following code:
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("Split XML File").getOrCreate()
+
+# Read the XML file into a DataFrame
+df = spark.read.format("com.databricks.spark.xml").options(rowTag="book").load("big_file.xml")
+
+# Split the DataFrame into smaller DataFrames, each with a maximum size of 100 MB
+split_dfs = df.coalesce(1).repartition(100)
+
+# Save each of the smaller DataFrames as a separate XML file
+for i, split_df in enumerate(split_dfs):
+  split_df.write.format("com.databricks.spark.xml").options(rootTag="books", rowTag="book").save("split_file_{}.xml".format(i))
+
+spark.stop()
+
+
+#In this code, we first create a SparkSession, which is the entry point for working with PySpark. Then, we use the read.format and options methods to read the "big_file.xml" file into a DataFrame.
+
+#Next, we use the coalesce and repartition methods to split the DataFrame into smaller DataFrames, each with a maximum size of 100 MB. Finally, we loop through the smaller DataFrames and use the write.format and options methods to save each of them as a separate XML file.

@@ -1,0 +1,21 @@
+#To perform a multi-part upload to an Amazon S3 bucket using PySpark, you can use the putObject method of the S3AFileSystem class. For example, if you have a file called "big_file.txt" that you want to upload to an S3 bucket called "my-bucket", you can use the following code:
+
+from pyspark.sql import SparkSession
+from pyspark.files import SparkFiles
+from pyarrow.fs import S3AFileSystem
+
+spark = SparkSession.builder.appName("Multi-Part Upload to S3").getOrCreate()
+
+# Read the file into a DataFrame
+df = spark.read.text(SparkFiles.get("big_file.txt"))
+
+# Create an S3AFileSystem instance
+s3 = S3AFileSystem()
+
+# Upload the file to the S3 bucket in multiple parts
+s3.putObject(df.rdd.getNumPartitions(), "my-bucket", "big_file.txt")
+
+spark.stop()
+
+
+#In this code, we first create a SparkSession and read the "big_file.txt" file into a DataFrame. Then, we create an instance of the S3AFileSystem class and use its putObject method to upload the file to the "my-bucket" S3 bucket in multiple parts.

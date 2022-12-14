@@ -1,0 +1,23 @@
+Here are a few Python snippets that might be useful for data engineers:
+
+#To read a CSV file and s#Tore it as a Pandas DataFrame:
+
+import pandas as pd
+df = pd.read_csv("/path/#To/file.csv")
+
+#To select a subset of columns from a DataFrame:
+
+selected_columns = ['column_1', 'column_2', 'column_3']
+df = df[selected_columns]
+
+#To filter rows in a DataFrame based on a condition:
+
+df = df[df['column_name'] > some_value]
+
+#To group rows in a DataFrame and compute summary statistics:
+
+df = df.groupby('column_name').agg({'numeric_column_1': 'mean', 'numeric_column_2': 'sum'})
+
+#To write a DataFrame #To a CSV file:
+
+df.#To_csv("/path/#To/output.csv", index=False)

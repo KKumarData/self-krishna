@@ -1,0 +1,67 @@
+####################################################################################
+Here are a few Python snippets that may be useful for data engineers:
+####################################################################################
+#This code reads a CSV file and prints its contents:
+
+
+import csv
+
+# Open the file in read mode
+with open('data.csv', 'r') as file:
+  # Read the CSV data into a list of rows
+  rows = csv.reader(file)
+
+  # Print each row
+  for row in rows:
+    print(row)
+	
+####################################################################################	
+Writing a CSV file
+This code writes a list of data to a CSV file:
+####################################################################################
+
+import csv
+
+# The data to be written to the CSV file
+data = [
+    ['Name', 'Age'],
+    ['Alice', '25'],
+    ['Bob', '32'],
+]
+
+# Open the file in write mode
+with open('data.csv', 'w') as file:
+  # Create a writer object
+  writer = csv.writer(file)
+
+  # Write each row of data
+  for row in data:
+    writer.writerow(row)
+	
+####################################################################################
+Connecting to a SQL database
+This code connects to a SQL database and prints the names of all the tables in the database:
+####################################################################################
+
+import sqlite3
+
+# Connect to the database
+conn = sqlite3.connect('database.db')
+
+# Get a cursor
+cursor = conn.cursor()
+
+# Execute a SQL query
+cursor.execute('SELECT name FROM sqlite_master WHERE type="table"')
+
+# Get the names of the tables
+tables = cursor.fetchall()
+
+# Print each table name
+for table in tables:
+  print(table[0])
+
+# Close the connection
+conn.close()
+
+\

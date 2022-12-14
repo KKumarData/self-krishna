@@ -1,0 +1,11 @@
+#To perform a multi-part upload to an Amazon S3 bucket using Python, you can use the upload_fileobj method of the S3.Client class. For example, if you have a file called "big_file.txt" that you want to upload to an S3 bucket called "my-bucket", you can use the following code:
+
+import boto3
+
+# Create an S3 client
+s3 = boto3.client('s3')
+
+# Open the file for reading
+with open("big_file.txt", "rb") as f:
+  # Upload the file to the S3 bucket in multiple parts
+  s3.upload_fileobj(f, "my-bucket", "big_file.txt")

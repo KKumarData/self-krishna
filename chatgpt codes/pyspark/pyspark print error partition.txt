@@ -1,0 +1,10 @@
+To print the errored partitions in the source file while processing a large file in PySpark, you can use the .filter() method and the .repartition() method to create a new dataset with the errored partitions and then print them. Here's an example:
+
+
+# Create a new dataset with the errored partitions
+errors = df.filter(df.source == "source_file").repartition(1)
+
+# Print the errored partitions
+errors.foreach(lambda x: print(x))
+
+In this example, df is the original dataset and errors is the new dataset that contains only the errored partitions from the source file. The .filter() method is used to filter the dataset to include only the partitions from the source file, and the .repartition() method is used to create a new dataset with the errored partitions. The .foreach() method is then used to iterate over the errored partitions and print them.
