@@ -1,0 +1,75 @@
+sudo chown -R ubuntu:ubuntu /var/www/html sudo
+chmod -R 755 /var/www/html
+
+
+
+sudo amazon-linux-extras install docker
+sudo service docker start ## it didnt work with cloudshell, but docker is installed and up.
+sudo usermod -a -G docker ec2-user
+
+Glue config options:
+
+/usr/bin/java -cp /tmp:/opt/amazon/conf:/opt/amazon/lib/hadoop-lzo/*:/opt/amazon/lib/emrfs-lib/*:/opt/amazon/spark/jars/*:/opt/amazon/superjar/*:/opt/amazon/lib/*:/opt/amazon/Scala2.11/* com.amazonaws.services.glue.PrepareLaunch --conf spark.dynamicAllocation.enabled=true --conf spark.shuffle.service.enabled=true --conf spark.dynamicAllocation.minExecutors=1 --conf spark.dynamicAllocation.maxExecutors=-1 --conf spark.executor.memory=10g --conf spark.executor.cores=8 --conf spark.driver.memory=10g --conf spark.default.parallelism=0 --conf spark.sql.shuffle.partitions=0 --conf spark.network.timeout=600 --driver-url spark://CoarseGrainedScheduler@172.35.40.238:46241 --executor-id 1 --app-id spark-application-1629347954107 --cores 8
+
+
+/usr/bin/java -cp /tmp:/opt/amazon/conf:/opt/amazon/lib/hadoop-lzo/*:/opt/amazon/lib/emrfs-lib/*:/opt/amazon/lib/emr-goodies/*:/opt/amazon/lib/hive-jars/*:/opt/amazon/spark/jars/*:/opt/amazon/superjar/*:/opt/amazon/lib/*:/opt/amazon/Scala2.11/*:/tmp/* -Dlog4j.configuration=log4j -server -Xmx10g -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:MaxHeapFreeRatio=70 -XX:+CMSClassUnloadingEnabled -XX:OnOutOfMemoryError='kill -9 %p' -XX:+UseCompressedOops -Djavax.net.ssl.trustStore=/opt/amazon/certs/ExternalAndAWSTrustStore.jks -Djavax.net.ssl.trustStoreType=JKS -Djavax.net.ssl.trustStorePassword=amazon -DRDS_ROOT_CERT_PATH=/opt/amazon/certs/rds-combined-ca-bundle.pem -DREDSHIFT_ROOT_CERT_PATH=/opt/amazon/certs/redshift-ssl-ca-cert.pem -DRDS_TRUSTSTORE_URL=file:/opt/amazon/certs/RDSTrustStore.jks -Dspark.hadoop.fs.s3.impl=com.amazon.ws.emr.hadoop.fs.EmrFileSystem -Dspark.hadoop.mapred.output.committer.class=org.apache.hadoop.mapred.DirectOutputCommitter -Dspark.hadoop.mapred.output.direct.NativeS3FileSystem=true -Dspark.glue.JOB_RUN_ID=jr_542da713e24d11772e61b8a7480521609d21046e35775231a9e43e0b478095b9 -Dspark.driver.extraClassPath=/tmp:/opt/amazon/conf:/opt/amazon/lib/hadoop-lzo/*:/opt/amazon/lib/emrfs-lib/*:/opt/amazon/lib/emr-goodies/*:/opt/amazon/lib/hive-jars/*:/opt/amazon/spark/jars/*:/opt/amazon/superjar/*:/opt/amazon/lib/*:/opt/amazon/Scala2.11/* -Dspark.master=jes -Dspark.cloudwatch.logging.ui.showConsoleProgress=true -Dspark.hadoop.mapreduce.fileoutputcommitter.algorithm.version=2 -Dspark.hadoop.mapreduce.fileoutputcommitter.marksuccessfuljobs=false -Dspark.unsafe.sorter.spill.read.ahead.enabled=false -Dspark.hadoop.lakeformation.credentials.url=http://localhost:9998/lakeformationcredentials -Dspark.hadoop.parquet.enable.summary-metadata=false -Dspark.hadoop.glue.michiganCredentialsProviderProxy=com.amazonaws.services.glue.remote.LakeformationCredentialsProvider -Dspark.executor.extraClassPath=/tmp:/opt/amazon/conf:/opt/amazon/lib/hadoop-lzo/*:/opt/amazon/lib/emrfs-lib/*:/opt/amazon/lib/emr-goodies/*:/opt/amazon/lib/hive-jars/*:/opt/amazon/spark/jars/*:/opt/amazon/superjar/*:/opt/amazon/lib/*:/opt/amazon/Scala2.11/* -Dspark.cloudwatch.logging.conf.jobRunId=jr_542da713e24d11772e61b8a7480521609d21046e35775231a9e43e0b478095b9 -Dspark.glue.enable-continuous-cloudwatch-log=true -Dspark.glue.JOB_NAME=food -Dspark.glue.endpoint=https://glue-jes-prod.us-east-1.amazonaws.com -Dspark.ui.enabled=false -Dspark.hadoop.mapred.output.direct.EmrFileSystem=true -Dspark.files.overwrite=true -Dspark.glue.USE_PROXY=false -Dspark.eventLog.dir=/tmp/spark-event-logs/ -Dspark.rpc.askTimeout=600 -Dspark.authenticate.secret=<HIDDEN> -Dspark.authenticate=true com.amazonaws.services.glue.ProcessLauncher --launch-class org.apache.spark.executor.CoarseGrainedExecutorBackendWrapper --hostname 172.34.218.154 --driver-url spark://CoarseGrainedScheduler@172.35.40.238:46241 --executor-id 1 --app-id spark-application-1629347954107 --cores 8
+
+
+cloud formation stack for Glue Spark UI
+
+          yum update -y aws-cfn-bootstrap
+		https://cloudformation-waitcondition-us-east-1.s3.amazonaws.com/arn%3Aaws%3Acloudformation%3Aus-east-1%3A061553549694%3Astack/spark-ui/23824e80-00ac-11ec-979b-0e4143cc1ab7/WaitHandle?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210819T052632Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86399&X-Amz-Credential=AKIAIIT3CWAIMJYUTISA%2F20210819%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=31a3c08a44d76968838a3624e485fb62a67ec7a4d8c82647051170e5d69b8f6b		  
+		
+		
+ssh -i ~/emr_key_pair.pem -N -D 8157 hadoop@ec2-3-239-193-217.compute-1.amazonaws.com
+
+aws emr socks --cluster-id j-2RVJ6ALV79TNX --key-pair-file ~/emr_key_pair.pem
+
+netstat -tulpn | grep 3000 
+
+
+http://ec2-3-239-193-217.compute-1.amazonaws.com/
+		
+1. Proxy Auto configuration in chrome		
+2.  port and server details  from AWS 
+
+	Flink history server (EMR version 5.33 and later)	http://master-public-dns-name:8082/
+	Ganglia	http://master-public-dns-name/ganglia/
+	Hadoop HDFS NameNode (EMR version pre-6.x)	https://master-public-dns-name:50470/
+	Hadoop HDFS NameNode	http://master-public-dns-name:50070/
+	Hadoop HDFS DataNode	http://coretask-public-dns-name:50075/
+	Hadoop HDFS NameNode (EMR version 6.x)	https://master-public-dns-name:9871/
+	Hadoop HDFS DataNode (EMR version pre-6.x)	https://coretask-public-dns-name:50475/
+	Hadoop HDFS DataNode (EMR version 6.x)	https://coretask-public-dns-name:9865/
+	HBase	http://master-public-dns-name:16010/
+	Hue	http://master-public-dns-name:8888/
+	JupyterHub	https://master-public-dns-name:9443/
+	Livy	http://master-public-dns-name:8998/
+	Spark HistoryServer	http://master-public-dns-name:18080/
+	Tez	http://master-public-dns-name:8080/tez-ui
+	YARN NodeManager	http://coretask-public-dns-name:8042/
+	YARN ResourceManager	http://master-public-dns-name:8088/
+	Zeppelin	http://master-public-dns-name:8890/
+	
+function FindProxyForURL(url, host) {
+    if (shExpMatch(url, "*ec2*.amazonaws.com*")) return 'SOCKS5 localhost:8157';
+    if (shExpMatch(url, "*ec2*.compute*")) return 'SOCKS5 localhost:8157';
+    if (shExpMatch(url, "http://10.*")) return 'SOCKS5 localhost:8157';
+    if (shExpMatch(url, "*10*.compute*")) return 'SOCKS5 localhost:8157';
+    if (shExpMatch(url, "*10*.amazonaws.com*")) return 'SOCKS5 localhost:8157';
+    if (shExpMatch(url, "*.compute.internal*")) return 'SOCKS5 localhost:8157';
+    if (shExpMatch(url, "*ec2.internal*")) return 'SOCKS5 localhost:8157';
+    return 'DIRECT';
+}	
+	
+	
+aws ec2 run-instances --instance-type m5.2xlarge --dry-run --image-id ami-035be7bafff33b6b6 --subnet-id subnet-ca10b3ac
+
+to create folder under bucket 	
+	aws s3api put-object --bucket emr-demo-kk --key output/	
+	
+	
+	
+AWS redshift: 
+      - serverless 
+	

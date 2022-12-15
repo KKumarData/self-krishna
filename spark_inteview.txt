@@ -1,0 +1,39 @@
+spark 
+
+what is spark?
+spark file formats, compressions, splittable, read/write performance compare/contrast ?
+spark design patterns in scala?
+
+spark optimization
+1. window functions for 2 large files -- to check online
+2. cache and persist
+3. size of data  in GBs 
+4. Rest API
+5. Scala- diamond problem (multiple inheritence)
+6. Scala- case class
+7. Hadoop /Spark Distriubtion ? CDH/Horton Works
+8. size of cluster (18 nodes)
+9. 1 Node configuration - 64 GB of RAM, 1 GB HDD, 16 cores of CPU
+10. Name node- 128 GB of Ram
+11. memory out of bounds exception etc
+12. analysis of spark jobs - DAG , web UI, Minimize the stages to minimize the data shuffling.
+13. how to reduce data shuffling ?
+14. transformation that creates data shuffling..(group by /reduce).. -- wide transformation
+15. transformation that does nt create data shuffling.. (map/filter).. -- narrow transformation
+16. different types of spark transformations / operations used in Spark Core and Spark Sql level
+17. differnce between Reduce and Reduce by Key
+18. 
+
+spark + Hive:
+
+1. Optimization
+	a. Table level : bucket and partitions 
+	b. query level - different types of join and 
+	c. hive query optimization technique
+	d. format/compression
+	e. order of remving bottlenecks
+
+2. When to use Bucketing and partitions?
+3. spark sql vs Hive
+4. 
+

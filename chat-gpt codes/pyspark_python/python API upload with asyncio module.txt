@@ -1,0 +1,100 @@
+## To upload data to a REST API using batch requests and asynchronous processing, you can use the asyncio and aiohttp libraries in Python. These libraries allow you to write asynchronous code that can send multiple requests to the API in parallel, which can improve the performance and efficiency of the data upload process.
+## 
+## Here is an example of how you might use the asyncio and aiohttp libraries to upload data to a REST API using batch requests and asynchronous processing
+
+import asyncio
+import aiohttp
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = [
+    {"name": "John Doe", "email": "johndoe@example.com"},
+    {"name": "Jane Smith", "email": "janesmith@example.com"},
+    ...
+]
+
+async def upload_data(data):
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for item in data:
+            # Send the request asynchronously
+            task = asyncio.ensure_future(
+                session.post(url, json=item)
+            )
+            tasks.append(task)
+
+        # Wait for all requests to complete
+        responses = await asyncio.gather(*tasks)
+
+        # Check the responses
+        for response in responses:
+            if response.status == 200:
+                print("Data was successfully uploaded")
+            else:
+                print("An error occurred:", response.text)
+
+# Run the upload_data() function asynchronously
+loop = asyncio.get_event_loop()
+loop.run_until_complete(upload_data(data))
+
+## In the code above, we are using the asyncio library to create an asynchronous function (upload_data()) that sends multiple POST requests to the API endpoint in parallel. We are using the aiohttp library to create an HTTP session and send the requests asynchronously.
+## 
+## Once all of the requests have been sent, we are using the asyncio.gather() function to wait for all of the responses to be received. Then, we are checking the responses to see if any errors occurred during the upload process.
+## 
+## By using this approach, you can upload large amounts of data to a REST API efficiently and reliably, using batch requests and asynchronous processing. This can help to improve the performance and scalability of your data upload process.
+
+##############################################################################################################################
+## with call back
+##############################################################################################################################
+## To add a callback function to the asynchronous response of a request to a REST API, you can use the add_done_callback() method provided by the asyncio library in Python. This method allows you to specify a callback function that will be called when the request completes (i.e., when the response is received).
+## 
+## Here is an example of how you might use the add_done_callback() method to add a callback function to the response of an asynchronous request:
+
+import asyncio
+import aiohttp
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = {
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+}
+
+async def upload_data(data):
+    async with aiohttp.ClientSession() as session:
+        # Send the request asynchronously
+        task = asyncio.ensure_future(
+            session.post(url, json=data)
+        )
+
+        # Add a callback function to the response
+        task.add_done_callback(on_response)
+
+        # Wait for the response
+        response = await task
+
+# Callback function to be called when the response is received
+def on_response(task):
+    # Get the response from the task
+    response = task.result()
+
+    # Check the response
+    if response.status == 200:
+        print("Data was successfully uploaded")
+    else:
+        print("An error occurred:", response.text)
+
+# Run the upload_data() function asynchronously
+loop = asyncio.get_event_loop()
+loop.run_until_complete(upload_data(data))
+
+
+## In the code above, we are using the add_done_callback() method to specify a callback function (on_response()) that will be called when the request completes. The callback function receives the task object as its argument, which contains the response of the request.
+## 
+## By using this approach, you can add a callback function to the response of an asynchronous request, which will allow you to perform additional actions or processing based on the response of the request. This can be useful for handling errors or for logging the status of the request.
+
+##############################################################################################################################

@@ -1,0 +1,163 @@
+##############################################################################################################################
+
+## Data Upload API retry logic
+
+##############################################################################################################################
+import requests
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = {
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+}
+
+# Set the number of retries
+retries = 3
+
+# Set the retry delay (in seconds)
+retry_delay = 1
+
+# Set the flag for whether to retry the request
+should_retry = False
+
+# Send the request and handle any exceptions
+for i in range(retries):
+    try:
+        response = requests.post(url, json=data)
+        if response.status_code == 200:
+            print("Data was successfully uploaded")
+        else:
+            print("An error occurred:", response.text)
+        should_retry = False
+        break
+    except requests.exceptions.RequestException as ex:
+        print("An error occurred:", ex)
+        should_retry = True
+
+    # Wait before retrying the request
+    if should_retry:
+        time.sleep(retry_delay)
+
+##############################################################################################################################
+
+## To add traceability logic to the data you upload to a REST API and print the traceability value if an error occurs, you can use a unique identifier for each data item and include it in the request to the API. This identifier can then be used to trace and identify the specific data item if any errors occur during the upload process.
+
+## Here is an example of how you might add traceability logic to the data you upload to a REST API:
+
+
+
+import requests
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = [
+    {"id": "abc123", "name": "John Doe", "email": "johndoe@example.com"},
+    {"id": "def456", "name": "Jane Smith", "email": "janesmith@example.com"},
+    ...
+]
+
+# Send the request and handle any errors
+for item in data:
+    try:
+        response = requests.post(url, json=item)
+        if response.status_code == 200:
+            print(f"Data item {item['id']} was successfully uploaded")
+        else:
+            print(f"An error occurred while uploading data item {item['id']}:", response.text)
+    except requests.exceptions.RequestException as ex:
+        print(f"An error occurred while uploading data item {item['id']}:", ex)
+
+
+
+## In the code above, we are using a unique identifier (id) for each data item, and including it in the request to the API. If an error occurs during the upload process, we are printing the
+
+##############################################################################################################################
+
+## To checkpoint asynchronous data uploads to a REST API using a unique identifier as a trace in a database, you can use the boto3 library in Python to interact with a database service such as Amazon DynamoDB or a relational database management system (RDBMS) such as Amazon RDS.
+## 
+## Here is an example of how you might use the boto3 library to checkpoint asynchronous data uploads to a REST API and store the unique identifier in a DynamoDB table:
+
+
+
+import asyncio
+import aiohttp
+import boto3
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = [
+    {"id": "abc123", "name": "John Doe", "email": "johndoe@example.com"},
+    {"id": "def456", "name": "Jane Smith", "email": "janesmith@example.com"},
+    ...
+]
+
+# Set the DynamoDB table name
+table_name = "DataUploads"
+
+# Create a DynamoDB client
+dynamodb = boto3.client("dynamodb")
+
+async def upload_data(data):
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for item in data:
+            # Send the request asynchronously
+            task = asyncio.ensure_future(
+                session.post(url, json=item)
+            )
+            tasks.append(task)
+
+            # Checkpoint the data item in DynamoDB
+            dynamodb.put_item(
+                TableName=table_name,
+                Item={
+                    "id": {"S": item["id"]},
+                    "status": {"S": "PENDING"},
+                }
+            )
+
+        # Wait for all requests to complete
+        responses = await asyncio.gather(*tasks)
+
+        # Check the responses
+        for response in responses:
+            if response.status == 200:
+                # Update the data item in DynamoDB
+                dynamodb.update_item(
+                    TableName=table_name,
+                    Key={
+                        "id": {"S": response.id},
+                    },
+                    UpdateExpression="set status = :s",
+                    ExpressionAttributeValues={
+                        ":s": {"S": "SUCCESS"},
+                    }
+                )
+                print("Data was successfully uploaded")
+            else:
+                # Update the data item in DynamoDB
+                dynamodb.update_item(
+                    TableName=table_name,
+                    Key={
+                        "id": {"S": response.id},
+                    },
+                    UpdateExpression="set status = :s",
+                    ExpressionAttributeValues={
+                        ":s": {"S": "ERROR"},
+                    }
+                )
+                print("An error occurred:", response.text)
+
+# Run the upload_data() function asynchronously
+loop = asyncio.get_event_loop()
+loop.run_until_complete(upload_data(data))
+
+
+## In the code above, we are using the boto3.client() function to create a client for the DynamoDB service. Then, in the upload_data() function,

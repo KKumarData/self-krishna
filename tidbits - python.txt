@@ -1,0 +1,15 @@
+Python3:
+
+Bytes and strings has to be encoded or decoded to work on each other.
+from string import template
+Any ([1,2,]) or all([])
+
+iter()
+yield
+enumerate
+zip()
+ transform functions  sorted , filter and map
+itertools
+*args, **kwargs
+lambda
+python 3 - key word arguments eg. func(a,b,*,keyword1=True)

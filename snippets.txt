@@ -1,0 +1,156 @@
+#########Get history versions of s3 file  sdk python #########
+# https://stackoverflow.com/questions/32461420/how-do-i-download-all-the-versions-of-a-file-with-100-000-versions-from-amazon
+##############################################################
+
+	import boto3
+	client = boto3.client('s3')
+
+	bucket = '<s3Bucket>'
+	filename   = '<fileName>'
+	bkey    = '<the s3 prefix>' + filename
+	local  = '<local path>' + filename
+
+	response = client.list_object_versions(
+		Bucket=bucket,
+		Prefix=bkey
+	)
+
+	for v in response['Versions']:
+		client.downloadfilename(bucket, bkey,
+							 local + '_' + v['LastModified'].strftime('%Y%m%d%H%M%S'),
+							 ExtraArgs={"VersionId": v["VersionId"]})
+		print(v['LastModified'])
+	
+#######   sdk python s3 #######################################
+# https://github.com/ankhipaul/aws_demos
+###############################################################
+	import boto3
+
+	s3_resource = boto3.resource('s3')
+
+	#Create a Bucket
+	s3_resource.create_bucket(Bucket="first-aws-bucket-1")
+
+	#List all buckets in S3
+	for bucket in s3_resource.buckets.all():
+		print(bucket.name)
+
+	#Uploading an object into the Bucket
+	s3_resource.Object('first-aws-bucket-1', 'Screen_Shot.png').\
+		upload_file(Filename='/Users/ankhipaul/Documents/Screenshots/Screen_Shot.png')
+
+	#Downloading an object from Bucket to local
+	s3_resource.Object('pythonusecase', 'doc.pdf').download_file(
+		f'/Users/ankhipaul/Documents/doc.pdf')
+
+
+	#List all objects of one bucket
+	pythonusecase = s3_resource.Bucket(name = 'pythonusecase')
+	for object in pythonusecase.objects.all():
+			  print(object.key)
+
+	#Copy object old_convertcsv.csv as object new_convertcsv.csv
+	s3_resource.Object("pythonusecase", "new_convertcsv.csv").copy_from(CopySource="pythonusecase/old_convertcsv.csv")
+
+	#Delete object old_convertcsv.csv
+	s3_resource.Object("pythonusecase", "old_convertcsv.csv").delete()
+
+	#Delete bucket first-aws-bucket-1
+	bucket = s3_resource.Bucket('first-aws-bucket-1')
+	bucket.objects.all().delete()
+	s3_resource.Bucket("first-aws-bucket-1").delete()
+
+
+	#Encrypting an object with ServerSideEncryption
+	s3_resource.Object('pythonusecase', 'random_pic.jpg').\
+		upload_file(Filename='/Users/ankhipaul/Documents/random_pic.jpg',ExtraArgs={
+							 'ServerSideEncryption': 'AES256'})
+
+	#Enable versioning of a Bucket
+	s3_resource.BucketVersioning("pythonusecase").enable()
+	
+## https://stackoverflow.com/questions/42809096/difference-in-boto3-between-resource-client-and-session	
+	
+import boto3
+
+client = boto3.client('s3')
+
+response = client.list_objects_v2(Bucket='mybucket')
+
+for content in response['Contents']:
+    obj_dict = client.get_object(Bucket='mybucket', Key=content['Key'])
+    print(content['Key'], obj_dict['LastModified'])
+
+########   To list versions of file   ##############################
+## https://aws.amazon.com/blogs/apn/getting-the-most-out-of-the-amazon-s3-cli/
+
+
+	aws s3api list-object-versions --bucket adb-061553549694-landing --prefix etl_landing/data_mod.tsv	
+
+########### Copy from s3 to local #################################
+## https://aws.amazon.com/blogs/apn/getting-the-most-out-of-the-amazon-s3-cli/
+
+
+	aws s3 cp s3://bucket/folder/file.txt .
+	
+
+####################################################################
+######### S3 Multipart upload ##################################
+## https://github.com/ankhipaul/aws_demos
+## https://github.com/ankhipaul/aws_demos/blob/master/aws_s3_multipart_upload_download_boto3_demo.py
+## https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html
+################################################################	
+## https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-upload-object.html
+## https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html
+## https://aws.amazon.com/premiumsupport/knowledge-center/s3-multipart-upload-cli/   ### important
+## https://docs.aws.amazon.com/cloudshell/latest/userguide/multiple-files-upload-download.
+## https://adamtheautomator.com/aws-s3-copy/
+################################################################	
+## https://www.youtube.com/watch?v=Te6s1VZPGfk
+## https://github.com/schonz/mediabackup/blob/main/mediabackup-agent/mediabackup-agent.py
+## https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.create_multipart_upload
+
+################################################################	
+s3_resource = boto3.resource('s3')
+config = TransferConfig(multipart_threshold=1024 * 25,
+                        max_concurrency=10,
+                        multipart_chunksize=1024 * 25,
+                        use_threads=True)
+
+s3_resource.Object(bucket_name, key).upload_file(file_path,
+						ExtraArgs={'ContentType': 'text/pdf'},
+						Config=config,
+						Callback=ProgressPercentage(file_path)
+						)						
+						
+s3_resource.Object(bucket_name, key).download_file(file_path,
+						Config=config,
+						Callback=ProgressPercentage(file_path1)
+						)
+
+## https://www.bogotobogo.com/python/Multithread/python_multithreading_Synchronization_Lock_Objects_Acquire_Release.php						
+
+########## pageinator to test aws connection ##########
+https://stackoverflow.com/questions/39201093/how-to-use-boto3-pagination
+
+
+import boto3
+
+# Create an S3 client
+s3 = boto3.client("s3")
+
+# Check if the client can paginate the results of a request
+can_paginate = s3.can_paginate("list_objects_v2")
+
+# Print the result
+print(can_paginate)
+
+
+########## get aws credentials ########## 
+
+import boto3
+session = boto3.Session(profile_name='default')
+credentials = session.get_credentials()
+print("AWS_ACCESS_KEY_ID = {}".format(credentials.access_key))
+print("AWS_SECRET_ACCESS_KEY = {}".format(credentials.secret_key))
+print("AWS_SESSION_TOKEN = {}".format(credentials.token))

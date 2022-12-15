@@ -1,0 +1,35 @@
+## Here is an example of how you might use the boto3 library to find the filename and partition name of a file with a wildcard search in AWS:
+
+import boto3
+
+# Set the name of the file you want to find
+filename = "my-file-*.txt"
+
+# Set the name of the bucket where the file is located
+bucket_name = "my-bucket"
+
+# Create an S3 client
+s3 = boto3.client("s3")
+
+# List the objects in the bucket
+response = s3.list_objects_v2(
+    Bucket=bucket_name,
+    Prefix=filename
+)
+
+# Check the response
+if "Contents" in response:
+    # Get the object details
+    object_details = response["Contents"][0]
+
+    # Print the filename and partition
+    print(object_details["Key"])
+    print(object_details["Partition"])
+else:
+    print(f"File {filename} was not found in bucket {bucket_name}")
+
+
+## In the code above, we are using the boto3.client() function to create an S3 client, and then calling the list_objects_v2() method to list the objects in the specified bucket. We are using the Prefix parameter to filter the results to only include objects with the specified filename, which includes a wildcard character (*) to match multiple files. If any objects are found in the bucket, we are retrieving the details of the first object and printing the Key (filename) and Partition properties. If no objects are found, we are printing a message indicating that the file was not found.
+
+## By using this approach, you can use the boto3 library to find the filename and partition name of a file with a wildcard search in AWS using Python. You can then use this information to access the file and perform the necessary operations on it.
+
