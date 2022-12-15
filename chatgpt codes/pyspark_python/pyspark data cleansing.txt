@@ -1,0 +1,96 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+
+Create a SparkSession
+spark = SparkSession.builder.appName('Data cleansing').getOrCreate()
+
+Read the input data as a DataFrame
+df = spark.read.csv('input.csv', header=True)
+
+Replace missing values with nulls
+df = df.na.fill('null')
+
+Replace null values in the 'age' column with the mean of the column
+mean_age = df.select(mean('age')).first()[0]
+df = df.na.fill({'age': mean_age})
+
+Replace null values in the 'income' column with the median of the column
+median_income = df.approxQuantile('income', [0.5], 0.25)[0]
+df = df.na.fill({'income': median_income})
+
+Drop rows with null values in the 'gender' column
+df = df.na.drop(subset=['gender'])
+
+Write the cleansed data to a CSV file
+df.write.csv('cleansed_data.csv', header=True)
+
+####################################################################################
+####################################################################################
+
+Import the required libraries
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+
+#  Create a SparkSession
+spark = SparkSession.builder.appName('Advanced data cleansing').getOrCreate()
+
+#  Read the input data as a DataFrame
+df = spark.read.csv('input.csv', header=True)
+
+#Define a custom function to cleanse the 'name' column
+def cleanse_name(name):
+	# Remove leading and trailing whitespace
+	name = name.strip()
+
+
+# Remove middle initials
+name = re.sub(r'\s+[A-Z]\s*', ' ', name)
+
+# Capitalize the first and last names
+name = re.sub(r'(^[a-z])|(\s+[a-z]$)', lambda x: x.group().upper(), name)
+
+return name
+Register the custom function as a UDF
+cleanse_name_udf = udf(cleanse_name, StringType())
+
+Apply the UDF to the 'name' column to cleanse the data
+df = df.withColumn('name', cleanse_name_udf('name'))
+
+Write the cleansed data to a CSV file
+df.write.csv('cleansed_data.csv', header=True)
+
+####################################################################################
+####################################################################################
+
+
+Import the required libraries
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import Imputer, StringIndexer
+
+#  Create a SparkSession
+spark = SparkSession.builder.appName('ML-based data cleansing').getOrCreate()
+
+#  Read the input data as a DataFrame
+df = spark.read.csv('input.csv', header=True)
+
+#  Replace missing values with nulls
+df = df.na.fill('null')
+
+#  Replace null values in the 'age' column with the mean of the column
+imputer = Imputer(inputCol='age', outputCol='age_imputed')
+df = imputer.fit(df).transform(df)
+
+#  Replace null values in the 'income' column with the median of the column
+imputer = Imputer(inputCol='income', outputCol='income_imputed')
+df = imputer.fit(df).transform(df)
+
+#  Drop rows with null values in the 'gender' column
+df = df.na.drop(subset=['gender'])
+
+#  Map string values in the 'gender' column to numerical values
+indexer = StringIndexer(inputCol='gender', outputCol='gender_indexed')
+df = indexer.fit(df).transform(df)
+
+#  Write the cleansed data to a CSV file
+df.write.csv('cleansed_data.csv', header=True)

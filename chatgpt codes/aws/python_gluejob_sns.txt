@@ -1,0 +1,65 @@
+import boto3
+
+# Replace with your Glue job name
+GLUE_JOB_NAME = "my_glue_job"
+
+# Replace with your SNS topic ARN
+SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:1234567890:my_sns_topic"
+
+# Create a Glue client
+glue_client = boto3.client("glue")
+
+# Start the Glue job
+response = glue_client.start_job_run(JobName=GLUE_JOB_NAME)
+
+# Get the job run ID
+job_run_id = response["JobRunId"]
+
+# Wait for the job to complete
+glue_client.get_job_run(JobName=GLUE_JOB_NAME, RunId=job_run_id)["JobRun"]["JobRunState"]
+
+# Get the job run status
+job_run_status = glue_client.get_job_run(JobName=GLUE_JOB_NAME, RunId=job_run_id)["JobRun"]["JobRunState"]
+
+# Create an SNS client
+sns_client = boto3.client("sns")
+
+# Publish the job run status to the SNS topic
+sns_client.publish(
+    TopicArn=SNS_TOPIC_ARN,
+    Message=f"Glue job '{GLUE_JOB_NAME}' has completed with status '{job_run_status}'"
+)
+
+###########################################################################
+
+import boto3
+
+# Create a client for the Glue service
+glue_client = boto3.client('glue')
+
+# Create a client for the SNS service
+sns_client = boto3.client('sns')
+
+# Set the Glue job name and ARN of the SNS topic
+glue_job_name = 'my-glue-job'
+sns_topic_arn = 'arn:aws:sns:us-east-1:123456789012:my-sns-topic'
+
+# Start the Glue job and get its job run ID
+response = glue_client.start_job_run(JobName=glue_job_name)
+glue_job_run_id = response['JobRunId']
+
+# Wait for the Glue job to complete
+while True:
+    response = glue_client.get_job_run(JobName=glue_job_name, RunId=glue_job_run_id)
+    if response['JobRun']['JobRunState'] == 'SUCCEEDED':
+        sns_message = 'Glue job ' + glue_job_name + ' completed successfully'
+        break
+    elif response['JobRun']['JobRunState'] == 'FAILED':
+        sns_message = 'Glue job ' + glue_job_name + ' failed'
+        break
+
+# Publish the status of the Glue job to the SNS topic
+response = sns_client.publish(
+    TopicArn=sns_topic_arn,
+    Message=sns_message
+)

@@ -41,3 +41,37 @@ average_age = df.agg(avg(df['age'])).first()[0]
 
 # Print the average age
 print(average_age)
+
+
+####################################################################################
+Aggregating a DataFrame
+This code calculates the average value in the "age" column of a DataFrame:
+####################################################################################
+
+# Import the required libraries
+from pyspark.sql import SparkSession
+
+# Create a SparkSession
+spark = SparkSession.builder.appName('Joining dataframes').getOrCreate()
+
+# Read the input data as DataFrames
+df1 = spark.read.csv('input1.csv', header=True)
+df2 = spark.read.csv('input2.csv', header=True)
+
+# Inner join the two DataFrames on the 'id' column
+df_inner = df1.join(df2, on='id', how='inner')
+
+# Left outer join the two DataFrames on the 'id' column
+df_left = df1.join(df2, on='id', how='left')
+
+# Right outer join the two DataFrames on the 'id' column
+df_right = df1.join(df2, on='id', how='right')
+
+# Full outer join the two DataFrames on the 'id' column
+df_full = df1.join(df2, on='id', how='full')
+
+# Write the joined DataFrames to CSV files
+df_inner.write.csv('inner_join.csv', header=True)
+df_left.write.csv('left_join.csv', header=True)
+df_right.write.csv('right_join.csv', header=True)
+df_full.write.csv('full_join.csv', header=True)

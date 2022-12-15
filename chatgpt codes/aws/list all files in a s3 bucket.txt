@@ -1,0 +1,60 @@
+###### flattened_key is  optional
+
+import boto3
+import os
+
+Replace with your S3 bucket name
+bucket_name = 'my-s3-bucket'
+
+Create an S3 client
+s3 = boto3.client('s3')
+
+Get a list of all objects in the bucket
+objects = s3.list_objects_v2(Bucket=bucket_name)
+
+Iterate over the objects and print their details
+for obj in objects['Contents']:
+	key = obj['Key']
+	size = obj['Size']
+	last_modified = obj['LastModified']
+
+	# Print the object details
+print('Key: {}'.format(key))
+print('Size: {} bytes'.format(size))
+print('Last modified: {}'.format(last_modified))
+print('\n')
+
+# Flatten the file hierarchy by replacing '/' in the key with '_'
+flattened_key = key.replace('/', '_')
+
+# Download the object to a local file with the flattened key name
+s3.download_file(bucket_name, key, os.path.join('/tmp', flattened_key))
+
+# Check if there are more than 1000 objects in the bucket
+if objects['KeyCount'] > 1000:
+    # Handle the case where there are more than 1000 objects
+    # Use the continuation token to retrieve the next set of objects
+    while 'NextContinuationToken' in objects:
+        # Get the next set of objects using the continuation token
+        objects = s3.list_objects_v2(
+            Bucket=bucket_name,
+            ContinuationToken=objects['NextContinuationToken']
+        )
+
+        # Iterate over the objects and print their details
+        for obj in objects['Contents']:
+            key = obj['Key']
+            size = obj['Size']
+            last_modified = obj['LastModified']
+
+            # Print the object details
+            print('Key: {}'.format(key))
+            print('Size: {} bytes'.format(size))
+            print('Last modified: {}'.format(last_modified))
+            print('\n')
+
+            # Flatten the file hierarchy by replacing '/' in the key with '_'
+            flattened_key = key.replace('/', '_')
+
+            # Download the object to a local file with the flattened key name
+            s3.download_file(bucket_name, key, os.path.join('/tmp', flattened_key))

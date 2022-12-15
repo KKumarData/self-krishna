@@ -1,0 +1,19 @@
+Create a VPC and subnets in your AWS account. This will define the network where your AWS Glue resources will be deployed.
+
+Create an internet gateway and attach it to your VPC. This will allow your VPC to access the internet.
+
+Create a NAT gateway and attach it to your VPC. This will allow your private subnets to access the internet for services such as AWS Glue job runs.
+
+Create a security group for your AWS Glue resources. This will define the network access rules for your AWS Glue development endpoint, job, and other resources.
+
+Associate the security group with your VPC and subnets. This will apply the network access rules to your VPC and subnets.
+
+Configure the VPC and subnet settings for your AWS Glue resources. This will allow the resources to be deployed in your VPC and subnets.
+
+Create an AWS Glue Data Catalog, development endpoint, security configuration, IAM role, and connection as described in the previous section.
+
+Develop and test your ETL scripts in the development endpoint, and create an AWS Glue job to run the scripts.
+
+Add triggers to the AWS Glue job to specify when and how often the job should be run.
+
+Monitor the job runs and the data in your data lake to ensure that the ETL process is working as expected.

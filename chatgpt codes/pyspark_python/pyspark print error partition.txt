@@ -1,0 +1,57 @@
+To print the errored partitions in the source file while processing a large file in PySpark, you can use the .filter() method and the .repartition() method to create a new dataset with the errored partitions and then print them. Here's an example:
+
+
+# Create a new dataset with the errored partitions
+errors = df.filter(df.source == "source_file").repartition(1)
+
+# Print the errored partitions
+errors.foreach(lambda x: print(x))
+
+In this example, df is the original dataset and errors is the new dataset that contains only the errored partitions from the source file. The .filter() method is used to filter the dataset to include only the partitions from the source file, and the .repartition() method is used to create a new dataset with the errored partitions. The .foreach() method is then used to iterate over the errored partitions and print them.
+
+####################################################################################
+####################################################################################
+
+
+
+Import the required libraries
+from pyspark.sql import SparkSession
+
+Create a SparkSession
+spark = SparkSession.builder.appName('Capturing error partition names').getOrCreate()
+
+Read the input data as a DataFrame
+df = spark.read.csv('input.csv', header=True)
+
+Create a column to capture the error partition name
+df = df.withColumn('error_partition', lit(None).cast(StringType()))
+
+Define a custom function to handle data errors
+def handle_data_error(row):
+# Check for errors in the data
+if row['age'] < 0 or row['income'] < 0:
+# Capture the error partition name
+row['error_partition'] = spark.sparkContext.getLocalProperty('spark.sql.sources.writeJobUUID')
+
+Copy code
+return row
+Register the custom function as a UDF
+handle_data_error_udf = udf(handle_data_error, StructType([
+StructField('id', IntegerType()),
+StructField('name', StringType()),
+StructField('age', IntegerType()),
+StructField('income', IntegerType()),
+StructField('error_partition', StringType())
+]))
+
+Apply the UDF to the DataFrame to handle data errors
+df_cleansed = df.rdd.map(handle_data_error_udf).toDF()
+
+Write the cleansed data to a CSV file
+df_cleansed.write.csv('cleansed_data.csv', header=True)
+
+Read the error partition names as a DataFrame
+df_errors = spark.read.csv('error_partition_names.csv', header=True)
+
+Write the error partition names to a CSV file
+df_errors.write.csv('error_partition_names.csv', header=True)

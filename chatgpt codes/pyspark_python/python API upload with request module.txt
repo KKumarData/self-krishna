@@ -1,0 +1,172 @@
+import requests
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = {
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+}
+
+# Send the request
+response = requests.post(url, data=data)
+
+# Check the response
+if response.status_code == 200:
+    print("Data was successfully uploaded")
+else:
+    print("An error occurred:", response.text)
+
+##############################################################################################################################
+## If you are uploading large amounts of data to a REST API and you want to ensure that the data is transferred reliably and without errors, you can use the following approach:
+## 
+## Split the data you want to upload into smaller chunks. This will make it easier to handle if any errors occur during the upload process, and it will also allow you to use multiple parallel connections to upload the data more quickly.
+## 
+## Use the requests.post() or requests.put() method from the requests library to upload each chunk of data to the API. Be sure to include error-handling code to retry the request if it fails for any reason.
+## 
+## As each chunk of data is successfully uploaded, save its status (e.g., in a database or a file) so that you can track the progress of the upload and resume if necessary.
+## 
+## If an error occurs during the upload process, you can use the saved status information to resume the upload from the point where it left off, rather than starting over from the beginning.
+## 
+## Here is an example of how you might implement this approach in Python:
+
+##############################################################################################################################
+
+import requests
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Split the data you want to upload into smaller chunks
+data_chunks = [data1, data2, data3, ...]
+
+# Upload each chunk of data
+for chunk in data_chunks:
+    # Send the request
+    response = requests.post(url, data=chunk)
+
+    # Check the response
+    if response.status_code == 200:
+        # Save the status of the chunk (e.g., in a database or a file)
+        save_status(chunk)
+    else:
+        # Handle the error (e.g., retry the request)
+        handle_error(response.text)
+
+##############################################################################################################################
+##With Basic Authn
+##############################################################################################################################
+
+import requests
+from requests.auth import HTTPBasicAuth
+
+# Set the URL of the API endpoint
+url = "https://www.example.com/api/upload"
+
+# Set the client ID and client secret
+client_id = "abc123"
+client_secret = "def456"
+
+# Set the data you want to upload
+data = {
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+}
+
+# Send the request with authentication
+response = requests.post(
+    url,
+    data=data,
+    auth=HTTPBasicAuth(client_id, client_secret)
+)
+
+# Check the response
+if response.status_code == 200:
+    print("Data was successfully uploaded")
+else:
+    print("An error occurred:", response.text)
+
+
+##############################################################################################################################
+## If you want to use Okta as your identity provider (IdP) for authenticating clients when uploading data to a REST API, you can use the OAuth 2.0 authorization code flow. This flow allows a user to authenticate with Okta and grant permission for your client (i.e., your Python code) to access the protected resources on the API.
+## 
+## To use the OAuth 2.0 authorization code flow with Okta and the requests library in Python, you would need to do the following:
+## 
+## Register your client with Okta and configure it to use the OAuth 2.0 authorization code flow. This will allow your client to request authorization codes from Okta, which it can then exchange for access tokens.
+## 
+## Use the requests.get() method to redirect the user to Okta's authorization endpoint. This will allow the user to authenticate with Okta and grant permission for your client to access the protected resources on the API.
+## 
+## After the user has authenticated and granted permission, Okta will redirect them back to your client with an authorization code.
+## 
+## Use the requests.post() method to exchange the authorization code for an access token. This access token can then be used to authenticate subsequent requests to the API.
+## 
+## Here is an example of how you might implement the OAuth 2.0 authorization code flow with Okta and the requests library in Python:
+##############################################################################################################################
+
+import requests
+
+# Set the client ID, client secret, and redirect URI
+client_id = "abc123"
+client_secret = "def456"
+redirect_uri = "https://www.example.com/oauth2/callback"
+
+# Set the Okta authorization endpoint
+auth_endpoint = "https://{yourOktaDomain}/oauth2/v1/authorize"
+
+# Set the Okta token endpoint
+token_endpoint = "https://{yourOktaDomain}/oauth2/v1/token"
+
+# Set the URL of the API endpoint
+api_endpoint = "https://www.example.com/api/upload"
+
+# Set the data you want to upload
+data = {
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+}
+
+# Redirect the user to Okta's authorization endpoint
+auth_response = requests.get(
+    auth_endpoint,
+    params={
+        "response_type": "code",
+        "client_id": client_id,
+        "redirect_uri": redirect_uri
+    }
+)
+
+# Extract the authorization code from the response
+auth_code = auth_response.query_params.get("code")
+
+# Exchange the authorization code for an access token
+token_response = requests.post(
+    token_endpoint,
+    data={
+        "grant_type": "authorization_code",
+        "code": auth_code,
+        "redirect_uri": redirect_uri,
+        "client_id": client_id,
+        "client_secret": client_secret
+    }
+)
+
+# Extract the access token from the response
+access_token = token_response.json()["access_token"]
+
+# Use the access token to authenticate the request to the API
+api_response = requests.post(
+    api_endpoint,
+    data=data,
+    headers={
+        "Authorization": f"Bearer {access_token}"
+    }
+)
+
+
+## In the code above, we are using the requests.post() method to send a POST request to the API endpoint, with the data we want to upload and the Authorization header containing the access token. This will allow the API to verify the access token and grant access to the protected resources.
+## 
+## Keep in mind that the access token has a limited lifetime, so you may need to refresh it or request a new one if the user's session expires or if you need to make additional requests to the API. You can use the refresh_token received from Okta when exchanging the authorization code for an access token to refresh the access token or request a new one.
+
+
+##############################################################################################################################

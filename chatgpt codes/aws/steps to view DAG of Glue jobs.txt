@@ -1,0 +1,21 @@
+Install Docker on your local machine.
+Run the following command to pull the Apache Airflow image from Docker Hub:
+Copy code
+docker pull puckel/docker-airflow
+Run the following command to start a Docker container based on the Apache Airflow image:
+Copy code
+docker run -d -p 8080:8080 puckel/docker-airflow
+Open a web browser and navigate to http://localhost:8080 to view the Apache Airflow web interface.
+
+In the Apache Airflow web interface, go to the Admin > Connections page and add a new connection with the following details:
+
+Connection Type: AWS Glue
+Connection ID: glue_connection
+Login: Your AWS access key ID
+Password: Your AWS secret access key
+In the Apache Airflow web interface, go to the Admin > Variables page and add a new variable with the following details:
+Key: glue_catalog_id
+Value: The ID of your AWS Glue Data Catalog
+In the Apache Airflow web interface, go to the DAGs page and enable the GlueJobSensor DAG. This DAG will periodically check the status of your Glue jobs and display their DAGs in the Airflow web interface.
+
+In the Apache Airflow web interface, go to the Tree View page to view the DAGs for your Glue jobs.

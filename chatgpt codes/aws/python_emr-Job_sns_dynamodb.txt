@@ -1,0 +1,154 @@
+# Through the AWS Management Console, by navigating to the EMR service and creating a new cluster.
+# Using the AWS CLI, by running the aws emr create-cluster command.
+# Using the boto3 Python library, by calling the create_cluster method on the EMR client.
+# Through the AWS SDK for your preferred programming language, such as the Java SDK or the JavaScript SDK.
+# Through the EMR REST API, by making a POST request to the /clusters endpoint.
+
+######################################################################################################################################################
+
+import boto3
+
+#create an emr client
+emr_client = boto3.client('emr')
+
+#create a sns client
+sns_client = boto3.client('sns')
+
+#define the job flow id
+job_flow_id = '<your-emr-job-flow-id>'
+
+#start the emr job
+response = emr_client.run_job_flow(
+	Name='<your-emr-job-flow-name>',
+	Instances={
+	'MasterInstanceType': '<your-emr-master-instance-type>',
+	'SlaveInstanceType': '<your-emr-slave-instance-type>',
+	'InstanceCount': <your-emr-instance-count>,
+	'KeepJobFlowAliveWhenNoSteps': True
+	}
+	)
+
+#get the job flow id from the response
+job_flow_id = response['JobFlowId']
+
+#check the status of the job flow
+job_flow_status = emr_client.describe_cluster(ClusterId=job_flow_id)['Cluster']['Status']['State']
+
+publish the status of the job flow to sns
+sns_client.publish(
+TopicArn='<your-sns-topic-arn>',
+Subject='EMR Job Flow Status',
+Message=job_flow_status
+)
+
+######################################################################################################################################################
+
+
+
+import boto3
+import json
+
+# Set up clients for EMR, SNS, and DynamoDB
+emr = boto3.client('emr')
+sns = boto3.client('sns')
+dynamodb = boto3.client('dynamodb')
+
+# Replace with the name of your EMR cluster
+cluster_name = 'my-emr-cluster'
+
+# Replace with the ARN of your SNS topic
+sns_topic_arn = 'arn:aws:sns:us-east-1:123456789012:my-sns-topic'
+
+# Replace with the name of your DynamoDB table
+table_name = 'my-dynamodb-table'
+
+# Submit the EMR job
+response = emr.run_job_flow(
+    Name=cluster_name,
+    # Additional parameters go here
+)
+
+# Get the EMR job ID
+job_id = response['JobFlowId']
+
+# Poll the status of the job and send updates to SNS
+while True:
+    job_status = emr.describe_cluster(ClusterId=job_id)['Cluster']['Status']['State']
+
+    # Send job status update to SNS
+    sns.publish(
+        TopicArn=sns_topic_arn,
+        Message=json.dumps({
+            'jobId': job_id,
+            'status': job_status
+        })
+    )
+
+	# Update job status in DynamoDB
+	dynamodb.update_item(
+		TableName=table_name,
+		Key={
+			'jobId': {
+				'S': job_id
+			}
+		},
+		UpdateExpression='SET jobStatus = :status',
+		ExpressionAttributeValues={
+			':status': {
+				'S': job_status
+			}
+		}
+	)
+
+	# Sleep for 30 seconds before checking job status again
+	time.sleep(30)
+
+
+######################################################################################################################################################	
+	
+import boto3
+
+#Create a new EMR client
+client = boto3.client('emr')
+
+#Define the job parameters
+job_name = 'my_emr_job'
+job_flow_id = 'j-123456789'
+
+#Start the EMR job
+response = client.add_job_flow_steps(
+	JobFlowId = job_flow_id,
+	Steps = [
+		{
+		'Name': job_name,
+		'ActionOnFailure': 'CONTINUE',
+		'HadoopJarStep': {
+		'Jar': 'command-runner.jar',
+		'Args': ['spark-submit', 'my_spark_job.py']
+		}
+		},
+		]
+	)
+
+#Get the status of the job
+status = client.describe_step(
+			ClusterId = job_flow_id,
+			StepId = response['StepIds'][0]
+			)['Step']['Status']['State']
+
+#Connect to DynamoDB
+dynamodb = boto3.resource('dynamodb')
+
+#Update the status in the DynamoDB table
+table = dynamodb.Table('my_table')
+table.update_item(
+		Key = {
+		'job_name': job_name
+		},
+		UpdateExpression = 'set job_status = :s',
+		ExpressionAttributeValues = {
+		':s': status
+		}
+	)
+
+print('Updated status for job {} to {}'.format(job_name, status))	
