@@ -1,0 +1,7 @@
+Sensors are a type of operator in Apache Airflow that are used to wait for a certain condition to be met before proceeding with the next task. They are often used to pause the execution of a DAG until a certain external event has occurred or a certain condition has been met.
+
+One smart way to use sensors in Apache Airflow is to set them up as the first task in a DAG and use them to wait for a resource or data to be available before proceeding with the rest of the tasks in the DAG. This can help ensure that the DAG only runs when the necessary resources or data are available, and can help prevent errors or failures due to missing or unavailable resources.
+
+It is also a good idea to set up retries and a retry delay for sensors to ensure that the DAG does not fail if the condition being waited for is not met immediately. This can help improve the reliability and robustness of the DAG.
+
+Finally, it is important to carefully consider the conditions being waited for by sensors and the dependencies between tasks in the DAG to ensure that the DAG runs smoothly and efficiently. Sensors can be a useful tool in achieving this, but they can also introduce additional complexity and overhead if used unnecessarily or in a way that does not align with the overall goals of the DAG.
