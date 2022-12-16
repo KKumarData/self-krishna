@@ -1,0 +1,37 @@
+There are several methods for improving data observability in AWS analytics:
+
+Use CloudWatch: CloudWatch is a monitoring service that provides real-time visibility into resource and application performance. It can be used to monitor the performance of your analytics workloads and identify potential issues.
+
+Use Amazon CloudWatch Logs: CloudWatch Logs allows you to monitor, store, and access log files from Amazon EC2 instances, AWS CloudTrail, and other AWS resources. This can be useful for debugging and troubleshooting issues with your analytics workloads.
+
+Use Amazon CloudWatch Metrics: CloudWatch Metrics provides data and operational insights for various resources and applications. You can use it to track key performance indicators (KPIs) and create alarms to alert you when thresholds are exceeded.
+
+Use Amazon CloudWatch Dashboards: CloudWatch Dashboards allow you to create custom dashboards that display real-time metrics and data from multiple sources in a single view. This can be useful for gaining a high-level understanding of your analytics workloads and identifying trends and patterns.
+
+Use Amazon Athena: Athena is a serverless query service that allows you to analyze data stored in Amazon S3 using SQL. You can use it to run ad-hoc queries and create dashboards and reports to visualize your data.
+
+Use Amazon QuickSight: QuickSight is a fast and easy-to-use business intelligence service that allows you to create and publish interactive dashboards and reports. You can use it to analyze and visualize data from various sources, including Amazon S3, Amazon Redshift, and Amazon RDS.
+
+Use Amazon EMR: EMR (Elastic MapReduce) is a scalable big data processing service that allows you to run a wide range of analytics workloads, including batch processing, stream processing, and machine learning. You can use it to analyze large datasets and gain insights into your data.
+
+
+
+Here are some best practices for using Amazon CloudWatch:
+
+Enable CloudWatch alarms: Use CloudWatch alarms to get notified when certain thresholds are breached, such as when the CPU usage of an EC2 instance exceeds a certain level.
+
+Use CloudWatch dashboards: Create CloudWatch dashboards to visualize key performance indicators (KPIs) and get a high-level overview of your resources and applications.
+
+Use CloudWatch logs: Use CloudWatch logs to store and access log data from your resources and applications. This can be useful for debugging and troubleshooting issues.
+
+Use CloudWatch events: Use CloudWatch events to trigger automated actions in response to specific events, such as when an EC2 instance is terminated or when a file is added to an S3 bucket.
+
+Use CloudWatch Metrics: Use CloudWatch Metrics to track the performance of your resources and applications. You can use it to monitor key performance indicators (KPIs) and create alarms to alert you when thresholds are exceeded.
+
+Use CloudWatch synthetic monitoring: Use CloudWatch synthetic monitoring to test the availability and performance of your web applications from multiple locations around the world.
+
+Use CloudWatch Anomaly Detection: Use CloudWatch Anomaly Detection to automatically detect unusual behavior in your metrics and receive alerts when anomalies are detected.
+
+Use CloudWatch for cost optimization: Use CloudWatch to monitor the cost of your AWS resources and identify opportunities for cost optimization.
+
+Use CloudWatch with other AWS services: Use CloudWatch in conjunction with other AWS services, such as EC2, RDS, and S3, to get a complete view of your resources and applications.
