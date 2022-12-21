@@ -1,0 +1,26 @@
+from pyspark.sql import SparkSession
+
+# Create a SparkSession
+spark = SparkSession.builder.appName('MyApp').getOrCreate()
+
+# Load the DataFrame
+df = spark.read.csv('/path/to/data.csv', header=True)
+
+# Calculate the memory usage of the DataFrame
+memory_usage = df.memory_usage(deep=True)
+
+# Print the memory usage
+print(memory_usage)
+
+#The memory_usage() method takes an optional deep parameter, which determines whether to include the memory usage of the data contained in the columns. If deep=True, the memory usage of the data in the columns will be included. If deep=False, only the memory usage of the column metadata will be returned.
+
+#The output of the memory_usage() method will be a Pandas series with the memory usage of each column in the DataFrame. You can sum the values in this series to get the total memory usage of the DataFrame.
+
+
+# Calculate the total memory usage of the DataFrame
+total_memory_usage = memory_usage.sum()
+
+# Print the total memory usage
+print(total_memory_usage)
+
+#Keep in mind that this method only gives you an estimate of the memory usage of the DataFrame. The actual memory usage may vary depending on the implementation and configuration of your Spark cluster.
