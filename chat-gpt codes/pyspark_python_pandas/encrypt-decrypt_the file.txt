@@ -1,0 +1,122 @@
+import base64
+import os
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
+
+import getpass
+
+password = getpass.getpass("Enter password: ")
+
+# Generate a random salt
+salt = os.urandom(16)
+
+# Derive a key from the password and salt using PBKDF2
+#password = b"your-password"
+kdf = PBKDF2HMAC(
+    algorithm=hashes.SHA256(),
+    length=32,
+    salt=salt,
+    iterations=100000
+)
+key = base64.urlsafe_b64encode(kdf.derive(password))
+
+# Create a Fernet object using the key
+fernet = Fernet(key)
+
+# Encrypt the file
+with open("file.txt", "rb") as f:
+    data = f.read()
+
+encrypted_data = fernet.encrypt(data)
+
+# Write the encrypted data to a new file
+with open("file.encrypted", "wb") as f:
+    f.write(encrypted_data)
+
+
+
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+
+import base64
+import os
+import pathlib
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
+def encrypt_file(key, path):
+    # Read the data from the file
+    with open(path, "rb") as f:
+        data = f.read()
+
+    # Create a Fernet object using the key
+    fernet = Fernet(key)
+
+    # Encrypt the data
+    encrypted_data = fernet.encrypt(data)
+
+    # Write the encrypted data to a new file
+    encrypted_path = path + ".encrypted"
+    with open(encrypted_path, "wb") as f:
+        f.write(encrypted_data)
+
+    # Delete the original file
+    os.remove(path)
+
+def decrypt_file(key, path):
+    # Read the encrypted data from the file
+    with open(path, "rb") as f:
+        encrypted_data = f.read()
+
+    # Create a Fernet object using the key
+    fernet = Fernet(key)
+
+    # Decrypt the data
+    decrypted_data = fernet.decrypt(encrypted_data)
+
+    # Write the decrypted data to a new file
+    decrypted_path = path[:-10]
+    with open(decrypted_path, "wb") as f:
+        f.write(decrypted_data)
+
+    # Delete the original file
+    os.remove(path)
+
+def process_files(root, key, action):
+    # Iterate over all files in the root directory and its subdirectories
+    for path in pathlib.Path(root).rglob("*"):
+        if path.is_file():
+            # If the file is a regular file, perform the specified action on it
+            if action == "encrypt":
+                encrypt_file(key, str(path))
+            elif action == "decrypt":
+                decrypt_file(key, str(path))
+
+def main():
+    # Generate a random salt
+    salt = os.urandom(16)
+
+    # Derive a key from the password and salt using PBKDF2
+    password = b"your-password"
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        iterations=100000
+    )
+    key = base64.urlsafe_b64encode(kdf.derive(password))
+
+    # Set the root directory and the action to perform
+    root = "./files"
+    action = "encrypt"  # or "decrypt"
+
+    # Process the files in the root directory and its subdirectories
+    process_files(root, key, action)
+
+if __name__ == "__main__":
+    main()

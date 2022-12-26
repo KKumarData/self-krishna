@@ -1,0 +1,56 @@
+{
+  "spark": {
+    "master": "local[*]",
+    "appName": "My PySpark App",
+    "spark.driver.memory": "4g",
+    "spark.executor.memory": "8g",
+    "spark.executor.cores": "4"
+  },
+  "logging": {
+    "level": "INFO",
+    "output": "console"
+  },
+  "input": {
+    "path": "s3://my-bucket/input/data.csv"
+  },
+  "output": {
+    "path": "s3://my-bucket/output/results"
+  }
+}
+
+
+his config file specifies the following configuration settings:
+
+Spark-specific settings, such as the master URL, the app name, and the memory and cores to use for the driver and executors.
+Logging settings, including the logging level and the output destination (e.g. console or a file).
+Input and output paths for the data used by the PySpark application.
+
+To consume a config file in a PySpark application, you can use the SparkConf and SparkSession classes from the pyspark.sql module.
+The SparkConf class allows you to set configuration settings for a Spark application, and the SparkSession class provides a single point of entry to interact with Spark functionality.
+
+from pyspark.sql import SparkSession, SparkConf
+import json
+
+# Load the config file
+with open("config.json", "r") as f:
+    config = json.load(f)
+
+# Set the Spark configuration settings
+conf = SparkConf()
+for key, value in config["spark"].items():
+    conf.set(key, value)
+
+# Create the SparkSession
+spark = SparkSession.builder.config(conf=conf).getOrCreate()
+
+# Use the SparkSession to read data from the input path
+df = spark.read.csv(config["input"]["path"])
+
+# Perform some data processing or transformation
+# ...
+
+# Write the results to the output path
+df.write.csv(config["output"]["path"])
+
+You can put the config file in any location that is accessible to your PySpark application.
+A common practice is to include the config file in the project root directory, or in a separate config directory within the project.

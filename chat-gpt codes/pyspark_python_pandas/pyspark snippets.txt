@@ -164,3 +164,11 @@ df = extract_query_string(data, "q")
 df.show()
 
 
+###########selecting and udf for string split ##########
+
+from pyspark.sql.functions import udf
+
+def extract_first_word(s: str) -> str:
+    return s.split()[0]
+
+extract_first_word_udf = udf(extract_first_word)
