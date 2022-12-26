@@ -1,0 +1,30 @@
+from pyspark import SparkContext
+from pyspark.sql import SparkSession
+
+# Create a SparkContext and a SparkSession
+sc = SparkContext()
+spark = SparkSession(sc)
+
+# Read the large file into an RDD
+rdd = sc.textFile("s3://my-bucket/large_file.txt")
+
+# Split the RDD into smaller chunks
+chunk_size = 1000000  # 1 million records per chunk
+chunks = rdd.glom()
+chunks = chunks.zipWithIndex().map(lambda x: (x[1], x[0]))
+
+# Write each chunk to S3
+for chunk in chunks:
+  index, data = chunk
+  filename = f"s3://my-bucket/large_file_{index}.txt"
+  data.saveAsTextFile(filename)
+
+
+This code reads the large file into an RDD (Resilient Distributed Dataset) and then uses the glom() function to split it into smaller chunks. The zipWithIndex() function is used to give each chunk a unique index, which is then used to generate a unique filename for each chunk. Finally, the saveAsTextFile() function is used to write each chunk to S3.
+
+This approach has several advantages:
+
+It is efficient because it uses Spark to parallelize the file reading and writing operations.
+It is scalable because it can handle very large files (in the terabyte range).
+It is fault-tolerant because Spark automatically handles failures and retries as needed.
+I hope this helps! Let me know if you have any questions.
