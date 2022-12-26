@@ -1,0 +1,24 @@
+Here are some examples of commonly used regular expressions that you can use to extract information from text using the regexp_extract function in PySpark:
+
+Extract an email address:
+	regexp_extract(column, r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", 0)
+
+Extract a phone number:
+	regexp_extract(column, r"(\+?\d{1,2})?\s?\d{3}\s?\d{3}\s?\d{4}", 0)
+
+Extract a URL:
+	regexp_extract(column, r"(http|ftp|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?", 0)
+
+Extract a date in the format YYYY-MM-DD: 
+	regexp_extract(column, r"(\d{4})-(\d{2})-(\d{2})", 0)
+
+Extract a time in the format HH:MM:SS: 
+	regexp_extract(column, r"(\d{2}):(\d{2}):(\d{2})", 0)
+
+Extract a number: 
+	regexp_extract(column, r"\d+", 0)
+
+
+
+These regular expressions can be customized to extract different types of information from text, depending on your needs. 
+You can use the regexp_extract function in combination with these regular expressions to extract specific information from a column in a Spark DataFrame.

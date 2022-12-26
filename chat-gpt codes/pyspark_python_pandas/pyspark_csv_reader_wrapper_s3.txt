@@ -1,0 +1,43 @@
+import boto3
+from pyspark.sql import SparkSession, types
+
+class CSVReader:
+
+    def __init__(self):
+        self.spark = SparkSession.builder.appName("CSV Reader").getOrCreate()
+
+    def read_csv(self, file_path, schema=None, header=True, infer_schema=True, sep=",", null_value=None, timestamp_format=None):
+        """Read a CSV file from an Amazon S3 bucket and return a Spark DataFrame.
+
+        Parameters:
+        - file_path: string, path to the CSV file in the S3 bucket (e.g. "s3://my-bucket/path/to/file.csv")
+        - schema: string, JSON representation of the schema to use for the DataFrame (default is None)
+        - header: boolean, whether the CSV file has a header or not (default is True)
+        - infer_schema: boolean, whether to infer the data types of the columns (default is True)
+        - sep: string, the field delimiter (default is ',')
+        - null_value: string, the string representation of a null value (default is None)
+        - timestamp_format: string, the format of the timestamp columns (default is None)
+        """
+        try:
+            # Connect to the S3 service and check if the file exists
+            s3 = boto3.resource("s3")
+            bucket_name, key = file_path.split("/")[2], "/".join(file_path.split("/")[3:])
+            obj = s3.Object(bucket_name, key)
+            if not obj.exists():
+                raise FileNotFoundError(f"File not found at {file_path}")
+
+            if schema:
+                # Convert the JSON schema string to a StructType
+                struct_type = types.StructType.fromJson(schema)
+                df = self.spark.read.csv(file_path, schema=struct_type, header=header, sep=sep, nullValue=null_value, timestampFormat=timestamp_format)
+            else:
+                df = self.spark.read.csv(file_path, header=header, inferSchema=infer_schema, sep=sep, nullValue=null_value, timestampFormat=timestamp_format)
+            return df
+        except Exception as e:
+            print(f"Error occurred while reading CSV file: {e}")
+            return None
+
+
+This version of the read_csv method will first connect to the S3 service using boto3 and then check if the file exists in the specified bucket and key. If the file does not exist, it will raise a FileNotFoundError. If the file does exist, it will attempt to read the CSV file from the S3 bucket and return a Spark DataFrame. If any errors occur during the reading process, it will catch the exception and print an error message.
+
+To use this modified version of the read_csv method, you can simply call it in

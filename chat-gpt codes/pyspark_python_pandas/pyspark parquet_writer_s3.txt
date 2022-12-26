@@ -1,0 +1,37 @@
+import boto3
+from pyspark.sql import SparkSession
+
+class ParquetWriter:
+
+    def __init__(self):
+        self.spark = SparkSession.builder.appName("Parquet Writer").getOrCreate()
+
+    def write_parquet(self, df, bucket, key, mode="overwrite", num_partitions=None, partition_cols=None):
+        """Write a Spark DataFrame to a Parquet file in an Amazon S3 bucket.
+
+        Parameters:
+        - df: Spark DataFrame, the DataFrame to write to the Parquet file
+        - bucket: string, the name of the S3 bucket to write the file to
+        - key: string, the key of the file in the S3 bucket (e.g. "path/to/file.parquet")
+        - mode: string, the write mode for the file (default is "overwrite")
+        - num_partitions: int, the number of partitions to use when writing the file (default is None)
+        - partition_cols: list of strings, the names of the columns to partition the file by (default is None)
+        """
+        try:
+            # Set the write mode and number of partitions
+            if mode:
+                df.write.mode(mode)
+            if num_partitions:
+                df.write.partitionBy(num_partitions)
+            if partition_cols:
+                df.write.partitionBy(*partition_cols)
+
+            # Write the DataFrame to a Parquet file in the S3 bucket
+            df.write.parquet(f"s3://{bucket}/{key}")
+            print(f"Successfully wrote Parquet file to s3://{bucket}/{key}")
+        except Exception as e:
+            print(f"Error occurred while writing Parquet file: {e}")
+
+
+parquet_writer = ParquetWriter()
+parquet_writer.write_parquet(df, "my-bucket", "path/to/file.parquet", mode="overwrite", num_partitions=5, partition_cols=["col1", "col2"])

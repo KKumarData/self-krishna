@@ -1,0 +1,166 @@
+####################################################################################
+Reading a CSV file
+This code reads a CSV file and prints the first few rows of data:
+####################################################################################
+
+# Load the CSV data into a DataFrame
+df = spark.read.csv('data.csv')
+
+# Print the first few rows of the DataFrame
+df.show()
+####################################################################################
+Writing a CSV file
+This code writes a DataFrame to a CSV file:
+####################################################################################
+
+# Write the DataFrame to a CSV file
+df.write.csv('data.csv')
+
+####################################################################################
+Filtering a DataFrame
+This code filters a DataFrame to only include rows where the value in the "age" column is greater than 30:
+####################################################################################
+
+# Filter the DataFrame to only include rows where the value in the "age" column is greater than 30
+filtered_df = df.filter(df['age'] > 30)
+
+# Print the first few rows of the filtered DataFrame
+filtered_df.show()
+
+####################################################################################
+Aggregating a DataFrame
+This code calculates the average value in the "age" column of a DataFrame:
+####################################################################################
+
+
+# Import the functions module
+from pyspark.sql.functions import *
+
+# Calculate the average value in the "age" column
+average_age = df.agg(avg(df['age'])).first()[0]
+
+# Print the average age
+print(average_age)
+
+
+####################################################################################
+Aggregating a DataFrame
+This code calculates the average value in the "age" column of a DataFrame:
+####################################################################################
+
+# Import the required libraries
+from pyspark.sql import SparkSession
+
+# Create a SparkSession
+spark = SparkSession.builder.appName('Joining dataframes').getOrCreate()
+
+# Read the input data as DataFrames
+df1 = spark.read.csv('input1.csv', header=True)
+df2 = spark.read.csv('input2.csv', header=True)
+
+# Inner join the two DataFrames on the 'id' column
+df_inner = df1.join(df2, on='id', how='inner')
+
+# Left outer join the two DataFrames on the 'id' column
+df_left = df1.join(df2, on='id', how='left')
+
+# Right outer join the two DataFrames on the 'id' column
+df_right = df1.join(df2, on='id', how='right')
+
+# Full outer join the two DataFrames on the 'id' column
+df_full = df1.join(df2, on='id', how='full')
+
+# Write the joined DataFrames to CSV files
+df_inner.write.csv('inner_join.csv', header=True)
+df_left.write.csv('left_join.csv', header=True)
+df_right.write.csv('right_join.csv', header=True)
+df_full.write.csv('full_join.csv', header=True)
+
+###########selecting and splitting the columns from url ##########
+
+df = data.select(
+    split("raw_data", ";").alias("columns")
+)
+
+# Flatten the data by selecting the individual columns
+df = df.select(
+    "columns[0]".alias("category"),
+    "columns[1]".alias("product"),
+    "columns[2]".alias("quantity"),
+    "columns[3]".alias("price"),
+    "columns[4]".alias("discount")
+)
+
+
+
+###########selecting and parsing the query string from url ##########
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import regexp_extract
+
+# Create a SparkSession
+spark = SparkSession.builder.appName("Query String Extractor").getOrCreate()
+
+# Read the URLs into a Spark DataFrame
+data = spark.createDataFrame([
+    ("http://www.google.com/search?hl=en&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&hs=ZzP&q=Ipod&aq=f&oq=&aqi="),
+    ("http://www.bing.com/search?q=Zune&go=&form=QBLH&qs=n"),
+    ("http://search.yahoo.com/search?p=cd+player&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-701"),
+    ("http://www.google.com/search?hl=en&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&hs=Zk5&q=ipod&aq=f&oq=&aqi=g-p1g9")
+], ["url"])
+
+# Extract the query string using a regular expression
+df = data.select(
+    regexp_extract("url", r"(?<=q=)[^&]*", 0).alias("query_string")
+)
+
+# Show the resulting DataFrame
+df.show()
+
+This code will use the regexp_extract function to extract the value of the q parameter in the query string of each URL.
+The regular expression used in the regexp_extract function looks for the q parameter, and then captures everything that follows until the next & character.
+The resulting DataFrame will have the following structure:
+
++------------+
+|query_string|
++------------+
+|        Ipod|
+|        Zune|
+|   cd player|
+|        ipod|
++------------+
+
+###########selecting and parsing the query string using functions ##########
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import regexp_extract
+
+# Create a SparkSession
+spark = SparkSession.builder.appName("Query String Extractor").getOrCreate()
+
+# Read the URLs into a Spark DataFrame
+data = spark.createDataFrame([
+    ("http://www.google.com/search?hl=en&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&hs=ZzP&q=Ipod&aq=f&oq=&aqi="),
+    ("http://www.bing.com/search?q=Zune&go=&form=QBLH&qs=n"),
+    ("http://search.yahoo.com/search?p=cd+player&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-701"),
+    ("http://www.google.com/search?hl=en&client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&hs=Zk5&q=ipod&aq=f&oq=&aqi=g-p1g9")
+], ["url"])
+
+def extract_query_string(df, query_parameter):
+    """Extract the query string from a URL using the specified query parameter.
+
+    Parameters:
+    - df: Spark DataFrame, the DataFrame containing the URL column
+    - query_parameter: string, the name of the query parameter to use for extracting the query string
+    """
+    return df.select(
+        regexp_extract("url", f"(?<={query_parameter}=)[^&]*", 0).alias("query_string")
+    )
+
+# Extract the query string using the "q" parameter
+df = extract_query_string(data, "q")
+
+# Show the resulting DataFrame
+df.show()
+
+
