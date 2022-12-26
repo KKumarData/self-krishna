@@ -1,0 +1,32 @@
+import boto3
+
+# Set the name of the secret and the region where it is stored
+secret_name = "my-secret"
+region_name = "us-east-1"
+
+# Create a client for the Secrets Manager service
+client = boto3.client("secretsmanager", region_name=region_name)
+
+# Get the secrets from the Secrets Manager
+response = client.get_secret_value(SecretId=secret_name)
+
+# Parse the secrets from the response
+secrets = response["SecretString"]
+user = secrets["user"]
+password = secrets["password"]
+
+# Set the JDBC connection details
+jdbc_url = "jdbc:postgresql://host:port/database"
+jdbc_properties = {
+    "user": user,
+    "password": password,
+    "driver": "org.postgresql.Driver"
+}
+
+# Execute the SQL query to fetch the data
+df = spark.read.jdbc(url=jdbc_url, table="table_name", properties=jdbc_properties)
+
+# Perform some data processing or transformation
+# ...
+
+# Save the results to a file or database
