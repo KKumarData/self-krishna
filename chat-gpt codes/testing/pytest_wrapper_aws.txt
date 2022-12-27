@@ -1,0 +1,32 @@
+Here's an example of how you can write a pytest wrapper script to run all test modules in your test suite that connect to AWS:
+
+Copy code
+import pytest
+import boto3
+
+def run_aws_tests():
+    # Create a boto3 client for the AWS STS service
+    sts_client = boto3.client('sts')
+
+    # Assume a role that has permissions to access the necessary AWS resources
+    assume_role_response = sts_client.assume_role(
+        RoleArn='arn:aws:iam::123456789012:role/test-role',
+        RoleSessionName='test-session'
+    )
+    credentials = assume_role_response['Credentials']
+
+    # Set the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN environment variables
+    # using the temporary credentials from the assumed role
+    import os
+    os.environ['AWS_ACCESS_KEY_ID'] = credentials['AccessKeyId']
+    os.environ['AWS_SECRET_ACCESS_KEY'] = credentials['SecretAccessKey']
+    os.environ['AWS_SESSION_TOKEN'] = credentials['SessionToken']
+
+    # Run the test modules that connect to AWS
+    pytest.main(['-v', 'tests/test_s3.py', 'tests/test_dynamodb.py', 'tests/test_glue.py'])
+
+if __name__ == '__main__':
+    run_aws_tests()
+In this example, the wrapper script first assumes a role using the AWS STS service, which allows it to access the necessary AWS resources with a set of temporary credentials. It then sets the AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN environment variables using the temporary credentials, and runs the test modules that connect to AWS using the pytest.main function.
+
+You can then run this wrapper script to execute all the tests that connect to AWS in your test suite.

@@ -1,0 +1,50 @@
+#Here's an example of how you can write a pytest test case to test the loading of data into an Amazon DynamoDB table:
+
+import pytest
+import boto3
+
+@pytest.fixture
+def dynamodb_client():
+    # Create a boto3 client for the Amazon DynamoDB service
+    return boto3.client('dynamodb')
+
+def test_dynamodb_loading(dynamodb_client):
+    # Load the data into the DynamoDB table
+    dynamodb_client.batch_write_item(
+        RequestItems={
+            'my_table': [
+                {
+                    'PutRequest': {
+                        'Item': {
+                            'id': {'N': '1'},
+                            'name': {'S': 'Alice'},
+                            'age': {'N': '30'}
+                        }
+                    }
+                },
+                {
+                    'PutRequest': {
+                        'Item': {
+                            'id': {'N': '2'},
+                            'name': {'S': 'Bob'},
+                            'age': {'N': '35'}
+                        }
+                    }
+                }
+            ]
+        }
+    )
+
+    # Check that the data was loaded correctly
+    response = dynamodb_client.get_item(
+        TableName='my_table',
+        Key={'id': {'N': '1'}}
+    )
+    item = response['Item']
+    assert item['id']['N'] == '1'
+    assert item['name']['S'] == 'Alice'
+    assert item['age']['N'] == '30'
+
+#In this example, the dynamodb_client fixture is used to create a boto3 client for the Amazon DynamoDB service, which is then used to load data into the table using the batch_write_item method. The test case then retrieves an item from the table and checks its values to ensure that the data was loaded correctly.
+
+You can then include this test case in your pytest suite and run it as part of your testing process.

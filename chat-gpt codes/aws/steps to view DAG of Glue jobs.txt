@@ -1,10 +1,11 @@
 Install Docker on your local machine.
 Run the following command to pull the Apache Airflow image from Docker Hub:
-Copy code
-docker pull puckel/docker-airflow
+
+	docker pull puckel/docker-airflow
+
 Run the following command to start a Docker container based on the Apache Airflow image:
-Copy code
-docker run -d -p 8080:8080 puckel/docker-airflow
+	docker run -d -p 8080:8080 puckel/docker-airflow
+
 Open a web browser and navigate to http://localhost:8080 to view the Apache Airflow web interface.
 
 In the Apache Airflow web interface, go to the Admin > Connections page and add a new connection with the following details:
