@@ -1,0 +1,28 @@
+To find a file in an S3 bucket with a specific name using a wildcard pattern, you can use the following Python code:
+
+import boto3
+import fnmatch
+
+# Replace "bucket_name" with the name of your S3 bucket
+bucket_name = "bucket_name"
+
+# Replace "file_pattern" with the wildcard pattern for the file you are searching for
+# For example, "*.txt" will match all files with a ".txt" extension
+file_pattern = "file_pattern"
+
+# Create an S3 client
+s3 = boto3.client('s3')
+
+# List all objects in the bucket
+objects = s3.list_objects(Bucket=bucket_name)
+
+# Iterate through the objects and check if the file name matches the pattern
+for obj in objects['Contents']:
+    if fnmatch.fnmatch(obj['Key'], file_pattern):
+        # The file was found
+        print(f"File {obj['Key']} was found in the bucket")
+
+# If the file was not found, print a message
+print(f"No files matching the pattern {file_pattern} were found in the bucket")
+
+This code will list all objects in the specified S3 bucket and check if any of them match the specified wildcard pattern. If a matching file is found, it will print a message indicating that the file was found. If no matching files are found, it will print a message indicating that no matching files were found.

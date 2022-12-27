@@ -1,0 +1,27 @@
+To create an Athena table to capture CloudWatch Logs, follow these steps:
+
+Navigate to the Athena console and click on the "Query Editor" tab.
+
+In the query editor, run the following CREATE TABLE statement, replacing "database_name" and "table_name" with your desired database and table names:
+
+ 
+CREATE EXTERNAL TABLE database_name.table_name (
+  `timestamp` timestamp,
+  `message` string
+)
+PARTITIONED BY (`year` int, `month` int, `day` int)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
+WITH SERDEPROPERTIES (
+  'serialization.format' = '1'
+) LOCATION 's3://aws-logs-account-id-us-east-1/elasticmapreduce/'
+TBLPROPERTIES ('has_encrypted_data'='false');
+
+
+Run the following ALTER TABLE statement to add partitions to the table:
+
+ALTER TABLE database_name.table_name ADD PARTITION (year=2020, month=1, day=1) LOCATION 's3://aws-logs-account-id-us-east-1/elasticmapreduce/2020/01/01';
+
+
+Repeat step 3 for each day that you want to include in the table.
+
+You can now run queries on the table to retrieve log events from CloudWatch Logs.

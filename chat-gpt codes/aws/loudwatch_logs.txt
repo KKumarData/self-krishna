@@ -1,0 +1,43 @@
+Some of the best metrics to use in CloudWatch Logs for EMR and Glue jobs include:
+
+Execution time: This metric measures the duration of the job from start to finish.
+
+Data processed: This metric measures the amount of data processed by the job.
+
+Data written: This metric measures the amount of data written by the job.
+
+Data read: This metric measures the amount of data read by the job.
+
+CPU utilization: This metric measures the percentage of CPU utilization during the job.
+
+Memory utilization: This metric measures the amount of memory used by the job.
+
+Disk utilization: This metric measures the amount of disk space used by the job.
+
+Error rate: This metric measures the number of errors encountered during the job.
+
+Job success rate: This metric measures the percentage of jobs that completed successfully.
+
+Task success rate: This metric measures the percentage of tasks that completed successfully.
+
+
+
+Here is a CloudWatch Logs query to filter log events by service name and job ID for EMR or Glue jobs:
+
+fields @timestamp, @message, serviceName, jobId
+| filter serviceName like /emr/ or serviceName like /glue/
+| filter jobId like /<your_job_id>/
+| sort @timestamp desc
+
+
+This query will retrieve the timestamp, message, service name, and job ID fields from the logs, filter out any log events that do not belong to the EMR or Glue service, and filter out any log events that do not have the specified job ID. The results will be sorted by timestamp in descending order.
+
+
+
+Here is a CloudWatch Logs query to filter log events by service name for S3, Lambda, SQS, and SNS events:
+
+fields @timestamp, @message, serviceName
+| filter serviceName like /s3/ or serviceName like /lambda/ or serviceName like /sqs/ or serviceName like /sns/
+| sort @timestamp desc
+
+This query will retrieve the timestamp, message, and service name fields from the logs, filter out any log events that do not belong to the S3, Lambda, SQS, or SNS service, and sort the results by timestamp in descending order.

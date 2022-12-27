@@ -1,0 +1,43 @@
+Here is an example of how you can write Python code using Spark ML to perform exploratory data analysis (EDA) on data files:
+ 
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import StringIndexer
+
+# Create a SparkSession
+spark = SparkSession.builder.appName('EDA').getOrCreate()
+
+# Load the data into a DataFrame
+df = spark.read.csv('data.csv', header=True, inferSchema=True)
+
+# Print the schema of the DataFrame
+df.printSchema()
+
+# Print the first 10 rows of the DataFrame
+df.show(10)
+
+# Check the data types of each column
+df.dtypes
+
+# Check the count and distinct count of each column
+df.describe().show()
+
+# Check for missing values in each column
+df.select([count(when(isnull(c), c)).alias(c) for c in df.columns]).show()
+
+# Convert categorical columns to numerical using StringIndexer
+indexer = StringIndexer(inputCol='category', outputCol='category_index')
+df = indexer.fit(df).transform(df)
+
+# Check the distribution of the target column
+df.groupBy('target').count().show()
+
+# Check the correlation between the features
+corr = df.corr('feature1', 'feature2')
+print('Correlation between feature1 and feature2:', corr)
+
+# Stop the SparkSession
+spark.stop()
+
+#This code first creates a SparkSession and loads the data into a DataFrame. It then prints the schema of the DataFrame, shows the first 10 rows, and uses the describe() method to get the count and distinct count of each column. It also uses the StringIndexer to convert categorical columns to numerical, and then checks the distribution of the target column and the correlation between the features. Finally, it stops the SparkSession.
+
+#You can adapt this example to suit your specific needs and use it as a starting point for exploring your own data.
