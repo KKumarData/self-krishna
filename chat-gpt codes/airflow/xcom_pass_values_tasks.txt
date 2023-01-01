@@ -1,0 +1,90 @@
+## XComs (short for "cross-communication") are a way for tasks in an Airflow DAG to exchange messages. You can use XComs to pass values between tasks in a number of ways:
+
+## 1. Push and pull values from the XCom: You can use the xcom_push and xcom_pull functions to store and retrieve values from the XCom. For example:
+
+# Define a function to push a value to the XCom
+def push_task(**kwargs):
+    # Get the value that you want to push
+    value = 'some value'
+    # Push the value to the XCom
+    kwargs['ti'].xcom_push(key='key', value=value)
+
+# Define a function to pull a value from the XCom
+def pull_task(**kwargs):
+    # Pull the value from the XCom
+    value = kwargs['ti'].xcom_pull(key='key', task_ids='push_task')
+    # Use the value
+    print('Value: {}'.format(value))
+
+# Create a task to push the value
+push_task = PythonOperator(
+    task_id='push_task',
+    python_callable=push_task,
+    dag=dag,
+    provide_context=True,
+)
+
+# Create a task to pull the value
+pull_task = PythonOperator(
+    task_id='pull_task',
+    python_callable=pull_task,
+    dag=dag,
+    provide_context=True,
+)
+
+# Set the dependencies for the tasks
+pull_task.set_upstream(push_task)
+
+### 2. Pass values as task instance context: You can pass values as part of the task instance context, which is a dictionary that is passed to all downstream tasks. For example:
+
+# Define a function to set the value in the task instance context
+def set_context_task(**kwargs):
+    # Set the value in the task instance context
+    kwargs['ti'].context['value'] = 'some value'
+
+# Define a function to get the value from the task instance context
+def get_context_task(**kwargs):
+    # Get the value from the task instance context
+    value = kwargs['ti'].context['value']
+    # Use the value
+    print('Value: {}'.format(value))
+
+# Create a task to set the value in the context
+set_context_task = PythonOperator(
+    task_id='set_context_task',
+    python_callable=set_context_task,
+    dag=dag,
+    provide_context=True,
+)
+
+# Create a task to get the value from the context
+get_context_task = PythonOperator(
+    task_id='get_context_task',
+    python_callable=get_context_task,
+    dag=dag,
+    provide_context=True,
+)
+
+# Set the dependencies for the tasks
+get_context_task.set_upstream(set_context_task)
+
+
+
+### 3.To pass values as task instance parameters, you can define a function that accepts the values as arguments and use the provide_context parameter when creating the task to make the values available in the task instance context. Here's an example:
+
+# Define a function to use the value
+def use_value_task(**kwargs):
+    # Get the value from the task instance context
+    value = kwargs['ti'].params['value']
+    # Use the value
+    print('Value: {}'.format(value))
+
+# Create a task to use the value
+use_value_task = PythonOperator(
+    task_id='use_value_task',
+    python_callable=use_value_task,
+    dag=dag,
+    provide_context=True,
+    # Set the value as a task parameter
+    params={'value': 'some value'},
+)

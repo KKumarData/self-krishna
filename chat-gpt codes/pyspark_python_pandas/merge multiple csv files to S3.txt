@@ -1,0 +1,38 @@
+#####to merge multiple CSV files stored in an Amazon S3 bucket. 
+
+import boto3
+import csv
+
+s3 = boto3.client('s3')
+
+# List to store the final merged data
+merged_data = []
+
+# List the names of the CSV files that you want to merge
+filenames = ['file1.csv', 'file2.csv', 'file3.csv']
+
+# Loop through the list of filenames and read the data from each file
+for filename in filenames:
+    # Read the contents of the file
+    response = s3.get_object(Bucket='my-bucket', Key=filename)
+    file_content = response['Body'].read().decode('utf-8')
+
+    # Convert the file content to a list of dictionaries
+    csv_reader = csv.DictReader(file_content.splitlines())
+    data = list(csv_reader)
+
+    # Append the data to the merged_data list
+    merged_data += data
+
+# Write the merged data to a new CSV file
+with open('merged_file.csv', 'w', newline='') as f:
+    fieldnames = ['field1', 'field2', 'field3']
+    writer = csv.DictWriter(f, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(merged_data)
+
+# Upload the merged file to S3
+s3.upload_file('merged_file.csv', 'my-bucket', 'merged_file.csv')
+
+
+#### This code reads the contents of each CSV file from the S3 bucket, converts the data to a list of dictionaries, and appends the data to the merged_data list. Then it writes the merged_data list to a new CSV file and uploads the file back to the S3 bucket.

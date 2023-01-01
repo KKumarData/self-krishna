@@ -1,0 +1,54 @@
+## create a Python wrapper to handle common functionality and reuse it across all DAGs in an Airflow instance:
+
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class DAGWrapper:
+    def __init__(self, dag_id, default_args):
+        # Set the DAG ID and default arguments for the DAG
+        self.dag_id = dag_id
+        self.default_args = default_args
+
+    def create_dag(self):
+        # Create the DAG and set the default arguments
+        dag = DAG(
+            self.dag_id,
+            default_args=self.default_args,
+            schedule_interval=None,
+        )
+
+        # Define a function to perform some common task
+        def common_task(**kwargs):
+            # Get the execution date of the task instance
+            execution_date = kwargs['execution_date']
+            logger.info('Execution date: {}'.format(execution_date))
+            # Perform the common task
+            print('Doing something common...')
+
+        # Create a task to perform the common task
+        common_task_task = PythonOperator(
+            task_id='common_task',
+            python_callable=common_task,
+            dag=dag,
+            provide_context=True,
+        )
+
+        return dag, common_task_task
+
+# Create an instance of the DAGWrapper class
+dag_wrapper = DAGWrapper(
+    dag_id='dag_wrapper_dag',
+    default_args={
+        'owner': 'me',
+        'start_date': days_ago(2),
+    },
+)
+
+# Create the DAG and get the common task
+dag, common_task = dag_wrapper.create_dag()
+
+
+## This code defines a DAGWrapper class that has a create_dag method that creates a DAG and adds a task to it. The common_task function is defined to perform some common task that you want to reuse across multiple DAGs. The create_dag method returns the DAG and the task, so you can add additional tasks and set the dependencies for the DAG. To create a new DAG, you can create an instance of the DAGWrapper class and call the create_dag method.
