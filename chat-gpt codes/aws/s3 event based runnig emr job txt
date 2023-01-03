@@ -1,0 +1,67 @@
+Here are the detailed steps for setting up event-based file processing in Amazon S3, which invokes a Lambda function and then a transient EMR cluster:
+
+	Create an Amazon S3 bucket to store the input and output files for your PySpark job.
+
+	Create a PySpark script that reads the input files from the S3 bucket, processes them, and writes the output to the S3 bucket.
+
+	Test your PySpark script locally to ensure that it is working as expected.
+
+	Package your PySpark script and any dependencies into a ZIP file, and upload it to an Amazon S3 bucket.
+
+	Create an IAM role that has permission to access the S3 bucket, run PySpark jobs on EMR, and invoke Lambda functions.
+
+	Create a new Lambda function and specify the IAM role that you created in the previous step.
+
+	In the Lambda function's code, use the boto3 library to start a new transient EMR cluster and run the PySpark script on the cluster.
+	(https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/launch-a-spark-job-in-a-transient-emr-cluster-using-a-lambda-function.html )
+
+	Create a new Amazon CloudWatch Events rule that triggers the Lambda function to run when a new file is added to the S3 bucket.
+
+	Configure the CloudWatch Events rule to use the Lambda function as the target, and specify the S3 bucket and event type that you want to monitor.
+
+	Upload the input files to the S3 bucket, and verify that the CloudWatch Events rule is triggered and the Lambda function is invoked, which in turn starts the transient EMR cluster and runs the PySpark script.
+
+ 
+ Also, 
+ 
+ Create a new Amazon CloudWatch Events rule that triggers the Lambda function to run when the ObjectCreated:* event is detected in the S3 bucket.
+  
+ 
+ To create an Amazon CloudWatch Events rule that triggers when a file with the name "datatransfer.csv" is added to a specific prefix in an S3 bucket, you can use the following event pattern:
+
+Copy code
+{
+  "source": [
+    "aws.s3"
+  ],
+  "detail-type": [
+    "AWS API Call via CloudTrail"
+  ],
+  "detail": {
+    "eventSource": [
+      "s3.amazonaws.com"
+    ],
+    "eventName": [
+      "PutObject"
+    ],
+    "requestParameters": {
+      "bucketName": [
+        "abcd"
+      ],
+      "key": [
+        "test 1/tset2/datatransfer.csv"
+      ]
+    }
+  }
+}
+To create the CloudWatch Events rule:
+
+Go to the CloudWatch Events console and click the "Create rule" button.
+
+In the "Event pattern" section, select "Custom event pattern" and paste the event pattern JSON above into the text box.
+
+In the "Targets" section, select the target for the rule (e.g. Lambda function, EMR cluster, etc.).
+
+Give your rule a name and description, and then click the "Create rule" button to save it.
+
+Test the rule by uploading a file with the name "datatransfer.csv" to the "test 1/tset2" prefix in the "abcd" S3 bucket, and verify that the rule is triggered and the target is invoked.
