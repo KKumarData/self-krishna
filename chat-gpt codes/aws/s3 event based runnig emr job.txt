@@ -1,3 +1,9 @@
+
+https://www.startdataengineering.com/post/trigger-emr-spark-job-from-lambda/ [Another source]
+
+
+Chatgpt:
+
 Here are the detailed steps for setting up event-based file processing in Amazon S3, which invokes a Lambda function and then a transient EMR cluster:
 
 	Create an Amazon S3 bucket to store the input and output files for your PySpark job.
@@ -14,7 +20,7 @@ Here are the detailed steps for setting up event-based file processing in Amazon
 
 	In the Lambda function's code, use the boto3 library to start a new transient EMR cluster and run the PySpark script on the cluster.
 	(https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/launch-a-spark-job-in-a-transient-emr-cluster-using-a-lambda-function.html )
-
+	( https://www.startdataengineering.com/post/trigger-emr-spark-job-from-lambda/ )
 	Create a new Amazon CloudWatch Events rule that triggers the Lambda function to run when a new file is added to the S3 bucket.
 
 	Configure the CloudWatch Events rule to use the Lambda function as the target, and specify the S3 bucket and event type that you want to monitor.
