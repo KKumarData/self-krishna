@@ -1,0 +1,55 @@
+Here are some common issues that can arise when building an EMR (Elastic MapReduce) orchestration:
+
+	Dependency issues: If your EMR orchestration depends on external libraries or services, they may not be available or may be incompatible with your EMR cluster.
+
+	Configuration issues: Incorrect or incomplete configuration of the EMR cluster or the orchestration code can lead to errors or unexpected behavior.
+
+	Networking issues: If your EMR cluster is unable to access the necessary resources (e.g. data sources, sinks, etc.), it may fail to execute the orchestration correctly.
+
+	Data issues: If the data being processed by the EMR cluster is corrupt, incomplete, or otherwise problematic, it can cause the orchestration to fail.
+
+	Resource contention: If the EMR cluster does not have sufficient resources (e.g. CPU, memory, etc.) to execute the orchestration, it may fail or experience performance issues.
+
+	Code issues: If the orchestration code itself is buggy or otherwise problematic, it can cause the EMR cluster to fail or produce incorrect results.
+
+####################################################################################################################################
+
+Here are some common ways to log in to an EMR (Elastic MapReduce) cluster:
+
+	SSH: You can log in to the master node of an EMR cluster using Secure Shell (SSH). To do this, you will need the private key file that was used to launch the cluster, and the public DNS name or IP address of the master node.
+
+	AWS Management Console: You can use the AWS Management Console to log in to the master node of an EMR cluster using a web browser. To do this, you will need to have the necessary permissions and access to the AWS Management Console.
+
+	Remote Desktop Protocol (RDP): If you have enabled RDP access for your EMR cluster, you can log in to the master node using a Remote Desktop client.
+
+	AWS CLI: You can use the AWS Command Line Interface (CLI) to log in to an EMR cluster and execute commands on the command line. To do this, you will need to have the AWS CLI installed and configured on your local machine.
+
+	Third-party tools: There are also several third-party tools that can be used to log in to an EMR cluster, such as PuTTY or MobaXterm. These tools may offer additional features or a more user-friendly interface compared to the methods listed above.
+	
+####################################################################################################################################
+	
+Here are some common folders that may be useful for developers working on an EMR (Elastic MapReduce) cluster:
+
+	/home/hadoop: This is the home directory for the hadoop user, which is the default user on an EMR cluster. This directory is a good place to store scripts and other files that you want to make available to all users on the cluster.
+
+	/usr/lib/spark/: This directory contains the Spark libraries and executables that are installed on the cluster. Developers working with Spark may find this directory useful for accessing the Spark API and running Spark applications.
+
+	/mnt/: This directory is a mount point for Amazon S3 buckets that are accessible from the cluster. You can use this directory to access data stored in S3 as if it were on the local file system of the cluster.
+
+	/var/log/: This directory contains log files for various services and applications running on the cluster. Developers may find these log files useful for debugging issues or understanding the behavior of the cluster.
+
+	/tmp/: This directory is a location where users can store temporary files that are deleted when the cluster is terminated. Developers may find this directory useful for storing intermediate data or scratch files.	
+	
+####################################################################################################################################
+	
+Here are some design approaches and coding practices that can help you to create applications that scale across multiple EMR (Elastic MapReduce) clusters:
+
+	Use a distributed processing framework: Use a distributed processing framework such as Hadoop, Spark, or Flink to parallelize your computation across multiple nodes in a cluster. This can help you to scale your processing to larger data sets or higher workloads.
+
+	Design for fault tolerance: EMR clusters can experience node failures or other issues that may disrupt your computation. To make your application more resilient, design it to handle failures and automatically recover from them.
+
+	Use Amazon S3 for data storage: Instead of storing data on the local file system of your EMR cluster, use Amazon S3 for long-term storage. This will allow you to scale your storage independently of your compute resources, and it will make it easier to access your data from multiple EMR clusters.
+
+	Use Amazon EMR Step Functions: Amazon EMR Step Functions is a service that allows you to define and execute workflows for EMR clusters using a visual interface. You can use EMR Step Functions to coordinate multiple EMR clusters and other AWS services, making it easier to scale your computation across multiple clusters.
+
+	Use Amazon EMR Auto Scaling: Amazon EMR Auto Scaling is a service that automatically scales your EMR cluster up or down based on workload demand. You can use EMR Auto Scaling to ensure that your cluster always has the necessary resources to handle your workload, and to optimize cost.	

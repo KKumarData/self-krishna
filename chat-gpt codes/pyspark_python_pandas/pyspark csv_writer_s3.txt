@@ -1,0 +1,50 @@
+## csv wrapper
+
+from pyspark.sql import SparkSession
+
+class CSVWriter:
+
+    def __init__(self):
+        self.spark = SparkSession.builder.appName("CSV Writer").getOrCreate()
+
+    def write_csv(self, df, bucket, key, separator=",", mode="overwrite", header=True, escape=None, quote=None):
+        """Write a Spark DataFrame to a CSV or tab-separated file in an Amazon S3 bucket.
+
+        Parameters:
+        - df: Spark DataFrame, the DataFrame to write to the file
+        - bucket: string, the name of the S3 bucket to write the file to
+        - key: string, the key of the file in the S3 bucket (e.g. "path/to/file.csv")
+        - separator: string, the field separator to use (default is "," for CSV files)
+        - mode: string, the write mode for the file (default is "overwrite")
+        - header: boolean, whether to include a header row in the file (default is True)
+        - escape: string, the character to use for escaping values (default is None)
+        - quote: string, the quote character to use (default is None)
+        """
+        try:
+            # Set the write mode
+            writer = df.write.mode(mode)
+
+            # Set the field separator
+            writer = writer.option("sep", separator)
+            
+            # Set the header option
+            writer = writer.option("header", header)
+            
+            # Set the escape character
+            if escape:
+                writer = writer.option("escape", escape)
+            
+            # Set the quote character
+            if quote:
+                writer = writer.option("quote", quote)
+            
+            # Write the DataFrame to a CSV file in the S3 bucket
+            writer.csv(f"s3://{bucket}/{key}")
+            print(f"Successfully wrote CSV file to s3://{bucket}/{key}")
+        except Exception as e:
+            print(f"Error occurred while writing CSV file: {e}")
+
+
+# Write a tab-separated file with no header row
+csv_writer = CSVWriter()
+csv_writer.write_csv(df, bucket, "path/to/file.tsv", separator="\t", header=False)

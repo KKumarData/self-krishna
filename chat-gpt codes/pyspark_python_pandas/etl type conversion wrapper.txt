@@ -1,0 +1,38 @@
+## Wrapper for type conversion
+from pyspark.sql.functions import col, to_date, date_format
+
+def convert_column_data_type(df, col_name, src_type, target_type, format=None):
+  """
+  Convert the data type of a column in a Spark DataFrame.
+  
+  Parameters:
+  - df: Spark DataFrame
+  - col_name: str, name of the column to convert
+  - src_type: str, source data type of the column
+  - target_type: str, target data type of the column
+  - format: str (optional), format to use when converting to a date data type
+  
+  Returns:
+  - Spark DataFrame with the converted column
+  """
+  # Convert the column to the target data type
+  if target_type == "date":
+    if format is None:
+      raise ValueError("Format must be specified when converting to a date data type")
+    df = df.withColumn(col_name, to_date(col(col_name), format))
+  else:
+    df = df.withColumn(col_name, col(col_name).cast(target_type))
+  
+  # If the target data type is date and a format is specified, apply the format to the date column
+  if target_type == "date" and format is not None:
+    df = df.withColumn(col_name, date_format(col(col_name), format))
+  
+  return df
+    
+	
+# Convert the 'date' column to a date data type with the 'dd-MM-yy' format
+df = convert_column_data_type(df, "date", "string", "date", "dd-MM-yy")
+
+# Convert the 'value' column to a double data type
+df = convert_column_data_type(df, "value", "string", "double")
+	

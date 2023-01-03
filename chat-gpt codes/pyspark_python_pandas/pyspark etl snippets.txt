@@ -1,0 +1,67 @@
+## pyspark to extract multiple files of same name pattern and parse the first and last 5 records , create spark dataframe and write as a non spark file, i mean with no partition under spark
+
+	# First, we'll need to import the necessary libraries
+	from pyspark.sql import SparkSession
+
+	# Next, we'll create a SparkSession
+	spark = SparkSession.builder \
+		.appName("Extract and parse files") \
+		.getOrCreate()
+
+	# Now, let's define the file pattern that we want to extract
+	file_pattern = "path/to/files/filename_*.csv"
+
+	# We can use the `read.csv` method to read in all of the files that match the file pattern
+	df = spark.read.csv(file_pattern, header=True)
+
+	# Now, we can use the `limit` method to get the first 5 and last 5 records
+	first_5_records = df.limit(5)
+	last_5_records = df.orderBy(df["_c0"].desc()).limit(5)
+
+	# We can use the `union` method to combine the first and last 5 records into a single DataFrame
+	combined_df = first_5_records.union(last_5_records)
+
+	# Finally, we can use the `coalesce` method to write the combined DataFrame to a single, non-partitioned file
+	combined_df.coalesce(1).write.csv("path/to/output/file.csv", header=True)
+
+	# Don't forget to stop the SparkSession when you're done
+	spark.stop()
+
+
+#If you want to read the files from S3 instead of a local file system, you'll need to add the "s3a://" prefix to the file path in the file_pattern variable. For example:
+
+	file_pattern = "s3a://path/to/files/filename_*.csv"
+
+ 
+## String to Double conversion 
+
+# Iterate over the columns in the DataFrame 
+	for column in df.columns:
+	  # Get the data type of the column
+	  data_type = df.select(column).dtypes[0][1]
+	  
+	  # If the data type is a string, cast the column to a double
+	  if data_type == "string":
+		df = df.withColumn(column, df[column].cast("double"))
+	  # If the data type is a double, cast the column to a string
+	  elif data_type == "double":
+		df = df.withColumn(column, df[column].cast("string"))
+
+	# Write the fixed data to a new file
+	df.write.csv("path/to/output/file.csv", header=True)
+    
+    
+## To convert a string in the format "dd-mm-yy" to a date and separate the year, month, and day into separate columns in a Spark DataFrame, you can use the to_date and dayofmonth, month, and year functions. Here is an example of how you can do this:    
+
+# Convert the 'date' column to a date data type
+df = df.withColumn("date", to_date(df["date"], "dd-MM-yy"))
+
+# Extract the year, month, and day from the 'date' column
+df = df.withColumn("year", year(df["date"]))
+    .withColumn("month", month(df["date"]))
+    .withColumn("day", dayofmonth(df["date"]))
+
+# Format the 'date' column as a 2-digit date and add it as a new 'formatted_date' column    
+df = df.withColumn("formatted_date", date_format(df["date"], "dd-MM-yy"))
+    
+    

@@ -19,7 +19,7 @@
 }
 
 
-his config file specifies the following configuration settings:
+This config file specifies the following configuration settings:
 
 Spark-specific settings, such as the master URL, the app name, and the memory and cores to use for the driver and executors.
 Logging settings, including the logging level and the output destination (e.g. console or a file).
