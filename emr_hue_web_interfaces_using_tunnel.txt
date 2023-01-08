@@ -1,0 +1,86 @@
+https://github.com/SatadruMukherjee
+
+In this particular video , I have explained the set-up to view web interfaces hosted on Amazon EMR clusters.
+
+Step 1:
+--------------
+i)Create a keypair
+ii)Create s3 bucket in same region
+
+
+Step 2:
+--------------
+Launch an EMR Cluster (Keep Hadoop,hive,hue)
+
+Step 3:
+---------------
+Add extensions & restart Chrome --
+https://chrome.google.com/webstore/ca...
+
+Step 4:
+----------------
+Create the file & upload in chrome://extensions
+
+
+Step 5:
+-------------
+Open Tunnel
+Tunneling is a protocol that allows secure movement of data from one network to another network
+(Please note , you have to keep the Putty active to access the web console)
+
+Step 6:
+-------------
+Go to hue console & run the below codes--
+
+Code:
+--------------
+CREATE DATABASE IF NOT EXISTS firstdemo;
+
+CREATE  EXTERNAL TABLE firstdemo.hellocsv (
+`Id` int,
+`SEPAL_LENGTH` double,
+`SEPAL_WIDTH` double,
+`PETAL_LENGTH` double,
+`PETAL_WIDTH` double,
+`CLASS_NAME` string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe' 
+WITH SERDEPROPERTIES (
+'serialization.format' = ',',
+'field.delim' = ','
+) LOCATION '{}'
+TBLPROPERTIES ('has_encrypted_data'='false','skip.header.line.count'='1');
+
+select * from firstdemo.hellocsv;
+
+
+select count(1) from firstdemo.hellocsv;
+
+Run the below codes in EMR Putty:
+--------------------------------------------------------
+hadoop fs -mkdir /user/{user_name}
+hadoop fs -chown {user_name} /user/{user_name}
+
+select distinct hellocsv.class_name from firstdemo.hellocsv ;
+
+SELECT CLASS_NAME,count(1) AS count_value from firstdemo.hellocsv groupby CLASS_NAME;
+
+
+
+CREATE EXTERNAL TABLE firstdemo.aggregateresultset (
+`CLASS_NAME` string,
+`Count_value` int
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe' 
+WITH SERDEPROPERTIES (
+'serialization.format' = ',',
+'field.delim' = ','
+) LOCATION '{}'
+TBLPROPERTIES ('has_encrypted_data'='false','skip.header.line.count'='1');
+
+INSERT INTO firstdemo.aggregateresultset 
+(SELECT CLASS_NAME,count(1) from firstdemo.hellocsv group by CLASS_NAME); 
+
+Dataset:
+---------------
+https://github.com/SatadruMukherjee/D...

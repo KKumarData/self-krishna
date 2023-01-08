@@ -1,0 +1,5 @@
+python -c "import os; print('\n'.join(os.environ['PATH'].split(';')))"
+
+echo %PATH%
+
+ C:\This PC\aws\aws-python\Scripts\pip freeze  > requirements.txt

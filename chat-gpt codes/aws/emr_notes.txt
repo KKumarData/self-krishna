@@ -1,0 +1,23 @@
+why we  need to Launch an Amazon EMR Cluster with multiple master nodes??? 
+	There are several reasons why it may be necessary to launch an Amazon EMR cluster with multiple master nodes:
+
+	High availability: Multiple master nodes provide increased reliability and fault tolerance. If one master node fails, the other master nodes can take over its responsibilities, ensuring that the cluster remains operational.
+
+	Improved performance: Multiple master nodes can improve the performance of the cluster by distributing the workload across multiple nodes. This can be particularly useful for large-scale data processing tasks.
+
+	Scalability: Adding additional master nodes allows the cluster to scale up as needed to handle increased workloads.
+
+	Security: Multiple master nodes can also enhance security by providing an additional layer of protection against attacks or breaches.
+
+	Overall, using multiple master nodes in an Amazon EMR cluster can improve the reliability, performance, scalability, and security of the cluster.
+	
+what is the difference between primary node and master node in emr??? 	
+	In Amazon EMR (Elastic MapReduce), the primary node is the first node in the cluster that is created when the cluster is launched. It serves as the central point of communication for the other nodes in the cluster, and is responsible for managing the cluster's resources and distributing tasks to the worker nodes.
+
+	The master node, on the other hand, is a node in the cluster that is responsible for managing the overall operation of the cluster. It controls the allocation of resources, schedules tasks, and monitors the status of the worker nodes. The master node also maintains the state of the cluster, such as the list of active and terminated nodes, and the status of tasks running on the cluster.
+
+	In summary, the primary node is the first node created in an Amazon EMR cluster and serves as the central point of communication for the other nodes. The master node is responsible for managing the overall operation of the cluster and controlling the allocation of resources.
+	
+
+	
+	
