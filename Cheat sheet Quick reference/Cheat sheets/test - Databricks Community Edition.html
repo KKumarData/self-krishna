@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<!-- saved from url=(0109)https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329/command/1850794666789180 -->
+<html lang="en" wtx-context="12EC5168-25B5-4B53-92A8-FEECF3854D89"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="google" content="notranslate"><meta http-equiv="Content-Language" content="en"><title>test - Databricks Community Edition</title><link rel="preload" href="https://community.cloud.databricks.com/pub-conf" as="fetch" crossorigin=""><link rel="preload" href="https://community.cloud.databricks.com/workspaces" as="fetch" crossorigin=""><link rel="icon" href="https://community.cloud.databricks.com/favicon.ico"><link rel="stylesheet" type="text/css" href="./test - Databricks Community Edition_files/8398.542532ec.chunk.css"><link rel="stylesheet" type="text/css" href="./test - Databricks Community Edition_files/5058.62a28f77.chunk.css"><link rel="stylesheet" type="text/css" href="./test - Databricks Community Edition_files/7722.9b06b975.chunk.css"><style data-emotion=""></style><style id="plotly.js-style-global"></style><style data-emotion="css" data-s=""></style><script type="text/javascript" async="" src="./test - Databricks Community Edition_files/heap-3428506230.js.download"></script><style id="detectElementResize" type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; z-index: -1; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }</style><link rel="prefetch" href="https://community.cloud.databricks.com/js/561.7b501a27.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/media/pin-inactive.20f63293.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/pin-active.b76ded7a.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/jupyter_favicon.3567d082.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/azure_devops_logo_hover.4f1e3fd4.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/azure_devops_logo.8e2ba35d.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/newslablight-webfont.9b543473.eot"><link rel="prefetch" href="https://community.cloud.databricks.com/media/newslablight-webfont.69cfbff8.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/newslablight-webfont.a432b296.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/newslablight-webfont.ac42ae0f.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/newslablight-webfont.947cf4d7.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/databricks-regular-webfont.421acd19.eot"><link rel="prefetch" href="https://community.cloud.databricks.com/media/databricks-regular-webfont.ffd92669.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/databricks-regular-webfont.ab15115e.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/databricks-regular-webfont.9c3c6e3b.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.f7c2b4b7.eot"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.d9ee23d5.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.706450d7.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.29800836.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/mrl8jkM18OlOQN8JLgasD4a1YDtoarzwSXxTHggEXMw.38bca7eb.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/mrl8jkM18OlOQN8JLgasD5bPFduIYtoLzwST68uhz_Y.72b61933.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/leqv3v-yTsJNC7nFznSMqe4s1Ux4PuImWPk5fSr6HPL3rGVtsTkPsbDajuO5ueQw.e82262e6.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/leqv3v-yTsJNC7nFznSMqZkF8H8ye47wsfpWywda8og.5e7f98de.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/glyphicons-halflings.25163399.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/spritemap.a012b1b1.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/spritemap@2x.cfe9d800.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.674f50d2.eot"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.af7ae505.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.fee66e71.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.b06871f2.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fontawesome-webfont.912ec66d.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_AMS-Regular.3d8245dc.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_AMS-Regular.ac1d46d9.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_AMS-Regular.c67be87a.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Caligraphic-Bold.970d3e76.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Caligraphic-Bold.445f96a3.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Caligraphic-Bold.3f61a84d.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Caligraphic-Regular.0ef0f2e3.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Caligraphic-Regular.74f6918c.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Fraktur-Bold.950649ba.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Fraktur-Bold.1aca7ef7.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Fraktur-Bold.e11e6bf0.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Fraktur-Regular.135ccd74.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Fraktur-Regular.c5b430bf.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Fraktur-Regular.a9509497.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Bold.82bce349.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Bold.29d4b276.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Bold.db576c7d.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-BoldItalic.13900e55.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-BoldItalic.3f3be43b.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-BoldItalic.cec43f72.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Italic.b488f60f.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Italic.f8a75448.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Italic.85b3329f.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Regular.999cd6ba.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Regular.485696cf.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Main-Regular.f4fe6dca.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Math-Italic.7a31741a.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Math-Italic.8eb56b3f.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Math-Italic.10740d74.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Bold.0d0f967a.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Bold.99bd8743.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Bold.771a1f95.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Italic.b1ac79b9.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Italic.9c3f03ec.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Italic.cb729d47.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Regular.23f1730f.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Regular.fc908397.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_SansSerif-Regular.43b0cb92.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Script-Regular.ae1fad1f.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Script-Regular.60febfa1.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Script-Regular.e9169ca7.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size1-Regular.fda0824e.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size1-Regular.1d6cf6b8.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size1-Regular.f2e296ef.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size2-Regular.a7a0eb93.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size2-Regular.f48e83b7.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size2-Regular.0767ede6.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size3-Regular.397bd687.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size3-Regular.0387ab38.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size3-Regular.882f7234.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size4-Regular.3c14ed11.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size4-Regular.726db3bd.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Size4-Regular.27901d5c.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Typewriter-Regular.895baecf.woff2"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Typewriter-Regular.696705de.woff"><link rel="prefetch" href="https://community.cloud.databricks.com/media/KaTeX_Typewriter-Regular.6374f53e.ttf"><link rel="prefetch" href="https://community.cloud.databricks.com/media/spinner_green.b9455049.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/spinner_red.e709549b.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/models_black.4d9db537.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/models_white.6217d9bd.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/experiments_black.c033a121.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/experiments_white.3f96bc22.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/bmt-icon-active.ce61e68e.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/bmt-icon-inactive.22ee4d75.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/bmt-favicon.24e70a2e.ico"><link rel="prefetch" href="https://community.cloud.databricks.com/media/sidebar_logo.e0f86dff.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fa-table.bca1da2b.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fa-columns.e6b594bf.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/circle_success.dad29e90.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/circle_empty.d19e78d3.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/circle_error.8849b329.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/circle_dash.a3fb0746.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/circle_three_dots.c9940a52.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/rotating_circle.08f8bce7.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/spinner_blue.5bbd1389.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/collapsingAllIcon.ea2ba3e2.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/expandingAllIcon.283f7837.svg"><link rel="prefetch" href="./test - Databricks Community Edition_files/spinner.7eb0071e.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/if_lightbulb.32b79969.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/ellipse-2s-30px.d5e7584e.gif"><link rel="prefetch" href="https://community.cloud.databricks.com/media/us-map.be17f64a.json"><link rel="prefetch" href="https://community.cloud.databricks.com/media/world-map.733c99c2.json"><link rel="prefetch" href="https://community.cloud.databricks.com/media/BMT_logo_large.55205282.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/databricks_community_edition.4b5df8f5.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/ml_dashboard_ill_notebook.23ac68a0.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/ml_dashboard_ill_automl.7762ae64.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/ml_dashboard_ill_training.c2b6741e.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/ml_dashboard_ill_reference_solutions.27d60c43.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/General_icon.e1d0c7d0.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/Python_icon.26f13d73.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/R_icon.9b70c497.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/Scala_icon.bf5e6302.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/add_data_icon.84c14774.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/code_icon.db13a367.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/help_doc_icon.cc60a36f.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/icon-import-data.e32bacc6.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/icon-new-notebook.b1dacb7d.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/icon-quickstart-notebook.6697345f.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/icon-upload-data-non-drop-zone.a8a27e15.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/icon-upload-data.38e1c933.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/fivetran.3e6c82f5.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/qlik.87633461.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/infoworks.ad724fa0.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/streamsets.b85b03e8.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/syncsort.11608e03.jpg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/stitch.ef1319b5.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/view_notebook_revision.60fa88c5.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/logged_model.52a4e455.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/registered_model.8745ea83.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/placeholder_pic.4788048f.png"><link rel="prefetch" href="https://community.cloud.databricks.com/media/mlflow_notebook_revision_icon.fb30c75b.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/mlflow_cluster_spec_icon.e1a9d318.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/media/mlflow_cluster_libraries_icon.1e1bbbe8.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/login/login.87b18200.js"><link rel="prefetch" href="./test - Databricks Community Edition_files/main.cb9f603c.js.download"><link rel="prefetch" href="./test - Databricks Community Edition_files/metrics-graphics.ed6ac9b1.js.download"><link rel="prefetch" href="./test - Databricks Community Edition_files/spinner.gif"><link rel="prefetch" href="https://community.cloud.databricks.com/login/DB_Azure_Lockup_2x.png"><link rel="prefetch" href="https://community.cloud.databricks.com/login/bootstrap.min.css"><link rel="prefetch" href="https://community.cloud.databricks.com/login/databricks_ce_icon.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/login/databricks_logoTM_rgb_TM.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/login/favicon.ico"><link rel="prefetch" href="https://community.cloud.databricks.com/login/logo_2020/azure_databricks.png"><link rel="prefetch" href="https://community.cloud.databricks.com/login/logo_2020/databricks.svg"><link rel="prefetch" href="https://community.cloud.databricks.com/login/logo_2020/databricks_community_edition.png"><link rel="prefetch" href="https://community.cloud.databricks.com/static/iframe.html"><link rel="prefetch" href="https://community.cloud.databricks.com/static/css/sparkui-iframe.css"><link rel="prefetch" href="https://community.cloud.databricks.com/static/js/heap/heap-1473692602.js"><link rel="prefetch" href="https://community.cloud.databricks.com/static/js/heap/heap-210092139.js"><link rel="prefetch" href="./test - Databricks Community Edition_files/heap-3428506230.js.download"><link rel="prefetch" href="https://community.cloud.databricks.com/login/5500.bca5da39.chunk.css"><link rel="prefetch" href="./test - Databricks Community Edition_files/7722.9b06b975.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/login/7350.19b29d3d.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/737.40fadf6d.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/css/GraphqlClustersGetPage.ef46acd6.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/css/AdminConsoleView.85d36214.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/css/UserSettingsView.aaaa5c97.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/css/LibraryView.422f590b.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/css/CreateMlflowExperimentPage.22cb67ad.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/css/LatestJobRunViewContainer.aaaa5c97.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/css/JobRunView.aaaa5c97.chunk.css"><link rel="prefetch" href="./test - Databricks Community Edition_files/ReactNotebookView.e7ccd2ac.chunk.css"><link rel="prefetch" href="./test - Databricks Community Edition_files/8398.542532ec.chunk.css"><link rel="prefetch" href="./test - Databricks Community Edition_files/5058.62a28f77.chunk.css"><link rel="prefetch" href="https://community.cloud.databricks.com/login/5500.b448afd3.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/6456.450c0342.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/6519.0a2dada9.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/226.d201f34b.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/4963.468908a9.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/7722.67348d9f.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/8705.b6d9ccd4.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/6561.5057b29f.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/2422.ce8bf1ee.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9319.c3039973.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/6471.e8de65e9.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/4602.f1fd2141.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/2851.312cc062.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9463.bdd37671.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5198.7026fa13.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9152.4e0a1fbd.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/7032.e04f4bbe.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/2662.b35085c7.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/1511.83e65cc8.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5355.2310490a.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9946.b3aed466.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/1730.edef297a.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/2532.d79cce10.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5489.77069972.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8513.c202833e.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/7676.cfd1c69c.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5197.8b804381.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8732.5f954f70.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/3449.d8f1ac8d.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/199.ac66274c.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/3345.a3a55e5d.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8553.18f14a7f.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/6595.0a1e889c.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/2380.4e2c45c7.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5070.338d68b0.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8571.5b8e7789.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9957.21660c5b.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8985.4b06882c.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/4227.445b8e4a.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/1922.e855cff9.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9793.39dcb535.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/5259.c5b085dd.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/6415.7f01ce9e.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/8398.4da9dcff.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/3802.5a4d07b6.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/7652.2fa92d44.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5058.1ccc3816.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9987.00bf9f38.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/2773.333b2be3.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/4440.5d09649e.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8700.219cd0a9.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8501.cd3651d8.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9483.6f241921.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/3.12eff224.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5301.4d212b62.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/6924.1ca72965.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8053.34da20ef.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/657.a242b0f3.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/896.933ce0d6.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/5808.5adb0462.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/login/1337.60f4ea2b.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/9204.cb80ee0f.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/js/8563.d18ec07e.chunk.js"><link rel="prefetch" href="https://community.cloud.databricks.com/favicon.ico"><link rel="prefetch" href="https://community.cloud.databricks.com/login.html"><link rel="stylesheet" type="text/css" href="./test - Databricks Community Edition_files/ReactNotebookView.e7ccd2ac.chunk.css"></head><body data-new-gr-c-s-check-loaded="14.1021.0" data-gr-ext-installed="" class="light-mode notebook-present" data-new-gr-c-s-loaded="14.1021.0"><noscript>You need to enable JavaScript to run this app.</noscript><script>// Prefetch /pubconf, /workspaces, /config
+      // We wrap this in a function to not pollute the namespace
+      (function() {
+        const getParams = (paramsStr) => {
+          let match;
+          const pl = /\+/g; // Regex for replacing addition symbol with a space
+          const search = /([^&=]+)=?([^&]*)/g;
+          const decode = function decode(s) {
+            return decodeURIComponent(s.replace(pl, ' '));
+          };
+
+          const urlParams = {};
+          match = search.exec(paramsStr);
+          while (match) {
+            urlParams[decode(match[1])] = decode(match[2]);
+            match = search.exec(paramsStr);
+          }
+          return urlParams;
+        }
+
+        // Note that this function returns null in cases where there is no workspace or where we want the user to choose a workspace, since we
+        // are going to redirect the user anyways
+        const maybeGetOrgId = function(workspaceList, pubConf) {
+          // If we can get it from the params, do that
+          const params = getParams(window.location.search.substr(1));
+          if (params.o) {
+            return params.o;
+          }
+
+          // Otherwise we try to infer from the deployment name (apparently this doesn't work for AWS vanity URLs)
+          if (pubConf.inferOrgIdFromDeploymentName) {
+            const deploymentName = window.location.hostname
+                    .split('.')
+                    .slice(0, pubConf.numDeploymentNameHostnameLabels)
+                    .join('.');
+            const targetWorkspace = workspaceList.filter(w => deploymentName === w.deploymentName);
+            if (targetWorkspace.length > 0) {
+              return targetWorkspace[0].orgId;
+            }
+          }
+
+          // If we're just going to redirect the user anyways, don't try to fetch the config
+          if (pubConf.redirectBrowserOnWorkspaceSelection) {
+            return null;
+          }
+
+          // Otherwise, if there are either no available workspaces, or multiple confirmed ones, we return null since
+          // we will redirect the user anyways
+          const confirmedWorkspaces = workspaceList.filter((workspace) => !workspace.needsConfirmation);
+          // If there is exactly one confirmed workspace, then we'll pick that one.
+          // This is the common path for single tenant
+          if (confirmedWorkspaces.length === 1) {
+            return confirmedWorkspaces[0].orgId;
+          }
+
+          // otherwise we're not sure what workspace they want, so we don't prefetch
+          return null;
+        };
+
+        const pubConfProm = fetch('/pub-conf').then(r => r.json()).then(json => window.pubConf = json);
+        const workspacesProm = fetch('/workspaces').then(r => r.json()).then(json => window.workspaces = json);
+        Promise.all([pubConfProm, workspacesProm])
+          .then((values) => maybeGetOrgId(window.workspaces, window.pubConf))
+          .then(orgId => {
+            if (orgId !== null) {
+              return fetch('/config', {headers: { 'X-Databricks-Org-Id': orgId.toString() }})
+            } else {
+              return Promise.reject("could not determine workspace")
+            }
+          })
+          .then(r => r.json())
+          .then(json => window.prefetchedSettings = json);
+      })();</script><uses-legacy-bootstrap data-wrapped-element-id="toolbar"><div id="toolbar"></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="tooltip"><div id="tooltip" class="hidden"><p><span id="value"></span></p></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="global-notification-container"><div id="global-notification-container"><div class="databricks-notification-wrapper"><div class="notifications-wrapper"></div></div></div></uses-legacy-bootstrap><div id="rmmodal-container"></div><uses-legacy-bootstrap data-wrapped-element-id="topbar"><div id="topbar" style="padding-left: 56px;"><h1 class="tb-title-wrapper tb-title-wrapper-central" style="left: 56px;"><span class="tb-title"><span class="notebook-title-wrapper"><span id="nbTitle">test</span></span></span> <span class="tb-title-portal"></span> <span class="tb-title-lang" data-lang="none"><a class="tb-lang-link" data-lang="python">(Python)</a></span><div class="tb-status"><span class="tb-status-msg tb-status-msg-error"></span> <span class="tb-status-msg tb-status-msg-banner"></span> <span class="tb-status-msg tb-status-msg-locked"></span> <span class="tb-status-msg tb-status-msg-connecting">Connecting...&nbsp;</span> <span class="tb-status-msg tb-status-msg-waiting">Still working...&nbsp;</span> <img class="tb-status-spinner" src="./test - Databricks Community Edition_files/spinner.gif" alt="spinner"></div></h1><div class="tb-title-wrapper tb-title-wrapper-right"><div class="tb-trial-msg"></div><div class="tb-title-icons tb-title-icons-right"></div><div class="tb-status presence"><span class="tb-status-msg tb-status-presence" style=""><!-- presenceTemplate -->
+
+<ul class="noselect">
+  
+  <li title="Recent Activity" class="presence-history" role="button" aria-label="Click to view Recent Activity">
+    <div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+  </li>
+</ul>
+
+</span></div><div class="tb-notebook-schedule-link"></div></div><a class="tb-button tb-button-right tb-button-upgrade" title="Upgrade" target="_blank"><span>Upgrade </span></a><a class="tb-button tb-button-right tb-button-help" title="Help and Support" tabindex="0" role="button" aria-label="Click to open Help and Support menu" aria-controls="#help-menu" aria-haspopup="menu"><i class="fa fa-question fa-lg" aria-hidden="true"></i> </a><a class="tb-button tb-button-right tb-button-user" title="Account" tabindex="0" role="button" aria-label="Click to open Account Menu"><i class="fa fa-user fa-lg no-workspace-name-icon" aria-hidden="true"></i><div class="workspace-name-icon-wrapper hidden btn"><span class="workspace-name"></span> <i class="fa fa-user fa-lg" aria-hidden="true"></i></div></a></div></uses-legacy-bootstrap><div id="sidebar-and-notebook"><uses-legacy-bootstrap data-wrapped-element-id="sidebar"><div id="sidebar" class="sidebar"><div class="sidebar-outer sidebar--theme-unified"><div data-test-id="persona-nav-sidebar" class="css-1qq8bvn"><nav aria-label="Main Menu" class="css-1s2ogrp"><a aria-label="Databricks" href="https://community.cloud.databricks.com/?o=8711736242127373#" data-test="DatabricksLogo" class="css-1iy4oqv"><span class="glyph css-2edx1n"><svg aria-hidden="true" width="24" height="26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.72 10.562l-10.721 5.956L.543 10.152l-.543.3v4.627l11.998 6.672 10.722-5.959v2.458l-10.721 5.962-11.453-6.37-.546.3v.786L11.998 25.6 24 18.928v-4.631l-.543-.3-11.459 6.366L1.28 14.407V11.96L12 17.91 24 11.24V6.672l-.603-.331-11.398 6.338-10.15-5.647 10.15-5.644 8.364 4.65.744-.413v-.559L12 0 0 6.675v.716l11.998 6.672L22.72 8.104v2.458z"></path></svg></span><span class="persona-nav-expanded-text css-1z0rrpl" data-testid="PersonaMenuIconText"><svg aria-hidden="true" width="123" height="21" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#prefix__clip0)"><path d="M14.511 20.258V1.145H11.56V8.29c0 .104-.066.2-.167.238a.256.256 0 01-.279-.072c-1-1.168-2.555-1.838-4.27-1.838-3.646 0-6.503 3.067-6.503 6.986 0 1.92.667 3.69 1.876 4.985a6.262 6.262 0 004.628 2.002c1.684 0 3.241-.7 4.27-1.917a.256.256 0 01.28-.074c.1.036.167.132.167.238v1.423h2.95v-.004zm-7.003-2.336c-2.35 0-4.19-1.898-4.19-4.319 0-2.42 1.84-4.319 4.19-4.319 2.35 0 4.19 1.898 4.19 4.32 0 2.42-1.84 4.318-4.19 4.318zM30.266 20.258V6.948h-2.924v1.336a.253.253 0 01-.448.162c-.99-1.18-2.505-1.83-4.27-1.83-3.646 0-6.503 3.068-6.503 6.987s2.857 6.987 6.504 6.987c1.691 0 3.246-.707 4.267-1.938a.253.253 0 01.448.161v1.445h2.926zm-6.976-2.336c-2.35 0-4.19-1.898-4.19-4.319 0-2.421 1.84-4.319 4.19-4.319 2.35 0 4.19 1.898 4.19 4.32 0 2.42-1.84 4.318-4.19 4.318zM55.266 20.258V6.948h-2.924v1.336a.253.253 0 01-.448.162c-.99-1.18-2.506-1.83-4.27-1.83-3.646 0-6.503 3.068-6.503 6.987s2.857 6.987 6.504 6.987c1.69 0 3.245-.707 4.267-1.938a.255.255 0 01.45.162v1.444h2.924zm-6.974-2.336c-2.35 0-4.19-1.898-4.19-4.319 0-2.421 1.84-4.319 4.19-4.319 2.35 0 4.19 1.898 4.19 4.32 0 2.42-1.842 4.318-4.19 4.318zM60.627 18.677a.244.244 0 01.087-.015c.075 0 .145.032.192.09 1 1.168 2.555 1.838 4.27 1.838 3.646 0 6.504-3.068 6.504-6.987 0-1.919-.666-3.689-1.877-4.985a6.262 6.262 0 00-4.627-2.002c-1.685 0-3.242.7-4.27 1.917a.253.253 0 01-.448-.164l.007-7.227h-2.952l-.006 19.114h2.951v-1.343a.26.26 0 01.169-.236zm-.303-5.074c0-2.421 1.84-4.319 4.19-4.319 2.35 0 4.19 1.898 4.19 4.319 0 2.421-1.84 4.319-4.19 4.319-2.35 0-4.19-1.898-4.19-4.319zM80.174 9.671c.277 0 .535.024.714.066V6.723a2.396 2.396 0 00-.492-.05c-1.53 0-2.943.782-3.692 2.039a.253.253 0 01-.471-.13V6.948h-2.924v13.31h2.952v-5.853c0-2.919 1.499-4.734 3.913-4.734zM85.714 6.948h-2.98v13.31h2.98V6.948zM84.19 1.157c-.996 0-1.807.809-1.807 1.802a1.806 1.806 0 003.613 0 1.804 1.804 0 00-1.807-1.802zM94.468 6.616c-4.09 0-7.059 2.938-7.059 6.987 0 1.968.695 3.749 1.96 5.012 1.271 1.273 3.073 1.973 5.07 1.973 1.654 0 2.944-.328 5.375-2.107l-1.674-1.763c-1.194.791-2.305 1.176-3.395 1.176-2.467 0-4.329-1.844-4.329-4.29 0-2.447 1.862-4.292 4.33-4.292 1.176 0 2.268.385 3.337 1.177l1.872-1.768c-2.173-1.885-4.171-2.105-5.487-2.105zM105 14.388a.257.257 0 01.171-.066h.015c.072.007.138.04.181.094l4.719 5.838 3.63.002-6.106-7.37a.255.255 0 01.015-.34l5.613-5.6h-3.597l-4.831 4.849a.253.253 0 01-.432-.179l.006-10.471h-2.958v19.113h2.952v-5.185a.25.25 0 01.081-.185l.541-.5z"></path><path d="M118.531 20.59c2.421 0 4.869-1.46 4.869-4.251 0-1.819-1.143-3.076-3.493-3.84l-1.606-.526c-1.079-.36-1.606-.874-1.606-1.576 0-.802.721-1.362 1.753-1.362.981 0 1.855.639 2.408 1.753l2.369-1.272c-.866-1.789-2.691-2.9-4.777-2.9-2.644 0-4.566 1.694-4.566 4.03 0 1.844 1.107 3.091 3.38 3.812l1.636.526c1.16.366 1.631.821 1.631 1.576 0 1.128-1.049 1.528-1.944 1.528-1.197 0-2.257-.775-2.777-2.026l-2.39 1.243c.793 2.027 2.746 3.285 5.113 3.285zM38.443 20.454c.932 0 1.776-.083 2.241-.156v-2.544c-.388.05-1.058.095-1.48.095-1.198 0-2.113-.204-2.113-2.778v-5.47c0-.14.113-.253.253-.253h2.875l-.002-2.402-2.873.002a.253.253 0 01-.253-.253V2.836l-2.933.002.003 3.857c0 .14-.113.253-.254.253H31.85l.002 2.402 2.056-.002c.14 0 .254.113.254.253V15.8c-.007 4.655 3.107 4.655 4.28 4.655z"></path></g></svg></span></a><div role="separator" class="css-10doamx"></div><div><span id="persona-switcher-label" class="css-177iafl">Active persona</span><button id="persona-switcher-button" data-testid="PersonaSwitcherButton" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="persona-switcher-label persona-switcher-button" class="css-10b5paf"><span role="presentation" class="css-6su6fj"><span aria-hidden="true" class="css-rmj18z">D</span></span><span class="persona-nav-expanded-text css-vtty5m"><span data-test="SelectedPersona" class="css-aogtgp">Data Science &amp; Engineering</span><span role="presentation" class="css-12voij3"><svg aria-hidden="true" width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.706145 1.71012L3.29615 4.30012C3.68615 4.69012 4.31615 4.69012 4.70615 4.30012L7.29614 1.71012C7.92615 1.08012 7.47614 0.00012207 6.58614 0.00012207H1.40615C0.516145 0.00012207 0.0761452 1.08012 0.706145 1.71012Z" fill="currentColor"></path></svg></span></span></button></div><div role="separator" class="css-10doamx"></div><div data-testid="PersonaNavMenus" class="css-b3415i"><div class="css-i9gxme"><div><button id="create-menu-button" type="button" data-test="PersonaNavCreateMenu" aria-controls="create-menu" aria-expanded="false" aria-haspopup="menu" class="css-pmpw45"><span class="create-button-icon css-1b9bwsu"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 7C11.45 7 11 7.45 11 8V11H8C7.45 11 7 11.45 7 12C7 12.55 7.45 13 8 13H11V16C11 16.55 11.45 17 12 17C12.55 17 13 16.55 13 16V13H16C16.55 13 17 12.55 17 12C17 11.45 16.55 11 16 11H13V8C13 7.45 12.55 7 12 7ZM4 12C4 16.41 7.59 20 12 20C16.41 20 20 16.41 20 12C20 7.59 16.41 4 12 4C7.59 4 4 7.59 4 12Z" fill="currentColor"></path></svg></span><span class="persona-nav-expanded-text">Create</span></button></div><div role="group"><button type="button" data-testid="Workspace" class="css-in0wly" aria-current="page"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H5V3Z" stroke="currentColor" stroke-width="2"></path><line x1="8" y1="17" x2="2" y2="17" stroke="currentColor" stroke-width="2"></line><line x1="8" y1="12" x2="2" y2="12" stroke="currentColor" stroke-width="2"></line><line x1="8" y1="7" x2="2" y2="7" stroke="currentColor" stroke-width="2"></line><line x1="9" y1="3" x2="9" y2="21" stroke="currentColor" stroke-width="2"></line></svg></span><span class="persona-nav-expanded-text css-8uhtka">Workspace</span></button><button type="button" data-testid="Recents" class="css-1imzolx"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"></circle><path d="M12 5L12 12L16 16" stroke="currentColor" stroke-width="2"></path></svg></span><span class="persona-nav-expanded-text css-8uhtka">Recents</span></button><button type="button" data-testid="Search" class="css-1imzolx"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"></circle><path d="M22 22L15.5 15.5" stroke="currentColor" stroke-width="2"></path></svg></span><span class="persona-nav-expanded-text css-8uhtka">Search</span></button><div role="separator" class="css-10doamx"></div><button type="button" data-testid="Tables" class="css-1imzolx"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="14" width="8" height="8" stroke="currentColor" stroke-width="2"></rect><circle cx="6" cy="18" r="4" stroke="currentColor" stroke-width="2"></circle><path d="M7.63073 10L12 2.07184L16.3693 10H7.63073Z" stroke="currentColor" stroke-width="2"></path></svg></span><span class="persona-nav-expanded-text css-8uhtka">Data</span></button><a href="https://community.cloud.databricks.com/?o=8711736242127373#setting/clusters" data-testid="Compute" class="css-1imzolx"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="20" r="2" stroke="currentColor" stroke-width="2"></circle><circle cx="12" cy="20" r="2" stroke="currentColor" stroke-width="2"></circle><circle cx="20" cy="20" r="2" stroke="currentColor" stroke-width="2"></circle><path d="M12 18V9" stroke="currentColor" stroke-width="2"></path><path d="M4 18V15C4 13.8954 4.89543 13 6 13H18C19.1046 13 20 13.8954 20 15V18" stroke="currentColor" stroke-width="2"></path><path d="M3.76389 11C3.28885 10.4692 3 9.76835 3 9C3 7.34315 4.34315 6 6 6H7C7 3.79086 9.01472 2 11.5 2C13.5968 2 15.3587 3.27477 15.8582 5H18C19.6569 5 21 6.61178 21 8.6C21 9.52203 20.7111 10.3631 20.2361 11" stroke="currentColor" stroke-width="2"></path></svg></span><span class="persona-nav-expanded-text css-8uhtka">Compute</span></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#joblist" data-testid="Jobs" class="css-1imzolx"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 5L11 5" stroke="currentColor" stroke-width="2"></path><path d="M22 12L11 12" stroke="currentColor" stroke-width="2"></path><path d="M22 19L2 19" stroke="currentColor" stroke-width="2"></path><path d="M2 11L4.5 13.5L9 9" stroke="currentColor" stroke-width="2"></path><path d="M2 4L4.5 6.5L9 2" stroke="currentColor" stroke-width="2"></path></svg></span><span class="persona-nav-expanded-text css-8uhtka">Jobs</span></a><div role="separator" class="css-10doamx"></div></div></div><div role="group"><div role="separator" class="css-10doamx"></div><div><button type="button" data-testid="PersonaMenuOptionsButton" aria-controls="menu-options-menu" aria-haspopup="menu" class="css-1imzolx"><span class="nav-icon css-1rf15dr"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3H19C20.1 3 21 3.9 21 5V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 21V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="persona-nav-expanded-text css-8uhtka">Menu options</span></button></div></div></div></nav></div><div class="sidebar-alt"><div></div><div></div></div></div></div></uses-legacy-bootstrap><div id="overallView" style="left: 56px;" class="new-notebook"><div style="height: 100%;"><div><uses-legacy-bootstrap data-wrapped-element-id="Notifications"><div class="databricks-notification-wrapper"><div class="notifications-wrapper"></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="ContextBarView"><div class="new-notebook context-bar" id="context-bar"><div class="context-bar__left"><div class="attach-cluster-select-wrapper"><i class="fa fa-sitemap" style="text-align: center;"></i><div class="control-field clusters attach-cluster-select css-wwrqjh-container"><span aria-live="polite" aria-atomic="false" aria-relevant="additions text" class="css-7pg0cj-a11yText"></span><div class="react-select__control css-zapze6-control"><div class="react-select__value-container react-select__value-container--has-value css-12n3d9a"><span class="single-value single-value--with-icon css-1o1xctj-singleValue"><i data-testid="status-indicator-icon" class="fa fa-circle fa-fw status-indicator-icon ok " style="text-align: center;"></i>spark-kk</span><div class="css-1kdqmo9"><div class="react-select__input" style="display: inline-block;"><input autocapitalize="none" autocomplete="off" autocorrect="off" id="react-select-2-input" spellcheck="false" tabindex="0" type="text" aria-autocomplete="list" aria-label="Select Cluster" value="" wtx-context="54E9C209-29F5-4CF1-B817-05228E927D33" style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;"><div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;"></div></div></div></div><div class="react-select__indicators css-1wy0on6"><span class="react-select__indicator-separator css-1okebmr-indicatorSeparator"></span><div class="react-select__indicator react-select__dropdown-indicator css-1kh17bq-indicatorContainer" aria-hidden="true"><svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-8mmkcg"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg></div></div></div></div></div><div class="dropdown actions-dropdown"><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="actions-dropdown-link" data-name="File"><i aria-hidden="true" class="fa fa-file-text-o contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">File</span> <i aria-hidden="true" class="fa fa-caret-down caretDown--js" style="text-align: center;"></i></a></div></div><div class="dropdown edit-dropdown"><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="edit-dropdown-link" data-name="Edit"><i aria-hidden="true" class="fa fa-edit contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Edit</span> <i aria-hidden="true" class="fa fa-caret-down caretDown--js" style="text-align: center;"></i></a></div></div><div class="dropdown view-dropdown"><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="view-mode-link" data-name="Current View Mode"><i aria-hidden="true" class="fa fa-picture-o contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">View: Standard</span> <i aria-hidden="true" class="fa fa-caret-down caretDown--js" style="text-align: center;"></i></a></div></div><div class="highlight-inactive"><a role="button" disabled="" class="no-click context-bar-item permissions" id="share" data-name="[object Object]"><i aria-hidden="true" class="fa fa-lock contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Permissions</span></a></div><div class="highlight-inactive"><a role="button" class="context-bar-item" id="0.9289106969499357" data-name="Run All" href="https://community.cloud.databricks.com/?o=8711736242127373#"><i aria-hidden="true" class="fa fa-play-circle-o contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Run All</span></a></div><div class="dropdown clear-dropdown"><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="clear-results-link" data-name="Clear"><i aria-hidden="true" class="fa fa-eraser contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Clear</span> <i aria-hidden="true" class="fa fa-caret-down caretDown--js" style="text-align: center;"></i></a></div></div></div><div class="context-bar__right"><div class="context-bar-right-links"><div id="shortcut-wrapper"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="shortcut-menu-icon" title="Open keyboard shortcuts reference dialog"><i aria-hidden="true" class="fa fa-keyboard-o" style="text-align: center;"></i></a></div><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="publish-notebook" data-name="Publish"><i aria-hidden="true" class="fa fa-share-square-o contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Publish</span></a></div><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="show-comments" data-name="Comments"><i aria-hidden="true" class="fa fa-comments contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Comments</span></a></div><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="view-mlflow-runs" data-name="[object Object]"><span><span><i class="fa fa-flask contextBarIcon--js" style="text-align: center;"></i></span></span><span class="context-bar-link-text">Experiment</span></a></div><div class="highlight-inactive"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="context-bar-item" id="show-history" data-name="Revision history"><i aria-hidden="true" class="fa fa-history contextBarIcon--js" style="text-align: center;"></i> <span class="context-bar-link-text">Revision history</span></a></div></div></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="FindReplaceBarView"></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="NotebookInputPanel"><div id="notebook-input-widget-panel" class="input-widget-panel empty"><ul></ul><div class="widget-panel-settings"><i class="fa fa-cog settings" style="text-align: center; cursor: pointer;"></i><i class="fa fa-thumb-tack pinning pinned" style="text-align: center; cursor: pointer;"></i></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="RevisionNotice"></uses-legacy-bootstrap><div id="content" class="new-notebook" style="top: 26px;"><section class="ant-layout ant-layout-has-sider notebook-view" style="height: 100%; background-color: var(--primary-background-color);"><aside class="notebook-table-of-contents-sidebar ant-layout-sider ant-layout-sider-light ant-layout-sider-collapsed ant-layout-sider-zero-width" style="flex: 0 0 0px; max-width: 0px; min-width: 0px; width: 0px;"><div class="ant-layout-sider-children"><div class="notebook-table-of-contents-empty-text"><p>A table of contents will be added here when a notebook has Markdown headings.</p><code>%md # Heading 1</code><br></div></div><span class="ant-layout-sider-zero-width-trigger ant-layout-sider-zero-width-trigger-left"><i class="fa fa-angle-right" style="text-align: center;"></i></span></aside><main class="ant-layout-content" style="position: relative; max-width: 100%;"><uses-legacy-bootstrap data-wrapped-element-id="CommandListView"><div class="new-notebook overallContainer"><div class="sessionPane"></div><div class="shell-top new-notebook"><img alt="Loading..." class="load-spinner" src="./test - Databricks Community Edition_files/spinner.7eb0071e.svg"><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="command divider"><a class="btn btn-default btn-circle insert-command-btn" title="Insert a new cell"><i class="fa fa-plus fa-fw" style="text-align: center;"></i></a><a class="btn btn-default btn-circle paste-command-btn hidden" title="Paste cell here"><i class="fa fa-paste fa-fw" style="text-align: center;"></i></a></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="heading-toggler"></div><div class="command-with-number"><a class="command-number" href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329/command/3501958899626330"><i class="fa fa-link" style="text-align: center;"></i>Cmd 1</a><div class="new-notebook command mainCommand command-finished cellIndex-0 cell-3501958899626329-3501958899626330"><div class="command-comments-wrapper"></div><a class="move-command-btn" draggable="true"><i class="fa fa-sort" style="text-align: center;"></i></a><div class="command-buttons"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="run-command-button command-button" title="Run Cell"><i aria-hidden="true" class="fa fa-play fa-fw" style="text-align: center;"></i><i aria-hidden="true" class="fa fa-caret-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="dashboard-button dashboard-button-0 command-button" title="Show in Dashboard Menu"><i aria-hidden="true" class="fa fa-bar-chart fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="edit-button edit-button-0 command-button" title="Edit Menu"><i aria-hidden="true" class="fa fa-chevron-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="toggle-collapse-button command-button" title="Minimize"><i aria-hidden="true" class="fa fa-minus fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="remove-button command-button" title="Delete"><i aria-hidden="true" class="fa fa-remove fa-fw" style="text-align: center;"></i></a></div><div><div class="command-input previousPrompt"><div class="command-text command-text-finished"><div class="command-box wrappable"><div class="codemirror-preview CodeMirror CodeMirror-wrap cm-s-eclipse-focus"><div><div class="CodeMirror-gutters"></div><div class="CodeMirror-sizer"><div class="CodeMirror-lines"><pre class="CodeMirror-line"><div class="CodeMirror-gutter-wrapper"><div class="CodeMirror-linenumber">1</div></div><span class="cm-variable">spark</span></pre></div></div></div></div></div></div></div><div class="results-and-comments"><div class="command-result-wrapper"><div class="command-result"><div class="spinner"></div><div><div class="css-i4itxs"><div class="results"><div class="ansiout">Out[1]: </div></div></div><div class="results dashboard"><div class="dashboard"><div style="width: auto; position: relative; margin-top: 0px;"><div><div class="widget ui-resizable" data-guid="ddbff13a-4e47-4779-aa2b-0c8266d9e3a2" style="left: 0px; top: 0px; width: auto; height: auto; box-sizing: content-box;"><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" role="img" aria-label="Resize the chart by dragging this handler" style="z-index: 90;"></div><div class="widget-content dashboard"><div class="results"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms allow-same-origin allow-downloads" id="d36bd556-3bd4-48a8-acdb-f7ad0090ae17" width="100%" height="0" frameborder="0" style="overflow: hidden; filter: var(--invert-filter); height: 219px;" scrolling="no" seamless="seamless" src="./test - Databricks Community Edition_files/iframe.html" data-content="
+  
+  
+  &lt;style&gt;
+    
+/**
+ * NB: this stylesheet is loaded inline in sandboxed HTML iframes that may contain
+ * arbitrary untrusted content.  Be very careful what rules you add here.
+ */
+body, .mfe-root {
+  background-color: transparent;
+  margin: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+#content-wrapper {
+  overflow: auto;
+}
+
+#content-wrapper .markdown {
+  /**
+   * without overriding this, the height is 100% (of the containing block), which is
+   * initially quite small. The content will not fit, and will then depend on the
+   * `overflow` property, which is `hidden`. In theory, `overflow: visible` will expand the
+   * height to fit, but it has a bad interaction with postResizeMessage which causes the div
+   * to keep growing in size under _some_ (ES-9273) circumstances. `height: auto` has the same
+   * effect of allowing the browser to size the div but without the bad effects.
+   **/
+  height: auto;
+}
+
+/**
+ * Approximates the JupyterLab Light theme for display of pandas-like DataFrames.
+ *
+ * TODO: JupyterLab parameterizes theme-able properties using CSS variables.  This
+ * implementation hard-codes them.
+ */
+.dataframe {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+  table-layout: fixed;
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+.dataframe thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.dataframe tr {
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.dataframe th {
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.dataframe tbody tr:nth-child(odd) {
+  background: white;
+}
+.dataframe tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+.dataframe tbody tr:hover {
+  background-color: rgb(218, 242, 254);
+}
+.dataframe tbody tr th:only-of-type {
+  vertical-align: middle;
+}
+.dataframe tbody td {
+  font-size: 12px;
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+
+  &lt;/style&gt;
+  &lt;base href=&#39;https://community.cloud.databricks.com&#39; target=_blank&gt;
+  &lt;script&gt;
+    (function() {
+      var parentUri = &#39;https://community.cloud.databricks.com&#39;;
+      var originalWidth = null;
+      var originalHeight = null;
+      var scale = 1.0;
+      window.onerror = function(error) {
+        window.parent.postMessage({
+          type: &#39;frameJsError&#39;,
+          loc: window.location.href,
+          frameId: &#39;d36bd556-3bd4-48a8-acdb-f7ad0090ae17&#39;,
+          error: error,
+        }, parentUri);
+      };
+      function postResizeMessage() {
+        // There are 3 cases, and we take the first that&#39;s available
+        // 1) happy path: content is inlined. We use getBoundingClientRect to capture the dimension
+        //    of (scaled) visible content, including the margin.
+        //    {height, width} is captured via {bottom, right} to include any margin {top, left}.
+        //    This will handle both when there&#39;s collapsing margin &amp; not. See go/pr/43508
+        // 2) content is loaded dynamically, in which case getBoundingClientRect().height may be 0.
+        //    we use scroll{Width, Height} to capture the dimension regardless of what&#39;s currently
+        //    visible.
+        // 3) source in the iframe attaches to the document body and not the content-wrapper.
+        //    we use document.body.scroll{Width, Height}. See ES-3770
+        var wrapper = document.getElementById(&#39;content-wrapper&#39;);
+        var rect = wrapper.getBoundingClientRect();
+        var newWidth = (scale &amp;&amp; rect.right / scale) || wrapper.scrollWidth || document.body.scrollWidth;
+        var newHeight = (scale &amp;&amp; rect.bottom / scale) || wrapper.scrollHeight || document.body.scrollHeight;
+        if (Math.round(newWidth) != Math.round(originalWidth) || Math.round(newHeight) != Math.round(originalHeight)) {
+          originalWidth = newWidth;
+          originalHeight = newHeight;
+          window.parent.postMessage({
+            type: &#39;frameResizeEvent&#39;,
+            frameId: &#39;d36bd556-3bd4-48a8-acdb-f7ad0090ae17&#39;,
+            loc: window.location.href,
+            height: originalHeight,
+            width: originalWidth,
+            isAutoScaled: false,
+          }, parentUri);
+        }
+      };
+      // Sync size 4 times per second
+      setInterval(postResizeMessage, 250);
+
+      window.addEventListener(&#39;message&#39;, function(msg) {
+        var origin = msg.origin || msg.originalEvent.origin;
+        var isExportedHTML = origin === &#39;null&#39; &amp;&amp; parentUri === &#39;*&#39;;
+        if (origin !== parentUri &amp;&amp; !isExportedHTML) {
+          console.error(&#39;Invalid origin&#39;, origin, parentUri);
+          return;
+        }
+
+        
+        // set wrapper div&#39;s height to be the height of the iframe to make vertical scrolling work
+        var clientHeight = document.getElementsByTagName(&#39;body&#39;)[0].clientHeight;
+        document.body.style.height = clientHeight + &#39;px&#39;;
+        
+      });
+      
+    })();
+  &lt;/script&gt;
+  &lt;div id=&#39;content-wrapper&#39; class=&gt;
+            &lt;div&gt;
+                &lt;p&gt;&lt;b&gt;SparkSession - hive&lt;/b&gt;&lt;/p&gt;
+                
+        &lt;div&gt;
+            &lt;p&gt;&lt;b&gt;SparkContext&lt;/b&gt;&lt;/p&gt;
+
+            &lt;p&gt;&lt;a href=&quot;http://10.172.232.170:46374&quot;&gt;Spark UI&lt;/a&gt;&lt;/p&gt;
+
+            &lt;dl&gt;
+              &lt;dt&gt;Version&lt;/dt&gt;
+                &lt;dd&gt;&lt;code&gt;v3.0.1&lt;/code&gt;&lt;/dd&gt;
+              &lt;dt&gt;Master&lt;/dt&gt;
+                &lt;dd&gt;&lt;code&gt;local[8]&lt;/code&gt;&lt;/dd&gt;
+              &lt;dt&gt;AppName&lt;/dt&gt;
+                &lt;dd&gt;&lt;code&gt;Databricks Shell&lt;/code&gt;&lt;/dd&gt;
+            &lt;/dl&gt;
+        &lt;/div&gt;
+        
+            &lt;/div&gt;
+        
+  &lt;/div&gt;">
+</iframe></div></div></div></div></div></div></div></div><div class="command-result-stats">Command took <span>0.07 seconds</span> -- by kk.career.prof@gmail.com at 7/11/2021, 1:17:53 PM on spark-kk</div></div></div><div style="clear: both;"></div></div></div></div></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="command divider"><a class="btn btn-default btn-circle insert-command-btn" title="Insert a new cell"><i class="fa fa-plus fa-fw" style="text-align: center;"></i></a><a class="btn btn-default btn-circle paste-command-btn hidden" title="Paste cell here"><i class="fa fa-paste fa-fw" style="text-align: center;"></i></a></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="heading-toggler"></div><div class="command-with-number"><a class="command-number" href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329/command/1850794666789177"><i class="fa fa-link" style="text-align: center;"></i>Cmd 2</a><div class="new-notebook command mainCommand command-finished cellIndex-1 cell-3501958899626329-1850794666789177"><div class="command-comments-wrapper"></div><a class="move-command-btn" draggable="true"><i class="fa fa-sort" style="text-align: center;"></i></a><div class="command-buttons"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="run-command-button command-button" title="Run Cell"><i aria-hidden="true" class="fa fa-play fa-fw" style="text-align: center;"></i><i aria-hidden="true" class="fa fa-caret-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="dashboard-button dashboard-button-1 command-button" title="Show in Dashboard Menu"><i aria-hidden="true" class="fa fa-bar-chart fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="edit-button edit-button-1 command-button" title="Edit Menu"><i aria-hidden="true" class="fa fa-chevron-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="toggle-collapse-button command-button" title="Minimize"><i aria-hidden="true" class="fa fa-minus fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="remove-button command-button" title="Delete"><i aria-hidden="true" class="fa fa-remove fa-fw" style="text-align: center;"></i></a></div><div><div class="command-input previousPrompt"><div class="command-text command-text-finished"><div class="command-box wrappable"><textarea class="command-box-textarea codeeditor" tabindex="1" spellcheck="false" title="CodeMirrorTextArea" style="display: none;"></textarea><div class="CodeMirror cm-s-eclipse-focus CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 67.2px; left: 40px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" title="CodeMirrorHiddenTextArea" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -13px; border-right-width: 17px; min-height: 90px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>4</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 10px; top: 55.2px; height: 18.4px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">pyspark</span>.<span class="cm-property">sql</span> <span class="cm-keyword">import</span> <span class="cm-variable">SparkSession</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">spark</span><span class="cm-operator">=</span><span class="cm-variable">SparkSession</span>.<span class="cm-property">builder</span>.<span class="cm-property">appName</span>(<span class="cm-string">"test-kk"</span>).<span class="cm-property">getOrCreate</span>()</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">spark</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 17px; width: 1px; border-bottom: 0px solid transparent; top: 90px;"></div><div class="CodeMirror-gutters" style="height: 107px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 21px;"></div></div></div></div></div></div></div><div class="results-and-comments"><div class="command-result-wrapper"><div class="command-result"><div class="spinner"></div><div><div class="css-i4itxs"><div class="results"><div class="ansiout">Out[8]: </div></div></div><div class="results dashboard"><div class="dashboard"><div style="width: auto; position: relative; margin-top: 0px;"><div><div class="widget ui-resizable" data-guid="1a80ffa6-c16c-4501-ae54-6bf2dcad98b5" style="left: 0px; top: 0px; width: auto; height: auto; box-sizing: content-box;"><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" role="img" aria-label="Resize the chart by dragging this handler" style="z-index: 90;"></div><div class="widget-content dashboard"><div class="results"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms allow-same-origin allow-downloads" id="d6090df0-03e0-4293-8d10-2916cf6b9f92" width="100%" height="0" frameborder="0" style="overflow: hidden; filter: var(--invert-filter); height: 219px;" scrolling="no" seamless="seamless" src="./test - Databricks Community Edition_files/iframe(1).html" data-content="
+  
+  
+  &lt;style&gt;
+    
+/**
+ * NB: this stylesheet is loaded inline in sandboxed HTML iframes that may contain
+ * arbitrary untrusted content.  Be very careful what rules you add here.
+ */
+body, .mfe-root {
+  background-color: transparent;
+  margin: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+#content-wrapper {
+  overflow: auto;
+}
+
+#content-wrapper .markdown {
+  /**
+   * without overriding this, the height is 100% (of the containing block), which is
+   * initially quite small. The content will not fit, and will then depend on the
+   * `overflow` property, which is `hidden`. In theory, `overflow: visible` will expand the
+   * height to fit, but it has a bad interaction with postResizeMessage which causes the div
+   * to keep growing in size under _some_ (ES-9273) circumstances. `height: auto` has the same
+   * effect of allowing the browser to size the div but without the bad effects.
+   **/
+  height: auto;
+}
+
+/**
+ * Approximates the JupyterLab Light theme for display of pandas-like DataFrames.
+ *
+ * TODO: JupyterLab parameterizes theme-able properties using CSS variables.  This
+ * implementation hard-codes them.
+ */
+.dataframe {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+  table-layout: fixed;
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+.dataframe thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.dataframe tr {
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.dataframe th {
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.dataframe tbody tr:nth-child(odd) {
+  background: white;
+}
+.dataframe tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+.dataframe tbody tr:hover {
+  background-color: rgb(218, 242, 254);
+}
+.dataframe tbody tr th:only-of-type {
+  vertical-align: middle;
+}
+.dataframe tbody td {
+  font-size: 12px;
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+
+  &lt;/style&gt;
+  &lt;base href=&#39;https://community.cloud.databricks.com&#39; target=_blank&gt;
+  &lt;script&gt;
+    (function() {
+      var parentUri = &#39;https://community.cloud.databricks.com&#39;;
+      var originalWidth = null;
+      var originalHeight = null;
+      var scale = 1.0;
+      window.onerror = function(error) {
+        window.parent.postMessage({
+          type: &#39;frameJsError&#39;,
+          loc: window.location.href,
+          frameId: &#39;d6090df0-03e0-4293-8d10-2916cf6b9f92&#39;,
+          error: error,
+        }, parentUri);
+      };
+      function postResizeMessage() {
+        // There are 3 cases, and we take the first that&#39;s available
+        // 1) happy path: content is inlined. We use getBoundingClientRect to capture the dimension
+        //    of (scaled) visible content, including the margin.
+        //    {height, width} is captured via {bottom, right} to include any margin {top, left}.
+        //    This will handle both when there&#39;s collapsing margin &amp; not. See go/pr/43508
+        // 2) content is loaded dynamically, in which case getBoundingClientRect().height may be 0.
+        //    we use scroll{Width, Height} to capture the dimension regardless of what&#39;s currently
+        //    visible.
+        // 3) source in the iframe attaches to the document body and not the content-wrapper.
+        //    we use document.body.scroll{Width, Height}. See ES-3770
+        var wrapper = document.getElementById(&#39;content-wrapper&#39;);
+        var rect = wrapper.getBoundingClientRect();
+        var newWidth = (scale &amp;&amp; rect.right / scale) || wrapper.scrollWidth || document.body.scrollWidth;
+        var newHeight = (scale &amp;&amp; rect.bottom / scale) || wrapper.scrollHeight || document.body.scrollHeight;
+        if (Math.round(newWidth) != Math.round(originalWidth) || Math.round(newHeight) != Math.round(originalHeight)) {
+          originalWidth = newWidth;
+          originalHeight = newHeight;
+          window.parent.postMessage({
+            type: &#39;frameResizeEvent&#39;,
+            frameId: &#39;d6090df0-03e0-4293-8d10-2916cf6b9f92&#39;,
+            loc: window.location.href,
+            height: originalHeight,
+            width: originalWidth,
+            isAutoScaled: false,
+          }, parentUri);
+        }
+      };
+      // Sync size 4 times per second
+      setInterval(postResizeMessage, 250);
+
+      window.addEventListener(&#39;message&#39;, function(msg) {
+        var origin = msg.origin || msg.originalEvent.origin;
+        var isExportedHTML = origin === &#39;null&#39; &amp;&amp; parentUri === &#39;*&#39;;
+        if (origin !== parentUri &amp;&amp; !isExportedHTML) {
+          console.error(&#39;Invalid origin&#39;, origin, parentUri);
+          return;
+        }
+
+        
+        // set wrapper div&#39;s height to be the height of the iframe to make vertical scrolling work
+        var clientHeight = document.getElementsByTagName(&#39;body&#39;)[0].clientHeight;
+        document.body.style.height = clientHeight + &#39;px&#39;;
+        
+      });
+      
+    })();
+  &lt;/script&gt;
+  &lt;div id=&#39;content-wrapper&#39; class=&gt;
+            &lt;div&gt;
+                &lt;p&gt;&lt;b&gt;SparkSession - hive&lt;/b&gt;&lt;/p&gt;
+                
+        &lt;div&gt;
+            &lt;p&gt;&lt;b&gt;SparkContext&lt;/b&gt;&lt;/p&gt;
+
+            &lt;p&gt;&lt;a href=&quot;http://10.172.232.170:46374&quot;&gt;Spark UI&lt;/a&gt;&lt;/p&gt;
+
+            &lt;dl&gt;
+              &lt;dt&gt;Version&lt;/dt&gt;
+                &lt;dd&gt;&lt;code&gt;v3.0.1&lt;/code&gt;&lt;/dd&gt;
+              &lt;dt&gt;Master&lt;/dt&gt;
+                &lt;dd&gt;&lt;code&gt;local[8]&lt;/code&gt;&lt;/dd&gt;
+              &lt;dt&gt;AppName&lt;/dt&gt;
+                &lt;dd&gt;&lt;code&gt;Databricks Shell&lt;/code&gt;&lt;/dd&gt;
+            &lt;/dl&gt;
+        &lt;/div&gt;
+        
+            &lt;/div&gt;
+        
+  &lt;/div&gt;">
+</iframe></div></div></div></div></div></div></div></div><div class="command-result-stats">Command took <span>0.05 seconds</span> -- by kk.career.prof@gmail.com at 7/11/2021, 1:25:20 PM on spark-kk</div></div></div><div style="clear: both;"></div></div></div></div></div></div><div class="heading-command-wrapper heading-command-wrapper-focused"><div class="command divider"><a class="btn btn-default btn-circle insert-command-btn" title="Insert a new cell"><i class="fa fa-plus fa-fw" style="text-align: center;"></i></a><a class="btn btn-default btn-circle paste-command-btn hidden" title="Paste cell here"><i class="fa fa-paste fa-fw" style="text-align: center;"></i></a></div></div><div class="heading-command-wrapper heading-command-wrapper-focused"><div class="heading-toggler"></div><div class="command-with-number"><a class="command-number" href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329/command/1850794666789180"><i class="fa fa-link" style="text-align: center;"></i>Cmd 3</a><div class="new-notebook command mainCommand command-active command-focused is-editing command-finished cellIndex-2 cell-3501958899626329-1850794666789180"><div class="command-comments-wrapper"></div><a class="move-command-btn" draggable="true"><i class="fa fa-sort" style="text-align: center;"></i></a><div class="command-buttons"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="run-command-button command-button" title="Run Cell"><i aria-hidden="true" class="fa fa-play fa-fw" style="text-align: center;"></i><i aria-hidden="true" class="fa fa-caret-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="edit-button edit-button-2 command-button" title="Edit Menu"><i aria-hidden="true" class="fa fa-chevron-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="toggle-collapse-button command-button" title="Minimize"><i aria-hidden="true" class="fa fa-minus fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="remove-button command-button" title="Delete"><i aria-hidden="true" class="fa fa-remove fa-fw" style="text-align: center;"></i></a></div><div><div class="command-input previousPrompt"><div class="command-text command-text-edit command-text-finished"><div class="command-box wrappable"><textarea class="command-box-textarea codeeditor" tabindex="1" spellcheck="false" title="CodeMirrorTextArea" style="display: none;"></textarea><div class="CodeMirror cm-s-eclipse-focus CodeMirror-wrap CodeMirror-focused"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 12px; left: 375.4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" title="CodeMirrorHiddenTextArea" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -13px; border-right-width: 17px; min-height: 54px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>2</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 345.4px; top: 0px; height: 18.4px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#dbutils.fs.rm</span><span class="cm-comment CodeMirror-matchingbracket">(</span><span class="cm-comment">"/user/hive/warehouse",True</span><span class="cm-comment CodeMirror-matchingbracket">)</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 17px; width: 1px; border-bottom: 0px solid transparent; top: 54px;"></div><div class="CodeMirror-gutters" style="height: 71px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 21px;"></div></div></div></div></div></div></div><div class="results-and-comments"><div class="command-result-wrapper"><div class="command-result"><div class="spinner"></div><div class="css-i4itxs"><div class="results"><div class="ansiout">Out[101]: False</div></div></div><div class="command-result-stats">Command took <span>0.10 seconds</span> -- by kk.career.prof@gmail.com at 7/11/2021, 2:17:14 PM on spark-kk</div></div></div><div style="clear: both;"></div></div></div></div></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="command divider"><a class="btn btn-default btn-circle insert-command-btn" title="Insert a new cell"><i class="fa fa-plus fa-fw" style="text-align: center;"></i></a><a class="btn btn-default btn-circle paste-command-btn hidden" title="Paste cell here"><i class="fa fa-paste fa-fw" style="text-align: center;"></i></a></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="heading-toggler"></div><div class="command-with-number"><a class="command-number" href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329/command/1850794666789178"><i class="fa fa-link" style="text-align: center;"></i>Cmd 4</a><div class="new-notebook command mainCommand command-finished cellIndex-3 cell-3501958899626329-1850794666789178"><div class="command-comments-wrapper"></div><a class="move-command-btn" draggable="true"><i class="fa fa-sort" style="text-align: center;"></i></a><div class="command-buttons"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="run-command-button command-button" title="Run Cell"><i aria-hidden="true" class="fa fa-play fa-fw" style="text-align: center;"></i><i aria-hidden="true" class="fa fa-caret-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="edit-button edit-button-3 command-button" title="Edit Menu"><i aria-hidden="true" class="fa fa-chevron-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="toggle-collapse-button command-button" title="Minimize"><i aria-hidden="true" class="fa fa-minus fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="remove-button command-button" title="Delete"><i aria-hidden="true" class="fa fa-remove fa-fw" style="text-align: center;"></i></a></div><div><div class="command-input previousPrompt"><div class="command-text command-text-finished"><div class="command-box wrappable"><textarea class="command-box-textarea codeeditor" tabindex="1" spellcheck="false" title="CodeMirrorTextArea" style="display: none;"></textarea><div class="CodeMirror cm-s-eclipse-focus CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 12px; left: 40px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" title="CodeMirrorHiddenTextArea" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -13px; border-right-width: 17px; min-height: 35px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like">x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 10px; top: 0px; height: 18.4px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">appl_stock</span><span class="cm-operator">=</span><span class="cm-variable">spark</span>.<span class="cm-property">read</span>.<span class="cm-property">csv</span>(<span class="cm-string">"/FileStore/tables/appl_stock.csv"</span>,<span class="cm-variable">header</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>,<span class="cm-variable">sep</span><span class="cm-operator">=</span><span class="cm-string">","</span>,<span class="cm-variable">inferSchema</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 17px; width: 1px; border-bottom: 0px solid transparent; top: 35px;"></div><div class="CodeMirror-gutters" style="height: 52px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 21px;"></div></div></div></div></div></div></div><div class="results-and-comments"><div class="command-result-wrapper"><div class="command-result"><div class="spinner expanded"><div class="command-stage-info " data-test-id="collapsible-command-result-metadata-container"><p data-test-id="command-result-metadata-collapse-toggle" class="clickable-text"><i data-test-id="commmand-result-metadata-collapse-icon" class="fa fa-caret-right fa-fw" style="text-align: center;"></i>(2) Spark Jobs</p></div></div><div class="dataset-info-view"><div class=""><a class="tree-toggler"><i class="fa fa-caret-right fa-fw" style="text-align: center;"></i><i class="fa fa-list-alt fa-fw" style="text-align: center;"></i><span class="spacing-left">appl_stock:</span><span class="spacing-left">pyspark.sql.dataframe.DataFrame = [Date: string, Open: double ... 5 more fields]</span></a></div><div class="css-i4itxs"><div class="outer-most-struct"></div></div></div><div class="css-i4itxs"><div class="results"><div class="ansiout">Out[89]: ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Adj Close']</div></div></div><div class="command-result-stats">Command took <span>0.99 seconds</span> -- by kk.career.prof@gmail.com at 7/11/2021, 2:09:10 PM on spark-kk</div></div></div><div style="clear: both;"></div></div></div></div></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="command divider"><a class="btn btn-default btn-circle insert-command-btn" title="Insert a new cell"><i class="fa fa-plus fa-fw" style="text-align: center;"></i></a><a class="btn btn-default btn-circle paste-command-btn hidden" title="Paste cell here"><i class="fa fa-paste fa-fw" style="text-align: center;"></i></a></div></div><div class="heading-command-wrapper heading-command-wrapper-not-focused"><div class="heading-toggler"></div><div class="command-with-number"><a class="command-number" href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329/command/1850794666789179"><i class="fa fa-link" style="text-align: center;"></i>Cmd 5</a><div class="new-notebook command mainCommand command-finished cellIndex-4 cell-3501958899626329-1850794666789179"><div class="command-comments-wrapper"></div><a class="move-command-btn" draggable="true"><i class="fa fa-sort" style="text-align: center;"></i></a><div class="command-buttons"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="run-command-button command-button" title="Run Cell"><i aria-hidden="true" class="fa fa-play fa-fw" style="text-align: center;"></i><i aria-hidden="true" class="fa fa-caret-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="edit-button edit-button-4 command-button" title="Edit Menu"><i aria-hidden="true" class="fa fa-chevron-down fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="toggle-collapse-button command-button" title="Minimize"><i aria-hidden="true" class="fa fa-minus fa-fw" style="text-align: center;"></i></a><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="remove-button command-button" title="Delete"><i aria-hidden="true" class="fa fa-remove fa-fw" style="text-align: center;"></i></a></div><div><div class="command-input previousPrompt primaryPrompt"><div class="command-text command-text-finished"><div class="command-box wrappable"><textarea class="command-box-textarea codeeditor" tabindex="1" spellcheck="false" title="CodeMirrorTextArea" style="display: none;"></textarea><div class="CodeMirror cm-s-eclipse-focus CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 85.6px; left: 40px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" title="CodeMirrorHiddenTextArea" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: -13px; border-right-width: 17px; min-height: 109px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>5</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 10px; top: 73.6px; height: 18.4px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">appl_stock</span>.<span class="cm-property">columns</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">appl_stock</span>.<span class="cm-property">printSchema</span>())</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">appl_stock</span>.<span class="cm-property">take</span>(<span class="cm-number">2</span>))</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">appl_stock</span>.<span class="cm-property">count</span>())</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 13px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">appl_stock</span>.<span class="cm-property">describe</span>()</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 17px; width: 1px; border-bottom: 0px solid transparent; top: 109px;"></div><div class="CodeMirror-gutters" style="height: 126px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 21px;"></div></div></div></div></div></div></div><div class="results-and-comments"><div class="command-result-wrapper"><div class="command-result"><div class="spinner expanded"><div class="command-stage-info " data-test-id="collapsible-command-result-metadata-container"><p data-test-id="command-result-metadata-collapse-toggle" class="clickable-text"><i data-test-id="commmand-result-metadata-collapse-icon" class="fa fa-caret-right fa-fw" style="text-align: center;"></i>(5) Spark Jobs</p></div></div><div class="css-i4itxs"><div class="results"><div class="ansiout">['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'Adj Close']
+root
+ |-- Date: string (nullable = true)
+ |-- Open: double (nullable = true)
+ |-- High: double (nullable = true)
+ |-- Low: double (nullable = true)
+ |-- Close: double (nullable = true)
+ |-- Volume: integer (nullable = true)
+ |-- Adj Close: double (nullable = true)
+
+None
+[Row(Date='2010-01-04', Open=213.429998, High=214.499996, Low=212.38000099999996, Close=214.009998, Volume=123432400, Adj Close=27.727039), Row(Date='2010-01-05', Open=214.599998, High=215.589994, Low=213.249994, Close=214.379993, Volume=150476200, Adj Close=27.774976000000002)]
+1762
+Out[91]: DataFrame[summary: string, Date: string, Open: string, High: string, Low: string, Close: string, Volume: string, Adj Close: string]</div></div></div><div class="command-result-stats">Command took <span>1.84 seconds</span> -- by kk.career.prof@gmail.com at 7/11/2021, 2:12:11 PM on spark-kk</div></div></div><div style="clear: both;"></div></div></div></div></div></div><div class="heading-command-wrapper"><div class="command divider"><a class="btn btn-default btn-circle insert-command-btn" title="Insert a new cell"><i class="fa fa-plus fa-fw" style="text-align: center;"></i></a><a class="btn btn-default btn-circle paste-command-btn hidden" title="Paste cell here"><i class="fa fa-paste fa-fw" style="text-align: center;"></i></a></div></div><div class="submit-hint">Shift+Enter to run&nbsp;&nbsp;&nbsp;</div><div class="contentSpacer" style="background: rgb(255, 255, 255); height: 0px;"></div><div style="min-height: 375px;"></div></div><div class="notebook-footer"></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="SideMenu"></uses-legacy-bootstrap></main></section><uses-legacy-bootstrap data-wrapped-element-id="CommandSelectionPopover"><div id="selection-popover" class="add-comment" style="top: 439.6px; right: 50px;"><a class="btn btn-default btn-circle"><i class="fa fa-comment-o fa-fw css-20rwj2" style="text-align: center;"></i></a></div></uses-legacy-bootstrap></div></div></div></div></div><uses-legacy-bootstrap data-wrapped-element-id="filebrowser-popup"><div id="filebrowser-popup" style="left: -476px; display: none;"><a class="ft-pin-button" href="https://community.cloud.databricks.com/?o=8711736242127373#" title="Pin side panels"></a><div class="filebrowser-header">Workspace <a class="btn btn-secondary file-browser-header-button js-home-button"><i class="fa fa-home fa-fw"></i> Home</a></div><div class="filebrowser filetree" style="width: 532px; display: none;" data-state="invisible" data-history-size="30"><div class="inner"><nav class="ft-panel ui-droppable ui-resizable" aria-label="Workspace" data-panel="Workspace" style="width: 266px;"><ul class="ft-panel-list"><li class="filetree-list-item top-link has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="filetree-link" title="Workspace"><i class="fa fa-databricks-does-not-exist fa-fw"></i><span class="filetree-display-name">Workspace</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-chevron-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="filetree-link ui-droppable" title="Shared"><i class="fa fa-share-alt-square fa-fw"></i><span class="filetree-display-name">Shared</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu selected"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="filetree-link ui-droppable" title="Users"><i class="fa fa-users fa-fw"></i><span class="filetree-display-name">Users</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li></ul><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div></nav><nav class="ft-panel ui-droppable ui-resizable" aria-label="Shared" data-panel="Users" style="width: 0px;"><ul class="ft-panel-list"><li class="filetree-list-item top-link has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="filetree-link" title="Users"><i class="fa fa-databricks-does-not-exist fa-fw"></i><span class="filetree-display-name">Users</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-chevron-down"></i></div></a></li><li class="filetree-list-item home-folder has-menu selected"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="home-folder filetree-link ui-droppable" title="kk.career.prof@gmail.com"><i class="fa fa-home fa-fw"></i><span class="filetree-display-name"><span class="email-name">kk.career.prof</span><span class="email-domain">@gmail.com</span></span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li></ul><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div></nav><nav class="ft-panel ui-droppable ui-resizable" aria-label="kk.career.prof@gmail.com" data-panel="kk.career.prof@gmail.com" style="width: 0px;"><ul class="ft-panel-list"><li class="filetree-list-item top-link has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" role="button" class="filetree-link" title="kk.career.prof@gmail.com"><i class="fa fa-databricks-does-not-exist fa-fw"></i><span class="filetree-display-name">kk.career.prof@gmail.com</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-chevron-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/515212422802924" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="2020-09-29 - DBFS Example"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="false"></i><span class="filetree-display-name">2020-09-29 - DBFS Example</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/1558788966497514" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="DataFrame_Basic_Operations"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="true"></i><span class="filetree-display-name">DataFrame_Basic_Operations</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/1558788966497540" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="GroupBy_and_Aggregate_Functions"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="false"></i><span class="filetree-display-name">GroupBy_and_Aggregate_Functions</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/781948004483811" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="kksparkbook"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="true"></i><span class="filetree-display-name">kksparkbook</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/1850794666789133" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="Quickstart Notebook"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="false"></i><span class="filetree-display-name">Quickstart Notebook</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3276760632788173" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="spark_appl_sales_info"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="true"></i><span class="filetree-display-name">spark_appl_sales_info</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li><li class="filetree-list-item has-menu selected"><a href="https://community.cloud.databricks.com/?o=8711736242127373#notebook/3501958899626329" role="button" class="filetree-link ui-draggable ui-draggable-handle" title="test"><i class="fa fa-file-text-o fa-fw" data-cluster-ready="true"></i><span class="filetree-display-name">test</span><div class="dropdown" tabindex="0" role="button"><i class="fa fa-caret-down"></i></div></a></li></ul><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div></nav></div></div><a class="ft-scroll-angle-left" href="https://community.cloud.databricks.com/?o=8711736242127373#" title="Scroll to left"><i class="fa fa-angle-left"></i></a><a class="ft-scroll-angle-right" href="https://community.cloud.databricks.com/?o=8711736242127373#" title="Scroll to right"><i class="fa fa-angle-right"></i></a></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="projects-filebrowser-popup"><div id="projects-filebrowser-popup" style="display: none"><div class="filebrowser" style="display: none"></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="searchpanel-popup"><div id="searchpanel-popup"><div class="searchpanel ui-resizable" data-panel="Search" style="display: none" data-state="invisible"><div class="search-panel-content"><a class="ft-pin-button" title="Pin side panels"></a><div class="newsearch"><input title="Search Workspace" class="newsearch searchbox" type="text" placeholder="Search Workspace" aria-label="Search Workspace" wtx-context="D60B6D26-DBB8-4D1B-8FC2-670B61A34D8B"><span class="search-mixin-spinner"><i class="fa fa-spinner fa-spin" style="text-align: center;"></i></span></div><ul aria-live="polite"></ul></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="title-menu"><div id="title-menu" class="tb-title-menu dropdown-menu" role="menu"></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="user-menu"><div id="user-menu" class="dropdown-menu"><div class="user-menu-view"><div class="account-section"><div class="header" title="kk.career.prof@gmail.com">Signed in as<br><b>kk.career.prof@gmail.com</b></div><ul><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#setting/account" class="accounts-link settings-button"><div class="accounts-text">User Settings</div></a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#setting/accounts" class="accounts-link admin-console-button"><div class="accounts-text">Admin Console</div></a></li><li><a href="https://accounts.cloud.databricks.com/login" class="accounts-link manage-account-button"><div class="accounts-text">Manage Account</div></a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#setting/logout" class="accounts-link logout-button"><div class="accounts-text">Log Out</div></a></li></ul></div><hr><div><div class="org-section"><div class="header">Workspaces</div><ul class="confirmed-workspaces"><li><a class="workspace-link" data-name="mphasis" target="_blank" title="mphasis (kk.career.prof@gmail.com)"><div class="workspace-item"><div class="workspace-text"><div class="icon"><i class="fa fa-check" style="text-align: center;"></i></div><div class="workspace-name">mphasis</div></div><div class="workspace-owner">kk.career.prof@gmail.com</div></div></a></li></ul></div></div></div></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="dropdown-menu"><ul id="help-menu" class="dropdown-menu newhelp" role="menu" style="display: none;"><div><div class="input"><i class="fa fa-search fa-fw" style="text-align: center;"></i><input title="Search" class="newsearch" type="text" placeholder="Search" aria-label="Search" wtx-context="2BB87903-A989-4F2B-9D5C-C0CEB999D4AF"><span class="search-mixin-spinner"><i class="fa fa-spinner fa-spin" style="text-align: center;"></i></span></div><ul aria-live="polite" style="max-height: 591px;"></ul></div></ul></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="hidden"><div id="hidden" style="display: none"></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="history"><div id="history" style="display: none"><div id="history-head">
+  
+  <h3 class="history-title">
+    Recent Activity
+    <i class="hide-recent-activity remove-button fa fa-remove fa-fw"></i>
+  </h3>
+  
+</div>
+
+<div id="history-list">
+  <ul>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:17:13</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:16:53</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:16:30</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:16:15</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:16:00</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:15:46</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:15:42</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:15:34</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:15:28</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:15:06</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Added a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:14:19</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:12:11</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:10:49</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:09:09</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:08:59</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:08:54</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:05:12</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:02:40</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:01:29</p>
+      </div>
+    </li>
+    
+    <li class="history-item">
+      <div class="history-user-avatar" style="background-color: #1f77b4">
+        K
+      </div>
+      <div class="history-item-action">
+        <p class="user-name">kk.career.prof@gmail.com:</p>
+        <p class="user-message">Ran a command</p>
+      </div>
+      <div class="history-item-timestamp">
+        <p>2021-07-11 14:01:27</p>
+      </div>
+    </li>
+    
+  </ul>
+</div>
+</div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="proxy-endpoints-conn-test-iframe"><div id="proxy-endpoints-conn-test-iframe" style="display: none"><iframe src="./test - Databricks Community Edition_files/proxy-endpoints-domain-conn-test.html" height="0" width="0" tabindex="-1" title="empty" class="hidden"></iframe></div></uses-legacy-bootstrap><uses-legacy-bootstrap data-wrapped-element-id="debugHelper"><div id="debugHelper" style="z-index: 1000; display: none; position: fixed; right: 190px; bottom: 0px"><div id="debugRoute" style="position: fixed; right: 190px; bottom: 40px"></div><div id="debugCounters" style="color: var(--primary-text-color); position: fixed; right: 50px; bottom: 20px"></div><a href="https://community.cloud.databricks.com/ops/">[OPS]</a> <a href="https://community.cloud.databricks.com/ops/debug">Debug</a> <a href="https://community.cloud.databricks.com/ops/metrics">Metrics</a> <a href="https://community.cloud.databricks.com/ops/requests">Requests</a></div></uses-legacy-bootstrap><script>function addPrefetches(paths) {
+        paths.forEach(path => {
+          var element = document.createElement('link');
+          element.rel = 'prefetch';
+          element.href = path;
+          document.getElementsByTagName('head')[0].appendChild(element);
+        })
+      }
+      setTimeout(() => {
+        addPrefetches(["js/561.7b501a27.chunk.js","media/pin-inactive.20f63293.svg","media/pin-active.b76ded7a.svg","media/jupyter_favicon.3567d082.svg","media/azure_devops_logo_hover.4f1e3fd4.svg","media/azure_devops_logo.8e2ba35d.svg","media/newslablight-webfont.9b543473.eot","media/newslablight-webfont.69cfbff8.woff2","media/newslablight-webfont.a432b296.woff","media/newslablight-webfont.ac42ae0f.ttf","media/newslablight-webfont.947cf4d7.svg","media/databricks-regular-webfont.421acd19.eot","media/databricks-regular-webfont.ffd92669.woff","media/databricks-regular-webfont.ab15115e.ttf","media/databricks-regular-webfont.9c3c6e3b.svg","media/fontawesome-webfont.f7c2b4b7.eot","media/fontawesome-webfont.d9ee23d5.woff","media/fontawesome-webfont.706450d7.ttf","media/fontawesome-webfont.29800836.svg","media/mrl8jkM18OlOQN8JLgasD4a1YDtoarzwSXxTHggEXMw.38bca7eb.woff2","media/mrl8jkM18OlOQN8JLgasD5bPFduIYtoLzwST68uhz_Y.72b61933.woff2","media/leqv3v-yTsJNC7nFznSMqe4s1Ux4PuImWPk5fSr6HPL3rGVtsTkPsbDajuO5ueQw.e82262e6.woff2","media/leqv3v-yTsJNC7nFznSMqZkF8H8ye47wsfpWywda8og.5e7f98de.woff2","media/glyphicons-halflings.25163399.png","media/spritemap.a012b1b1.png","media/spritemap@2x.cfe9d800.png","media/fontawesome-webfont.674f50d2.eot","media/fontawesome-webfont.af7ae505.woff2","media/fontawesome-webfont.fee66e71.woff","media/fontawesome-webfont.b06871f2.ttf","media/fontawesome-webfont.912ec66d.svg","media/KaTeX_AMS-Regular.3d8245dc.woff2","media/KaTeX_AMS-Regular.ac1d46d9.woff","media/KaTeX_AMS-Regular.c67be87a.ttf","media/KaTeX_Caligraphic-Bold.970d3e76.woff2","media/KaTeX_Caligraphic-Bold.445f96a3.woff","media/KaTeX_Caligraphic-Bold.3f61a84d.ttf","media/KaTeX_Caligraphic-Regular.0ef0f2e3.woff2","media/KaTeX_Caligraphic-Regular.74f6918c.woff","media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf","media/KaTeX_Fraktur-Bold.950649ba.woff2","media/KaTeX_Fraktur-Bold.1aca7ef7.woff","media/KaTeX_Fraktur-Bold.e11e6bf0.ttf","media/KaTeX_Fraktur-Regular.135ccd74.woff2","media/KaTeX_Fraktur-Regular.c5b430bf.woff","media/KaTeX_Fraktur-Regular.a9509497.ttf","media/KaTeX_Main-Bold.82bce349.woff2","media/KaTeX_Main-Bold.29d4b276.woff","media/KaTeX_Main-Bold.db576c7d.ttf","media/KaTeX_Main-BoldItalic.13900e55.woff2","media/KaTeX_Main-BoldItalic.3f3be43b.woff","media/KaTeX_Main-BoldItalic.cec43f72.ttf","media/KaTeX_Main-Italic.b488f60f.woff2","media/KaTeX_Main-Italic.f8a75448.woff","media/KaTeX_Main-Italic.85b3329f.ttf","media/KaTeX_Main-Regular.999cd6ba.woff2","media/KaTeX_Main-Regular.485696cf.woff","media/KaTeX_Main-Regular.f4fe6dca.ttf","media/KaTeX_Math-Italic.7a31741a.woff2","media/KaTeX_Math-Italic.8eb56b3f.woff","media/KaTeX_Math-Italic.10740d74.ttf","media/KaTeX_SansSerif-Bold.0d0f967a.woff2","media/KaTeX_SansSerif-Bold.99bd8743.woff","media/KaTeX_SansSerif-Bold.771a1f95.ttf","media/KaTeX_SansSerif-Italic.b1ac79b9.woff2","media/KaTeX_SansSerif-Italic.9c3f03ec.woff","media/KaTeX_SansSerif-Italic.cb729d47.ttf","media/KaTeX_SansSerif-Regular.23f1730f.woff2","media/KaTeX_SansSerif-Regular.fc908397.woff","media/KaTeX_SansSerif-Regular.43b0cb92.ttf","media/KaTeX_Script-Regular.ae1fad1f.woff2","media/KaTeX_Script-Regular.60febfa1.woff","media/KaTeX_Script-Regular.e9169ca7.ttf","media/KaTeX_Size1-Regular.fda0824e.woff2","media/KaTeX_Size1-Regular.1d6cf6b8.woff","media/KaTeX_Size1-Regular.f2e296ef.ttf","media/KaTeX_Size2-Regular.a7a0eb93.woff2","media/KaTeX_Size2-Regular.f48e83b7.woff","media/KaTeX_Size2-Regular.0767ede6.ttf","media/KaTeX_Size3-Regular.397bd687.woff2","media/KaTeX_Size3-Regular.0387ab38.woff","media/KaTeX_Size3-Regular.882f7234.ttf","media/KaTeX_Size4-Regular.3c14ed11.woff2","media/KaTeX_Size4-Regular.726db3bd.woff","media/KaTeX_Size4-Regular.27901d5c.ttf","media/KaTeX_Typewriter-Regular.895baecf.woff2","media/KaTeX_Typewriter-Regular.696705de.woff","media/KaTeX_Typewriter-Regular.6374f53e.ttf","media/spinner_green.b9455049.svg","media/spinner_red.e709549b.svg","media/models_black.4d9db537.svg","media/models_white.6217d9bd.svg","media/experiments_black.c033a121.svg","media/experiments_white.3f96bc22.svg","media/bmt-icon-active.ce61e68e.svg","media/bmt-icon-inactive.22ee4d75.svg","media/bmt-favicon.24e70a2e.ico","media/sidebar_logo.e0f86dff.svg","media/fa-table.bca1da2b.svg","media/fa-columns.e6b594bf.svg","media/circle_success.dad29e90.svg","media/circle_empty.d19e78d3.svg","media/circle_error.8849b329.svg","media/circle_dash.a3fb0746.svg","media/circle_three_dots.c9940a52.svg","media/rotating_circle.08f8bce7.svg","media/spinner_blue.5bbd1389.svg","media/collapsingAllIcon.ea2ba3e2.svg","media/expandingAllIcon.283f7837.svg","media/spinner.7eb0071e.svg","media/if_lightbulb.32b79969.svg","media/ellipse-2s-30px.d5e7584e.gif","media/us-map.be17f64a.json","media/world-map.733c99c2.json","media/BMT_logo_large.55205282.svg","media/databricks_community_edition.4b5df8f5.png","media/ml_dashboard_ill_notebook.23ac68a0.svg","media/ml_dashboard_ill_automl.7762ae64.svg","media/ml_dashboard_ill_training.c2b6741e.svg","media/ml_dashboard_ill_reference_solutions.27d60c43.svg","media/General_icon.e1d0c7d0.svg","media/Python_icon.26f13d73.svg","media/R_icon.9b70c497.svg","media/Scala_icon.bf5e6302.svg","media/add_data_icon.84c14774.svg","media/code_icon.db13a367.svg","media/help_doc_icon.cc60a36f.svg","media/icon-import-data.e32bacc6.svg","media/icon-new-notebook.b1dacb7d.svg","media/icon-quickstart-notebook.6697345f.svg","media/icon-upload-data-non-drop-zone.a8a27e15.svg","media/icon-upload-data.38e1c933.svg","media/fivetran.3e6c82f5.png","media/qlik.87633461.png","media/infoworks.ad724fa0.png","media/streamsets.b85b03e8.png","media/syncsort.11608e03.jpg","media/stitch.ef1319b5.svg","media/view_notebook_revision.60fa88c5.svg","media/logged_model.52a4e455.svg","media/registered_model.8745ea83.svg","media/placeholder_pic.4788048f.png","media/mlflow_notebook_revision_icon.fb30c75b.svg","media/mlflow_cluster_spec_icon.e1a9d318.svg","media/mlflow_cluster_libraries_icon.1e1bbbe8.svg","login/login.87b18200.js","js/main.cb9f603c.js","js/metrics-graphics.ed6ac9b1.js","static/media/spinner.gif","login/DB_Azure_Lockup_2x.png","login/bootstrap.min.css","login/databricks_ce_icon.svg","login/databricks_logoTM_rgb_TM.svg","login/favicon.ico","login/logo_2020/azure_databricks.png","login/logo_2020/databricks.svg","login/logo_2020/databricks_community_edition.png","static/iframe.html","static/css/sparkui-iframe.css","static/js/heap/heap-1473692602.js","static/js/heap/heap-210092139.js","static/js/heap/heap-3428506230.js","login/5500.bca5da39.chunk.css","css/7722.9b06b975.chunk.css","login/7350.19b29d3d.chunk.js","login/737.40fadf6d.chunk.js","css/GraphqlClustersGetPage.ef46acd6.chunk.css","css/AdminConsoleView.85d36214.chunk.css","css/UserSettingsView.aaaa5c97.chunk.css","css/LibraryView.422f590b.chunk.css","css/CreateMlflowExperimentPage.22cb67ad.chunk.css","css/LatestJobRunViewContainer.aaaa5c97.chunk.css","css/JobRunView.aaaa5c97.chunk.css","css/ReactNotebookView.e7ccd2ac.chunk.css","login/8398.542532ec.chunk.css","css/5058.62a28f77.chunk.css","login/5500.b448afd3.chunk.js","login/6456.450c0342.chunk.js","login/6519.0a2dada9.chunk.js","login/226.d201f34b.chunk.js","login/4963.468908a9.chunk.js","js/7722.67348d9f.chunk.js","login/8705.b6d9ccd4.chunk.js","login/6561.5057b29f.chunk.js","login/2422.ce8bf1ee.chunk.js","js/9319.c3039973.chunk.js","js/6471.e8de65e9.chunk.js","js/4602.f1fd2141.chunk.js","js/2851.312cc062.chunk.js","js/9463.bdd37671.chunk.js","js/5198.7026fa13.chunk.js","js/9152.4e0a1fbd.chunk.js","js/7032.e04f4bbe.chunk.js","js/2662.b35085c7.chunk.js","js/1511.83e65cc8.chunk.js","js/5355.2310490a.chunk.js","js/9946.b3aed466.chunk.js","js/1730.edef297a.chunk.js","js/2532.d79cce10.chunk.js","js/5489.77069972.chunk.js","js/8513.c202833e.chunk.js","js/7676.cfd1c69c.chunk.js","js/5197.8b804381.chunk.js","js/8732.5f954f70.chunk.js","js/3449.d8f1ac8d.chunk.js","js/199.ac66274c.chunk.js","js/3345.a3a55e5d.chunk.js","js/8553.18f14a7f.chunk.js","js/6595.0a1e889c.chunk.js","js/2380.4e2c45c7.chunk.js","js/5070.338d68b0.chunk.js","js/8571.5b8e7789.chunk.js","js/9957.21660c5b.chunk.js","js/8985.4b06882c.chunk.js","js/4227.445b8e4a.chunk.js","js/1922.e855cff9.chunk.js","js/9793.39dcb535.chunk.js","login/5259.c5b085dd.chunk.js","js/6415.7f01ce9e.chunk.js","login/8398.4da9dcff.chunk.js","login/3802.5a4d07b6.chunk.js","login/7652.2fa92d44.chunk.js","js/5058.1ccc3816.chunk.js","js/9987.00bf9f38.chunk.js","login/2773.333b2be3.chunk.js","js/4440.5d09649e.chunk.js","js/8700.219cd0a9.chunk.js","js/8501.cd3651d8.chunk.js","js/9483.6f241921.chunk.js","js/3.12eff224.chunk.js","js/5301.4d212b62.chunk.js","js/6924.1ca72965.chunk.js","js/8053.34da20ef.chunk.js","js/657.a242b0f3.chunk.js","js/896.933ce0d6.chunk.js","js/5808.5adb0462.chunk.js","login/1337.60f4ea2b.chunk.js","js/9204.cb80ee0f.chunk.js","js/8563.d18ec07e.chunk.js","favicon.ico","login.html",])
+      }, 30000)</script><script src="./test - Databricks Community Edition_files/metrics-graphics.ed6ac9b1.js.download"></script><script src="./test - Databricks Community Edition_files/main.cb9f603c.js.download"></script><uses-legacy-bootstrap><div class="filebrowser-context-menu dropdown-menu active" tabindex="-1" data-id="4036779291961070" role="menu" style="display: none; left: 686px; top: 81.2px;"><li class="dropdown-submenu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Create">Create</a><ul class="dropdown-menu"><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Notebook">Notebook</a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Library">Library</a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Folder">Folder</a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="MLflow Experiment">MLflow Experiment</a></li></ul></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Clone">Clone</a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Import">Import</a></li><li class="dropdown-submenu"><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Export">Export</a><ul class="dropdown-menu"><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="DBC Archive">DBC Archive</a></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="HTML">HTML</a></li></ul></li><li><a href="https://community.cloud.databricks.com/?o=8711736242127373#" data-name="Copy Link Address">Copy Link Address</a></li></div></uses-legacy-bootstrap><div class="ReactModalPortal"></div><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 27px; top: 76px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow"></div><div class="rc-tooltip-inner" role="tooltip">Attached to cluster: spark-kk, 15.25 GB | 2 Cores | DBR 7.3 LTS | Spark 3.0.1 | Scala 2.12</div></div></div></div></div><uses-legacy-bootstrap>
+        
+      </uses-legacy-bootstrap><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 661px; top: 78px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow" style="left: 85.15px;"></div><div class="rc-tooltip-inner" role="tooltip">Run all cells in this notebook.</div></div></div></div></div><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 1311.45px; top: 78px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow" style="left: 155.525px;"></div><div class="rc-tooltip-inner" role="tooltip">View revision history for this notebook.</div></div></div></div></div><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 990px; top: 78px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow" style="left: 157.363px;"></div><div class="rc-tooltip-inner" role="tooltip">This notebook will be published publicly and anyone with the link can view it</div></div></div></div></div><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 1124px; top: 78px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow" style="left: 118.188px;"></div><div class="rc-tooltip-inner" role="tooltip">View and add comments to this notebook.</div></div></div></div></div><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 1191px; top: 78px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow" style="left: 156.65px;"></div><div class="rc-tooltip-inner" role="tooltip"><span>Use the MLflow tracking API to record runs from this notebook.<a href="https://docs.databricks.com/applications/mlflow/tracking.html#tracking-machine-learning-training-runs" target="_blank" rel="noopener noreferrer">Learn more</a></span></div></div></div></div></div><uses-legacy-bootstrap>
+        
+      </uses-legacy-bootstrap><uses-legacy-bootstrap>
+        
+      </uses-legacy-bootstrap><div style="position: absolute; top: 0px; left: 0px; width: 100%;"><div><div class="rc-tooltip notebook-title-tooltip rc-tooltip-placement-bottom  rc-tooltip-hidden" style="left: 0px; top: 39px;"><div class="rc-tooltip-content"><div class="rc-tooltip-arrow"></div><div class="rc-tooltip-inner" role="tooltip">Workspace/Users/kk.career.prof@gmail.com/test</div></div></div></div></div><div id="notebook-embedded-spark-ui" class="" style="display: none;"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
