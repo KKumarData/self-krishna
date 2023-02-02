@@ -1,0 +1,28 @@
+from flask import Flask, request
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return "Welcome to the Flask API!"
+
+@app.route("/data", methods=["GET", "POST", "HEAD"])
+def data():
+    if request.method == "POST":
+        # Handle POST request
+        data = request.get_json()
+        # Do something with the data
+        return "Data received", 200
+
+    elif request.method == "GET":
+        # Handle GET request
+        # Return some data
+        return "This is some data", 200
+
+    elif request.method == "HEAD":
+        # Handle HEAD request
+        # Return headers only
+        return "", 200
+
+
+if __name__ == "__main__":
+    app.run()
