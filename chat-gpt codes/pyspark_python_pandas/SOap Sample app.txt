@@ -1,29 +1,42 @@
-Yes, you can create a simple SOAP API using Python. One popular library for this purpose is the flask_soapify library, which provides a Flask extension that makes it easy to create and manage SOAP APIs. Here's an example of how you could use the flask_soapify library to create a simple SOAP API in Python:
+Here's an example of how you can create a simple SOAP API using the zeep library in Python:
 
-from flask import Flask
-from flask_soapify import Soapify
+from flask import Flask, request
+from zeep import Client
+from zeep.transports import Transport
+from zeep.exceptions import Fault
 
 app = Flask(__name__)
-soapify = Soapify(app)
 
-# Define your soap services
-@soapify.soap.route("/math/add", methods=['POST'])
-def add(a: int, b: int):
-    return a + b
+# Create a client for the WSDL file
+wsdl = "http://www.dneonline.com/calculator.asmx?WSDL"
+client = Client(wsdl=wsdl, transport=Transport(timeout=10))
 
-if __name__ == '__main__':
+# Define a route for the API endpoint
+@app.route("/calculate", methods=["POST"])
+def calculate():
+    # Get the parameters from the request
+    x = request.form.get("x")
+    y = request.form.get("y")
+    operation = request.form.get("operation")
+
+    # Call the appropriate service function based on the operation
+    if operation == "add":
+        result = client.service.Add(x, y)
+    elif operation == "subtract":
+        result = client.service.Subtract(x, y)
+    elif operation == "multiply":
+        result = client.service.Multiply(x, y)
+    elif operation == "divide":
+        result = client.service.Divide(x, y)
+    else:
+        raise ValueError("Invalid operation")
+
+    # Return the result
+    return result
+
+if __name__ == "__main__":
     app.run()
 
-
-In this example, the Soapify object is created using the Flask app object. The add function is then defined as a SOAP endpoint, which can be accessed using the /math/add URL.
-
-When you run the code, you will have a simple SOAP API running locally that can be accessed using a SOAP client. You can use this as a starting point to build more complex SOAP APIs, or use other libraries like zeep or suds to interact with the API from a client application
-
-why not suds or zeep and why soapify ??
-
-The choice of library to use when building a SOAP API in Python depends on your specific requirements and constraints.
-
-flask_soapify is a good choice when you need to build a simple and lightweight SOAP API as a part of a Flask application. It provides a Flask extension that makes it easy to create and manage SOAP APIs within a Flask application.
 
 suds and zeep are good choices when you need to interact with an existing SOAP API from a client application. They provide a high-level API for making SOAP requests and parsing the responses, which can simplify the process of interacting with a SOAP API.
 
@@ -34,13 +47,38 @@ If you need to build a simple SOAP API as part of a Flask application, flask_soa
 Yes, you can create a simple SOAP API framework using Python. One popular library for this purpose is the suds library. Here's an example of how you could use the suds library to create a simple SOAP API in Python:
 
 
-from suds.client import Client
+This code creates a simple Flask application that implements a single endpoint /calculate that can perform different arithmetic operations on two numbers based on the operation specified in the request. The zeep library is used to interact with the calculator SOAP API provided by the sample WSDL file at http://www.dneonline.com/calculator.asmx?WSDL.
 
-# create a client object
-client = Client("http://example.com/soap-api?wsdl")
+To run the code, you can simply save it to a file and run python file.py. You can then make POST requests to the endpoint with parameters x, y, and operation to perform different arithmetic operations.
 
-# call a SOAP method
-result = client.service.method_name()
 
-# handle the result
-print(result)
+Suds:
+
+	from suds.client import Client
+
+	# create a client object
+	client = Client("http://example.com/soap-api?wsdl")
+
+	# call a SOAP method
+	result = client.service.method_name()
+
+	# handle the result
+	print(result)
+
+Zeep: 
+
+	from zeep import Client
+
+	# URL of the WSDL file that describes the calculator web service
+	wsdl = '<path-to-wsdl-file>'
+
+	# Create a client for the calculator web service
+	client = Client(wsdl)
+
+	# Get a reference to the calculator service
+	calculator = client.service
+
+	# Call the methods of the calculator service
+	result = calculator.add(a=1, b=2)
+	print(result)
+
