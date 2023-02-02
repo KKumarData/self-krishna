@@ -1,3 +1,11 @@
+SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two popular types of web APIs (Application Programming Interfaces) that allow communication between systems.
+
+SOAP is a protocol for exchanging structured information in the implementation of web services, while REST is a set of architectural constraints and design principles that define how web standards, such as HTTP and URI, should be used.
+
+SOAP uses XML as its message format, while REST can use XML, JSON or other formats. SOAP is typically heavier and less flexible than REST, but provides more security features, such as built-in error handling. REST is typically faster and more lightweight, and is often preferred for use with mobile devices and web-based applications.
+
+In summary, SOAP is better suited for complex, tightly-coupled systems, while REST is better suited for loosely-coupled, less complex systems.
+
 python to post soap requests
 
 import requests
