@@ -1,0 +1,51 @@
+Here is an example of how you could add token-based authentication to a SOAP wrapper in Python:
+
+	import requests
+	from requests.auth import HTTPBasicAuth
+	from zeep import Client
+	from zeep.transports import Transport
+
+	# Define the authentication token
+	auth_token = "your_auth_token"
+
+	# Define the SOAP endpoint URL
+	endpoint = "https://soap.service.com/api"
+
+	# Define the SOAP headers to include the authentication token
+	headers = {
+		"Authorization": "Bearer " + auth_token
+	}
+
+	# Create a session object to manage the connection to the SOAP service
+	session = requests.Session()
+
+	# Set the headers in the session object
+	session.headers.update(headers)
+
+	# Create a Transport object to manage the HTTP communication with the SOAP service
+	transport = Transport(session=session)
+
+	# Create a client object using the zeep library
+	client = Client(wsdl=endpoint, transport=transport)
+
+	# Use the client object to call the desired SOAP operation
+	result = client.service.your_soap_operation(your_param1, your_param2, ...)
+
+
+In this example, the authentication token is defined as a string, auth_token, and is added to the headers of the request using the "Authorization" header. The requests library is used to create a session object that manages the connection to the SOAP service, and the zeep library is used to create a client object that communicates with the service. The headers are added to the session object, and a Transport object is created to manage the HTTP communication with the service. The client object is then created using the WSDL endpoint of the service and the Transport object. Finally, the client object is used to call the desired SOAP operation.
+
+This code can be adapted to fit your specific requirements, but it should provide a starting point for adding token-based authentication to your SOAP wrapper in Python.
+
+why do we need session ??
+
+A session in a SOAP wrapper can be used to manage the connection to the SOAP service and maintain the state of the connection between multiple SOAP requests. Some of the benefits of using a session in a SOAP wrapper include:
+
+    Connection Reuse: When a session is used, the underlying transport layer can reuse the same connection to the SOAP service for multiple requests, which can improve performance by avoiding the overhead of establishing a new connection for each request.
+
+    Persistent Settings: A session can be used to store persistent settings for the connection to the SOAP service, such as headers, timeouts, and other configuration options. These settings can be reused for multiple requests, making it easier to manage the configuration of the SOAP wrapper.
+
+    Caching: A session can also be used to cache certain information, such as the WSDL or the results of previous requests, which can reduce the amount of data that needs to be transferred over the network and improve performance.
+
+    State Management: In some cases, the SOAP service may maintain state information between multiple requests, such as a session ID or authentication token. A session can be used to manage this state information and ensure that it is included in subsequent requests.
+
+In general, using a session in a SOAP wrapper can make it easier to manage the connection to the SOAP service and improve the performance and reliability of the wrapper.
