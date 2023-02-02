@@ -1,0 +1,110 @@
+python to post soap requests
+
+import requests
+
+url = "https://example.com/soap_endpoint"
+
+headers = {'content-type': 'text/xml'}
+
+payload = """
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:yourRequest xmlns:ns="http://your.namespace.com">
+         <ns:requestData>request data</ns:requestData>
+      </ns:yourRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+"""
+
+response = requests.post(url, data=payload, headers=headers)
+
+print(response.text)
+
+
+In this example, the requests.post() method is used to make a POST request to the specified URL. The headers parameter is set to include the content-type header, which indicates that the payload is in XML format. The payload variable contains the SOAP request in XML format, which is passed as the data parameter in the requests.post() method.
+
+The response from the server is stored in the response variable and can be accessed using the response.text property. You can also check the status code of the response using response.status_code to determine if the request was successful.
+
+
+import requests
+
+class SoapClient:
+    def __init__(self, endpoint):
+        self.endpoint = endpoint
+
+    def send_request(self, payload):
+        headers = {'content-type': 'text/xml'}
+        response = requests.post(self.endpoint, data=payload, headers=headers)
+        return self.process_response(response)
+
+    def process_response(self, response):
+        if response.status_code == 200:
+            return response.text
+        else:
+            return self.fallback_method()
+
+    def fallback_method(self):
+        return "Request failed. Falling back to default response."
+
+client = SoapClient("https://example.com/soap_endpoint")
+
+payload = """
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:yourRequest xmlns:ns="http://your.namespace.com">
+         <ns:requestData>request data</ns:requestData>
+      </ns:yourRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+"""
+
+response = client.send_request(payload)
+
+print(response)
+
+Here's an example of how you can build a Python wrapper program to set the SOAP request payload and fallback method for the response:
+
+ruby
+
+import requests
+
+class SoapClient:
+    def __init__(self, endpoint):
+        self.endpoint = endpoint
+
+    def send_request(self, payload):
+        headers = {'content-type': 'text/xml'}
+        response = requests.post(self.endpoint, data=payload, headers=headers)
+        return self.process_response(response)
+
+    def process_response(self, response):
+        if response.status_code == 200:
+            return response.text
+        else:
+            return self.fallback_method()
+
+    def fallback_method(self):
+        return "Request failed. Falling back to default response."
+
+client = SoapClient("https://example.com/soap_endpoint")
+
+payload = """
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:yourRequest xmlns:ns="http://your.namespace.com">
+         <ns:requestData>request data</ns:requestData>
+      </ns:yourRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+"""
+
+response = client.send_request(payload)
+
+print(response)
+
+In this example, the SoapClient class is used to wrap the requests library and provide a convenient interface for sending SOAP requests and processing the responses. The send_request method uses the requests.post method to send the SOAP request, and the process_response method checks the status code of the response and returns the response text if the status code is 200 (success), or calls the fallback_method if the status code indicates a failure. The fallback_method provides a default response in case the request fails.
+
+The client is created by instantiating the SoapClient class with the endpoint URL, and the send_request method is called to send the SOAP request and receive the response. The response is then printed to the console.
