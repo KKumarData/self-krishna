@@ -1,0 +1,55 @@
+from zeep import Service
+
+# Define the WSDL file
+wsdl = """
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/calculator"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <message name="AddRequest">
+    <part name="a" type="xsd:integer"/>
+    <part name="b" type="xsd:integer"/>
+  </message>
+  <message name="AddResponse">
+    <part name="result" type="xsd:integer"/>
+  </message>
+  <portType name="CalculatorPort">
+    <operation name="Add">
+      <input message="tns:AddRequest"/>
+      <output message="tns:AddResponse"/>
+    </operation>
+  </portType>
+  <binding name="CalculatorBinding" type="tns:CalculatorPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Add">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="CalculatorService">
+    <port name="CalculatorPort" binding="tns:CalculatorBinding">
+      <soap:address location="http://localhost:8000/calculator"/>
+    </port>
+  </service>
+</definitions>
+"""
+
+# Create the service
+service = Service(wsdl, name='CalculatorService')
+
+# Define the implementation of the add method
+def add(a, b):
+    return a + b
+
+# Bind the implementation to the service
+service.bind('Add', add)
+
+# Start the service
+if __name__ == '__main__':
+    from wsgiref.simple_server import make_server
+    server = make_server('localhost', 8000, service)
+    server.serve_forever()
