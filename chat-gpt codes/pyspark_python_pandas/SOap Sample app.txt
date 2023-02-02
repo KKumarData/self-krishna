@@ -1,0 +1,46 @@
+Yes, you can create a simple SOAP API using Python. One popular library for this purpose is the flask_soapify library, which provides a Flask extension that makes it easy to create and manage SOAP APIs. Here's an example of how you could use the flask_soapify library to create a simple SOAP API in Python:
+
+from flask import Flask
+from flask_soapify import Soapify
+
+app = Flask(__name__)
+soapify = Soapify(app)
+
+# Define your soap services
+@soapify.soap.route("/math/add", methods=['POST'])
+def add(a: int, b: int):
+    return a + b
+
+if __name__ == '__main__':
+    app.run()
+
+
+In this example, the Soapify object is created using the Flask app object. The add function is then defined as a SOAP endpoint, which can be accessed using the /math/add URL.
+
+When you run the code, you will have a simple SOAP API running locally that can be accessed using a SOAP client. You can use this as a starting point to build more complex SOAP APIs, or use other libraries like zeep or suds to interact with the API from a client application
+
+why not suds or zeep and why soapify ??
+
+The choice of library to use when building a SOAP API in Python depends on your specific requirements and constraints.
+
+flask_soapify is a good choice when you need to build a simple and lightweight SOAP API as a part of a Flask application. It provides a Flask extension that makes it easy to create and manage SOAP APIs within a Flask application.
+
+suds and zeep are good choices when you need to interact with an existing SOAP API from a client application. They provide a high-level API for making SOAP requests and parsing the responses, which can simplify the process of interacting with a SOAP API.
+
+If you need to build a complex SOAP API that requires advanced features like custom header support, custom encoding, or advanced security options, you may want to consider using zeep.
+
+If you need to build a simple SOAP API as part of a Flask application, flask_soapify is a good choice as it provides a simple and straightforward way to create a SOAP API within a Flask application.
+
+Yes, you can create a simple SOAP API framework using Python. One popular library for this purpose is the suds library. Here's an example of how you could use the suds library to create a simple SOAP API in Python:
+
+
+from suds.client import Client
+
+# create a client object
+client = Client("http://example.com/soap-api?wsdl")
+
+# call a SOAP method
+result = client.service.method_name()
+
+# handle the result
+print(result)
