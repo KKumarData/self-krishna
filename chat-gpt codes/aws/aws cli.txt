@@ -1,0 +1,3 @@
+aws cli command to list all the lambdas which sqs as triggers
+	
+	aws lambda list-functions --query 'Functions[?EventSourceMappings[?EventSourceArn==`arn:aws:sqs:*:*:*`]].[FunctionName]' --output text
