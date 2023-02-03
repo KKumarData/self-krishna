@@ -1,0 +1,49 @@
+To install Python 3.9 in WSL2, you can follow these steps:
+
+    Open the Windows Terminal or a WSL terminal of your choice (e.g. Ubuntu).
+
+    Update the package index using the following command:
+
+sql
+
+sudo apt-get update
+
+    Install the required dependencies to build Python 3.9 by running:
+
+csharp
+
+sudo apt-get install -y build-essential checkinstall
+sudo apt-get install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev \
+    libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+
+    Download the Python 3.9 source code from the official website:
+
+ruby
+
+wget https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tar.xz
+
+    Extract the tar archive:
+
+tar xvf Python-3.9.4.tar.xz
+
+    Enter the extracted directory and configure the build:
+
+bash
+
+cd Python-3.9.4
+./configure
+
+    Compile and install Python 3.9:
+
+go
+
+make
+sudo make install
+
+    Verify the installation by running the following command:
+
+css
+
+python3.9 --version
+
+This should return the version of Python 3.9 that you just installed.
