@@ -1,0 +1,49 @@
+import argparse
+import requests
+
+class APIError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+class APIClient:
+    def __init__(self, api_url, headers={}, params={}, timeout=10):
+        self.api_url = api_url
+        self.headers = headers
+        self.params = params
+        self.timeout = timeout
+
+    def make_request(self):
+        try:
+            response = requests.get(self.api_url, headers=self.headers, params=self.params, timeout=self.timeout)
+
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise APIError(f"Request failed with status code {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            raise APIError("An error occurred while making the API request") from e
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='API Client')
+    parser.add_argument('api_url', type=str, help='API URL')
+    parser.add_argument('--header', type=str, action='append', help='API headers')
+    parser.add_argument('--param', type=str, action='append', help='API parameters')
+    parser.add_argument('--timeout', type=int, default=10, help='API request timeout')
+
+    args = parser.parse_args()
+
+    headers = {}
+    if args.header:
+        headers = dict(header.split(':') for header in args.header)
+
+    params = {}
+    if args.param:
+        params = dict(param.split(':') for param in args.param)
+
+    api_client = APIClient(args.api_url, headers=headers, params=params, timeout=args.timeout)
+
+    try:
+        data = api_client.make_request()
+        print(data)
+    except APIError as e:
+        print(e.message)

@@ -1,0 +1,42 @@
+Here's a sample code for an AWS Lambda function that handles API requests with fallback mechanism and exception handling using Python:
+
+import json
+import requests
+
+def lambda_handler(event, context):
+    try:
+        # Extract the API URL and other parameters from the event
+        api_url = event.get('api_url', 'https://api.example.com/data')
+        headers = event.get('headers', {})
+        params = event.get('params', {})
+        timeout = event.get('timeout', 10)
+
+        # Make an API request
+        response = requests.get(api_url, headers=headers, params=params, timeout=timeout)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            return {
+                'statusCode': 200,
+                'body': json.dumps(response.json())
+            }
+        else:
+            # If the request was not successful, use the fallback data
+            fallback_data = event.get('fallback_data', {
+                "message": "Using fallback data",
+                "data": [1, 2, 3, 4, 5]
+            })
+            return {
+                'statusCode': 200,
+                'body': json.dumps(fallback_data)
+            }
+    except Exception as e:
+        # Handle exceptions and return a 500 error
+        return {
+            'statusCode': 500,
+            'body': json.dumps({
+                "message": "An error occurred",
+                "error": str(e)
+            })
+        }
+
