@@ -1,0 +1,67 @@
+import hmac
+import hashlib
+import base64
+import datetime
+import requests
+
+# Replace with your own AWS access key ID and secret access key
+AWS_ACCESS_KEY_ID = "ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY = "SECRET_ACCESS_KEY"
+
+# The name of the SQS queue you want to send a message to
+QUEUE_NAME = "queue_name"
+
+# The URL of the SQS API endpoint you want to call
+ENDPOINT = f"https://sqs.us-west-2.amazonaws.com/123456789012/{QUEUE_NAME}"
+
+# The parameters for the API request
+PARAMETERS = {
+    "Action": "SendMessage",
+    "MessageBody": "Hello, World!",
+    "Version": "2012-11-05"
+}
+
+# Calculate the HMAC SHA-256 signature
+def get_signature_key(key, date_stamp, region_name, service_name):
+    k_date = hmac.new(("AWS4" + key).encode("utf-8"), date_stamp.encode("utf-8"), hashlib.sha256)
+    k_region = hmac.new(k_date.digest(), region_name.encode("utf-8"), hashlib.sha256)
+    k_service = hmac.new(k_region.digest(), service_name.encode("utf-8"), hashlib.sha256)
+    k_signing = hmac.new(k_service.digest(), b"aws4_request", hashlib.sha256)
+    return k_signing.digest()
+
+# Generate the signature for the API request
+def generate_signature(endpoint, parameters, access_key, secret_key, date_stamp, region_name, service_name):
+    # Sort the parameters in lexicographic order
+    sorted_parameters = sorted(parameters.items())
+    # Create the canonical query string
+    canonical_query_string = "&".join([f"{k}={v}" for k, v in sorted_parameters])
+    # Create the canonical request
+    canonical_request = f"GET\n{endpoint}\n\n{canonical_query_string}\n"
+    # Create the string to sign
+    string_to_sign = f"AWS4-HMAC-SHA256\n{date_stamp}\n{region_name}/{service_name}/aws4_request\n{hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()}"
+    # Sign the string to sign with the HMAC SHA-256 signature
+    signature = hmac.new(get_signature_key(secret_key.encode("utf-8"), date_stamp, region_name, service_name), string_to_sign.encode("utf-8"), hashlib.sha256)
+    return signature.hexdigest()
+
+# Make the API request
+def make_request(endpoint, parameters, access_key, secret_key):
+    # Get the current date and time
+
+	now = datetime.datetime.utcnow()
+	date_stamp = now.strftime("%Y%m%d")
+	time_stamp = now.strftime("%Y%m%dT%H%M%SZ")
+	region_name = "us-west-2"
+	service_name = "sqs"
+	parameters["X-Amz-Date"] = time_stamp
+	parameters["X-Amz-Signature"] = generate_signature(endpoint, parameters, access_key, secret_key, date_stamp, region_name, service_name)
+
+	response = requests.get(endpoint, params=parameters)
+	if response.status_code == 200:
+		print("API request succeeded.")
+	else:
+		print(f"API request failed with status code {response.status_code}.")
+		
+		
+		
+		
+		
