@@ -27,7 +27,16 @@ curl -X POST https://sqs.<REGION>.amazonaws.com/<ACCOUNT-ID>/<QUEUE-NAME> \
   -H 'X-Amz-Date: <YYYYMMDDTHHMMSSZ>' \
   -d 'Action=SendMessage&MessageBody=<MESSAGE-BODY>'
 
+Note: Replace the placeholders in the above example with your actual values.
 
+    REGION: the AWS region of your SQS queue
+    ACCOUNT-ID: your AWS account ID
+    QUEUE-NAME: the name of your SQS queue
+    AWS-ACCESS-KEY: your AWS access key ID
+    YYYYMMDD: the date in the format YYYYMMDD
+    SIGNATURE: the AWS Signature Version 4 signature calculated based on the request
+    YYYYMMDDTHHMMSSZ: the current date and time in the format YYYYMMDDTHHMMSSZ
+    MESSAGE-BODY: the message body that you want to send to the SQS queue
 
 
 
