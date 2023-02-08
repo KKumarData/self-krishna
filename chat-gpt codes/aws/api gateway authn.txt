@@ -1,0 +1,23 @@
+Here are some common ways to authenticate an API Gateway from an external source:
+
+    API Key: An API key is a token that is passed in by clients to access the API. The API Gateway can then validate the key and allow or deny access to the API.
+
+    OAuth 2.0: A popular authorization framework that allows users to grant third-party applications access to their resources without sharing their credentials.
+
+    JSON Web Token (JWT): A compact, URL-safe means of representing claims to be transferred between two parties. The API Gateway can validate the token to authenticate the client.
+
+    Basic Authentication: A simple authentication scheme built into the HTTP protocol. Clients send an HTTP request with a header containing a username and password.
+
+    IP Whitelisting: The API Gateway can be configured to only accept requests from specific IP addresses, allowing access to the API only from trusted sources.
+
+    Certificates: The API Gateway can be configured to accept client requests only if they contain a valid X.509 certificate.
+
+If you need to do simple authentication for AWS API Gateway without using secret access keys, here are some options you can consider:
+
+    API Key: You can use API keys to secure your API by requiring that clients provide a key in the request header. This method is simple to implement and does not require any additional resources.
+
+    Amazon Cognito: You can use Amazon Cognito to provide user sign-up, sign-in, and access control for your API. Amazon Cognito integrates with API Gateway to provide a secure way to authenticate and authorize API requests.
+
+    AWS IAM: You can use AWS IAM to control access to your API based on the identity of the caller. AWS IAM integrates with API Gateway to allow you to grant or deny access to your API based on the caller's identity, such as their AWS account, IAM user, or IAM role.
+
+    OAuth 2.0: If you have a web application that needs to access your API, you can use OAuth 2.0 to grant the application access to your API. OAuth 2.0 provides a secure way for the application to obtain an access token from an authorization server, which it can then use to access the API.
