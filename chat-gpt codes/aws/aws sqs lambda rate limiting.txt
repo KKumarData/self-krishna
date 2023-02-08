@@ -1,0 +1,26 @@
+To rate limit the combination of SQS and Lambda, you can use several techniques, including:
+
+    Throttling the number of messages sent to SQS: You can use the Amazon SQS sending rate policy to limit the number of messages sent to the SQS queue. This helps to prevent the queue from growing too fast and overwhelming your Lambda function.
+
+    Setting a concurrency limit on the Lambda function: You can use the concurrency limit feature in AWS Lambda to control the number of simultaneously executing instances of the function. This can help you to control the rate of invocations of the Lambda function and prevent it from becoming overwhelmed by too many messages from the SQS queue.
+
+    Using SQS Dead Letter Queues (DLQs): If the Lambda function is unable to process a message within a certain time frame, you can configure the SQS queue to send the message to a dead letter queue. This helps to prevent the Lambda function from becoming overwhelmed by too many messages that cannot be processed in a timely manner.
+
+    Monitoring and Alarming: You should monitor the rate of messages arriving in the SQS queue and the number of invocations of the Lambda function. If the rate of incoming messages exceeds the rate of message processing by the Lambda function, you can use Amazon CloudWatch Alarms to send notifications and trigger automated actions to address the situation.
+
+By using these techniques in combination, you can effectively rate limit the combination of SQS and Lambda to ensure that the Lambda function can keep up with the rate of incoming messages and prevent it from becoming overwhelmed.
+
+
+ have a situation where i get most number of messages into sqs queue but need to be processed by lambda slowly
+
+If you have a situation where you're receiving a high number of messages into an SQS queue, but you need to process these messages slowly, you can use the following methods to control the rate of message processing by your AWS Lambda function:
+
+    Increase the batch size: You can increase the batch size of messages that your Lambda function processes in a single invocation. This will reduce the number of invocations of your Lambda function, thus slowing down the rate of message processing.
+
+    Use the concurrency limit: You can set a concurrency limit on your Lambda function, which will limit the number of parallel invocations of the function. This will control the rate at which messages are processed by the function, thus slowing down the rate of message processing.
+
+    Use an SNS Topic: You can use an Amazon SNS topic to decouple the rate at which messages are sent to the queue from the rate at which messages are processed by your Lambda function. By sending messages to an SNS topic and having the Lambda function subscribe to the topic, you can control the rate of message processing by adjusting the number of subscribers to the topic.
+
+    Adjust the sending rate policy of the SQS queue: You can adjust the sending rate policy of the SQS queue to limit the rate at which messages are sent to the queue. This will control the rate of incoming messages and ensure that the Lambda function can process messages at a slower rate.
+
+By using these methods, you can control the rate of message processing by your Lambda function and ensure that the function processes messages at the desired rate, even when a high number of messages are being sent to the SQS queue.
