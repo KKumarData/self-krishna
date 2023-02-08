@@ -21,3 +21,24 @@ If you need to do simple authentication for AWS API Gateway without using secret
     AWS IAM: You can use AWS IAM to control access to your API based on the identity of the caller. AWS IAM integrates with API Gateway to allow you to grant or deny access to your API based on the caller's identity, such as their AWS account, IAM user, or IAM role.
 
     OAuth 2.0: If you have a web application that needs to access your API, you can use OAuth 2.0 to grant the application access to your API. OAuth 2.0 provides a secure way for the application to obtain an access token from an authorization server, which it can then use to access the API.
+	
+	
+	
+import requests
+
+url = "https://api-id.execute-api.region.amazonaws.com/stage/path"
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer <API_KEY>"
+}
+
+data = {"key1": "value1", "key2": "value2"}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    print(response.json())
+else:
+    print("Request failed with status code: ", response.status_code)
+
+	
