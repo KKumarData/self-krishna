@@ -1,0 +1,54 @@
+service: my-serverless-service
+
+provider:
+  name: aws
+  runtime: python3.9
+  stage: dev
+  region: us-west-2
+
+functions:
+  my-lambda-function:
+    handler: my_lambda.handler
+    events:
+      - sqs:
+          arn: !GetAtt my-sqs-queue.Arn
+      - http:
+          path: /my-api
+          method: post
+
+resources:
+  Resources:
+    my-sqs-queue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: my-sqs-queue
+        
+    my-api-key:
+      Type: AWS::ApiGateway::ApiKey
+      Properties:
+        Name: my-api-key
+        StageKey:
+          RestApiId: !Ref my-rest-api
+          StageName: dev
+    
+    my-rest-api:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: my-rest-api
+        EndpointConfiguration:
+          Types:
+            - REGIONAL
+        ApiKeySource: HEADER
+        BinaryMediaTypes:
+          - '*/*'
+
+package:
+  exclude:
+    - node_modules/**
+    - .env
+  include:
+    - my_lambda.py
+    - requirements.txt
+
+plugins:
+  - serverless-python-requirements
