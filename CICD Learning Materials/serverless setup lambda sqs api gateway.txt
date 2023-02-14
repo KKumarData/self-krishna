@@ -52,3 +52,38 @@ package:
 
 plugins:
   - serverless-python-requirements
+
+
+
+
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-west-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - sqs:*
+      Resource: "arn:aws:sqs:us-west-2:<account_id>:<queue_name>"
+
+functions:
+  myFunction:
+    handler: functions/myModule/handler.myHandler
+    events:
+      - http:
+          path: /myEndpoint
+          method: GET
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - lambda:InvokeFunction
+        Resource: "arn:aws:lambda:us-west-2:<account_id>:function:<function_name>"
+      - Effect: Allow
+        Action:
+          - execute-api:Invoke
+        Resource: "arn:aws:execute-api:us-west-2:<account_id>:<api_id>/*"
+
+
+
+
