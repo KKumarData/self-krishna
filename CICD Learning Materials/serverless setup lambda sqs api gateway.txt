@@ -87,3 +87,58 @@ functions:
 
 
 
+
+
+provider:
+  name: aws
+  runtime: python3.9
+  stage: dev
+
+functions:
+  myFunction:
+    handler: handler.my_handler
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:<ACCOUNT_ID>:<SQS_QUEUE_NAME>
+
+plugins:
+  - serverless-aws-alias
+
+custom:
+  aliases:
+    dev:
+      - myFunction
+
+resources:
+  Outputs:
+    API_URL:
+      Description: API Endpoint URL
+      Value:
+        Fn::ImportValue:
+          !Sub "${self:provider.stage}-serverless-<MY_APP_NAME>-API"
+
+# API Gateway Configuration
+  api:
+    stage: dev
+    handler: handler.my_handler
+    stage: dev
+    endpointType: regional
+    variables:
+      alias: dev
+    definition:
+      paths:
+        /234223234/sqs-role:
+          post:
+            x-amazon-apigateway-integration:
+              type: aws
+              uri:
+                Fn::Join:
+                  - ''
+                  - - arn:aws:apigateway:us-east-1:sqs:path/
+                    - action: sendMessage
+                    - messageBody: $input.body
+            responses:
+              201:
+                description: Created
+              400:
+                description: Bad Request
