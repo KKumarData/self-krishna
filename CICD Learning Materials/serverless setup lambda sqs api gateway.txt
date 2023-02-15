@@ -1,3 +1,23 @@
+In an AWS CloudFormation template, the hierarchy of resources and properties for an API Gateway REST API is typically structured as follows:
+
+    AWS::ApiGateway::RestApi: This is the root resource for your API Gateway REST API, which defines the name of the API and other basic properties. It can be associated with zero or more AWS::ApiGateway::Resource resources.
+
+    AWS::ApiGateway::Resource: This resource is used to define the endpoints of your REST API, which can be associated with zero or more child AWS::ApiGateway::Resource resources or AWS::ApiGateway::Method resources.
+
+    AWS::ApiGateway::Method: This resource is used to define the HTTP methods (e.g. GET, POST, PUT, DELETE) and integration settings for your API Gateway endpoints. It can be associated with a single AWS::ApiGateway::Integration resource and zero or more AWS::ApiGateway::MethodResponse resources.
+
+    AWS::ApiGateway::Integration: This resource is used to define the integration settings for your API Gateway endpoints, such as the AWS service or HTTP endpoint that your API Gateway method should call. It can be associated with zero or more AWS::ApiGateway::IntegrationResponse resources.
+
+    AWS::ApiGateway::MethodResponse: This resource is used to define the response settings (e.g. status codes, headers, response models) for your API Gateway endpoints.
+
+    AWS::ApiGateway::IntegrationResponse: This resource is used to define the response mapping templates for the integration responses of your API Gateway endpoints.
+
+You can also define other resources to further customize your API Gateway REST API, such as AWS::ApiGateway::Authorizer, AWS::ApiGateway::Model, AWS::ApiGateway::Deployment, and AWS::ApiGateway::Stage.
+
+Overall, the structure of your CloudFormation template will depend on the specific requirements of your API Gateway REST API, but the above hierarchy provides a good starting point.
+
+
+
 npm install -g serverless
 
 serverless create --template aws-python --path my-service
