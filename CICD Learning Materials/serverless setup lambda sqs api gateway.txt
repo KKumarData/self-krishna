@@ -187,3 +187,20 @@ resources:
             application/json: 'Empty'
           ResponseParameters:
             method.response.header.Content-Type: true
+			
+			
+Resources:
+  ApiGatewayDeployment:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref ApiGatewayRestApi
+      StageName: prod
+
+  ApiGatewayStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      RestApiId: !Ref ApiGatewayRestApi
+      StageName: prod
+      DeploymentId: !Ref ApiGatewayDeployment
+      Description: 'Prod Stage'
+			
