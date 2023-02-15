@@ -1,0 +1,33 @@
+When gathering high-level requirements for Kinesis streams in Adobe Experience Platform (AEP), a data engineer may consider the following:
+
+    Data sources: Determine the data sources that will be ingested into the Kinesis stream, including the format, frequency, and volume of the data.
+
+    Data processing: Define the types of data processing that will be performed on the data, such as real-time analytics or batch processing.
+
+    Data retention: Determine the length of time data will be retained in the Kinesis stream, as well as any retention policies that need to be adhered to.
+
+    Data integration: Identify any third-party applications or services that will integrate with the Kinesis stream, and any data transformation or mapping that may be required.
+
+    Security and compliance: Ensure that the Kinesis stream is compliant with relevant security and compliance standards, such as GDPR or HIPAA.
+
+    Performance and scalability: Ensure that the Kinesis stream can handle the required volume of data, and that it can scale to meet future growth.
+
+    Monitoring and alerting: Define the monitoring and alerting requirements for the Kinesis stream, including metrics, logging, and error handling.
+	
+Here are some detailed steps for high-level requirements gathering by a data engineer for Kinesis streams in Adobe Experience Platform (AEP):
+
+    Identify the data sources: Determine the data sources that will be ingested into the Kinesis stream, including the format, frequency, and volume of the data. This can involve collaborating with stakeholders, data scientists, or subject matter experts to understand the various data sources that are needed.
+
+    Define data processing requirements: Define the types of data processing that will be performed on the data, such as real-time analytics or batch processing. This can involve determining which data is relevant for analysis and processing, what types of calculations or analyses will be performed, and how the results will be used.
+
+    Determine data retention policies: Determine the length of time data will be retained in the Kinesis stream, as well as any retention policies that need to be adhered to. This can involve understanding the data governance policies and regulations that need to be followed, such as GDPR or HIPAA.
+
+    Identify data integration needs: Identify any third-party applications or services that will integrate with the Kinesis stream, and any data transformation or mapping that may be required. This can involve collaborating with developers or other technical teams to understand the requirements for integrating data into other systems.
+
+    Ensure security and compliance: Ensure that the Kinesis stream is compliant with relevant security and compliance standards, such as GDPR or HIPAA. This can involve working with security teams to understand the security requirements for the Kinesis stream and making sure they are implemented properly.
+
+    Determine performance and scalability needs: Ensure that the Kinesis stream can handle the required volume of data, and that it can scale to meet future growth. This can involve testing the Kinesis stream under different loads and working with infrastructure teams to ensure that the necessary resources are available.
+
+    Define monitoring and alerting requirements: Define the monitoring and alerting requirements for the Kinesis stream, including metrics, logging, and error handling. This can involve working with operations teams to define the necessary monitoring and alerting tools and making sure they are properly configured.
+
+By following these steps, a data engineer can gather the high-level requirements needed to design and implement a Kinesis stream in Adobe Experience Platform (AEP).	
