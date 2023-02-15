@@ -31,4 +31,105 @@ resources:
 		
 
 		
+custom:
+  accountId: ${shell:aws sts get-caller-identity --query Account --output text}
+
+functions:
+  myFunction:
+    handler: handler.my_handler
+    environment:
+      ACCOUNT_ID: ${self:custom.accountId}
  
+
+
+
+
+
+
+service: my-service
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  myFunction:
+    handler: handler.my_handler
+    events:
+      - http:
+          path: my-path
+          method: post
+          integration: aws
+          request:
+            template:
+              application/json: |
+                #set($inputRoot = $input.path('$'))
+                {
+                  "body": "$util.base64Encode($inputRoot)"
+                }
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.path('$')
+
+resources:
+  Resources:
+    MyQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: my-queue-name
+
+    MyQueuePolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                AWS: "*"
+              Action: SQS:SendMessage
+              Resource: !GetAtt MyQueue.Arn
+              Condition:
+                ArnEquals:
+                  aws:SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayRestApi}/prod/POST/my-path"
+        Queues:
+          - !Ref MyQueue
+
+    ApiGatewayRestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: my-api
+
+    ApiGatewayResource:
+      Type: AWS::ApiGateway::Resource
+      Properties:
+        ParentId: !GetAtt ApiGatewayRestApi.RootResourceId
+        PathPart: my-path
+        RestApiId: !Ref ApiGatewayRestApi
+
+    ApiGatewayMethod:
+      Type: AWS::ApiGateway::Method
+      Properties:
+        HttpMethod: POST
+        ResourceId: !Ref ApiGatewayResource
+        RestApiId: !Ref ApiGatewayRestApi
+        AuthorizationType: NONE
+        Integration:
+          IntegrationHttpMethod: POST
+          Type: AWS
+          Uri: !Sub arn:aws:apigateway:${AWS::Region}:sqs:path/${MyQueue}
+          RequestParameters:
+            integration.request.header.Content-Type: "'application/x-www-form-urlencoded'"
+          PassthroughBehavior: WHEN_NO_TEMPLATES
+          RequestTemplates:
+            application/json: "{ \"body\" : \"$util.base64Encode($input.body)\" }"
+        MethodResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Content-Type: true
+          - StatusCode: 400
+            ResponseParameters:
+              method.response.header.Content-Type: true
+        ApiKeyRequired: false
+
