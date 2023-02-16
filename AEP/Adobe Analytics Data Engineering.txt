@@ -129,3 +129,29 @@ The LOE estimates for each category are as follows:
     Complex: This category includes advanced data sourcing requirements with a high level of complexity. It involves sourcing data from multiple source feeds or Adobe AEP data sets and performing complex transformations or aggregations. It may also involve integrating with other systems or technologies.
 
 By categorizing the LOE estimates by source feed and Adobe AEP data sets and levels of complexity, a data engineer can better estimate the time and resources required for a data engineering project and communicate the estimated LOE to stakeholders.
+
+
+The specific units of NFR estimation for sourcing data from Adobe Analytics connector to AEP and S3 will depend on the specific requirements and constraints of the project. However, here are some examples of units that could be considered:
+
+    Data volume:
+        Number of records per day, hour, or minute
+        Size of data (in bytes, megabytes, gigabytes, etc.)
+        Number of data fields or columns
+
+    Data latency:
+        Time delay between data collection and processing
+        Time required for data processing, transformation, or enrichment
+
+    Performance and scalability:
+        Number of concurrent users or requests
+        Maximum number of transactions per second (TPS)
+        Maximum data throughput (in records per second or bytes per second)
+        Maximum response time or processing time (in milliseconds or seconds)
+        Maximum number of active connections or sessions
+
+    Security and privacy:
+        Level of encryption or security required (e.g. SSL/TLS, AES-256, etc.)
+        Specific authentication or access control requirements
+        Compliance with specific security standards (e.g. HIPAA, GDPR, etc.)
+
+By considering these units of NFR estimation, the data engineer can develop an appropriate plan and infrastructure for sourcing data from Adobe Analytics connector to AEP and S3 that meets the needs of the stakeholders, while also ensuring reliable performance, scalability, and security.
