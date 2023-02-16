@@ -1,0 +1,40 @@
+As a data engineer, here are some questions you could ask the data architect, enterprise architect, and data owner to help you source data from Adobe web SDK?
+
+Here are some questions that a data engineer could ask the data architect, enterprise architect, and data owner to help source data from Adobe Web SDK:
+
+    What is the business problem or objective that requires data to be collected from the Adobe Web SDK?
+    Which Adobe Web SDK version is currently being used? Is there a plan to upgrade or migrate to a different version in the near future?
+    What specific data points need to be collected from the Adobe Web SDK? How are these data points defined?
+    What is the expected volume of data that needs to be collected? How frequently will the data be collected and how frequently will it need to be processed?
+    What is the expected data latency (i.e. how quickly do we need the data after it is collected)?
+    Are there any privacy or compliance concerns that need to be considered when collecting this data?
+    How is the data currently being collected and where is it being stored? Is there an existing data pipeline that the data engineer needs to integrate with?
+    Are there any specific data processing or transformation requirements? For example, will data need to be enriched with additional data sources or transformed into a different format before being stored or processed further?
+    Are there any specific performance or scalability requirements? For example, do we need to optimize the data pipeline to handle peak traffic or high volume data processing?
+    What is the expected timeline for implementing the data pipeline and what are the resources available for the project?
+
+These questions will help the data engineer understand the requirements and constraints for sourcing data from the Adobe Web SDK, and develop an appropriate plan and data pipeline that meets the needs of the stakeholders.
+
+
+What are the NFR (Non-Functional Requirement) questions that a data engineer could ask the data architect, enterprise architect, and data owner to help source data from Adobe Web SDK
+
+Here are some examples of NFR (Non-Functional Requirement) questions that a data engineer could ask the data architect, enterprise architect, and data owner to help source data from Adobe Web SDK:
+
+    Performance and scalability:
+        What is the expected volume of data that needs to be collected from the Adobe Web SDK? How frequently will the data be collected and how frequently will it need to be processed?
+        How quickly do we need the data after it is collected (i.e. data latency)? Is there a specific SLA (Service Level Agreement) or performance requirement?
+        Are there any specific performance or scalability requirements for the data pipeline? For example, do we need to optimize the pipeline to handle peak traffic or high volume data processing?
+
+    Security and privacy:
+        Are there any privacy or compliance concerns that need to be considered when collecting data from the Adobe Web SDK? How will we ensure that data is collected and stored in a secure manner?
+        What are the specific data access and authentication requirements for the pipeline? For example, do we need to implement any access controls or encryption measures to protect sensitive data?
+
+    Reliability and availability:
+        What is the expected uptime and availability for the data pipeline? Are there any specific disaster recovery or failover requirements?
+        What is the expected MTBF (Mean Time Between Failures) and MTTR (Mean Time To Repair) for the data pipeline? How will we ensure that any issues are resolved quickly and effectively?
+
+    Maintainability and extensibility:
+        Are there any specific requirements for maintaining and updating the data pipeline over time? For example, do we need to support new data sources or change the data processing logic?
+        Are there any specific requirements for integrating the data pipeline with other systems or technologies in the future?
+
+By understanding the NFRs for sourcing data from the Adobe Web SDK, the data engineer can design and implement a data pipeline that meets the requirements of the stakeholders and is reliable, secure, and scalable.

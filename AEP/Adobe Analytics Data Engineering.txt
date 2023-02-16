@@ -1,0 +1,131 @@
+#### what is adobe analytics connector?
+
+The Adobe Analytics Connector is a tool that allows you to connect your Adobe Analytics account with other applications and services. Specifically, it enables you to extract data from Adobe Analytics and use it in other tools or platforms, such as a data warehouse or a business intelligence dashboard.
+
+The connector works by using APIs (Application Programming Interfaces) provided by Adobe Analytics to retrieve data from your account. Once the data is extracted, it can be transformed, enriched, and stored in other applications or services.
+
+The Adobe Analytics Connector is typically used by organizations that want to analyze their website or app data alongside other business data to gain insights and make data-driven decisions. By connecting Adobe Analytics with other tools, organizations can centralize their data and gain a more comprehensive view of their business performance.
+
+
+#### As a data engineer, here are some questions you could ask the data architect, enterprise architect, and data owner to help you source data from Adobe Analytics to AEP:?
+
+    Data Architect:
+
+    What is the structure and schema of the Adobe Analytics data?
+    What data elements are available and how are they related?
+    Are there any data quality issues that need to be addressed?
+    What data transformation or processing steps are needed before loading the data into AEP?
+    Are there any data access or security requirements that need to be considered?
+
+    Enterprise Architect:
+
+    What is the overall data architecture of the organization and how does the AEP fit into it?
+    Are there any data governance policies or regulations that need to be followed?
+    What are the performance requirements for the AEP and how will the Adobe Analytics data be integrated?
+    What are the expected data volumes and how will they be managed in AEP?
+    How will the data from Adobe Analytics be integrated with other data sources in the organization?
+
+    Data Owner:
+
+    What are the specific business requirements for the data from Adobe Analytics?
+    What are the key performance indicators (KPIs) that need to be tracked?
+    Are there any data quality issues or concerns with the Adobe Analytics data?
+    How frequently will the data need to be updated in AEP?
+    Are there any specific data access or security requirements for the Adobe Analytics data?
+
+By asking these questions, you can better understand the requirements and constraints of the Adobe Analytics data and ensure that it is integrated into AEP in a way that meets the needs of the organization.
+
+
+#### As a data engineer , how to source the data from Adobe analytics to AWS S3  ?
+
+To source data from Adobe Analytics to AWS S3 as a data engineer, you can follow these general steps:
+
+    Connect to the Adobe Analytics API: You will need to use Adobe Analytics API to extract the data from Adobe Analytics. You can use the Adobe Analytics Reporting API to access the data. You will need to create an Adobe Analytics developer account, and use the API key and secret to authenticate your requests.
+
+    Define the data you want to extract: Define the specific data you want to extract from Adobe Analytics. You can use metrics and dimensions available in Adobe Analytics to define the data you want to extract.
+
+    Write a script to extract the data: You can use programming languages such as Python or Java to write a script to extract the data. The script should make requests to the Adobe Analytics API, retrieve the data and store it locally.
+
+    Transform and clean the data: After extracting the data, you may need to clean and transform it. This step includes filtering data, removing duplicates, and merging data from multiple sources.
+
+    Store the data in AWS S3: Once the data is cleaned and transformed, you can use the AWS SDK to store the data in S3. The AWS SDK provides APIs for uploading data in various formats such as CSV, JSON, and Parquet. You can use these APIs to upload the data to S3.
+
+    Automate the process: You can schedule the script to run automatically on a regular basis, so that the data is extracted and loaded into AWS S3 at specific intervals.
+
+It is important to note that these steps are high-level and the specific implementation may vary based on the specific use case and requirements. You should also consider security and access controls when transferring and storing data.
+
+
+#### Sure, here are some NFR specific questions you can ask the data owner and architect for sourcing data from Adobe Analytics Connector:
+
+For the Data Owner:
+
+    Performance:
+
+    How frequently do you need the data to be updated from Adobe Analytics Connector?
+    What is the maximum time window you can tolerate for getting the data into AEP and S3?
+    How much data do you expect to be transferred and stored in S3?
+
+    Security:
+
+    What are the specific security requirements for transferring data from Adobe Analytics Connector to AEP and S3?
+    Are there any compliance requirements that need to be addressed (e.g., GDPR, HIPAA)?
+
+    Reliability:
+
+    What level of reliability do you expect from the data transfer process?
+    What is the maximum acceptable downtime for the data transfer process?
+    What are the consequences if the data transfer process fails?
+
+    Usability:
+
+    What are the most important use cases for the data being transferred?
+    How will the data be consumed once it is in AEP and S3?
+    What are the most important metrics and dimensions that should be included in the data transfer process?
+
+For the Data Architect:
+
+    Performance:
+
+    What are the performance requirements for the data transfer process?
+    How will data volumes be managed in S3?
+    What is the expected data processing time?
+
+    Security:
+
+    What are the specific security requirements for transferring data from Adobe Analytics Connector to AEP and S3?
+    What are the security and access controls that need to be implemented?
+
+    Reliability:
+
+    How will the data transfer process be monitored for reliability?
+    What is the expected level of availability for the data transfer process?
+
+    Usability:
+
+    What are the specific data formatting and transformation requirements for the data being transferred?
+    What is the expected data structure of the data being transferred?
+
+By addressing these NFR specific questions, you can ensure that the data transfer process meets the requirements and expectations of the data owner and architect, and that the data is accurately and reliably transferred to AEP and S3.
+
+
+##### As a Data Engineer, share me level of estimation (LOE) matrix for simple/medium/complex Data Engineering requirement from Adobe Analytics connector to AEP and S3 . Include , categorization by source feed / Adobe AEP data sets 
+
+Sure, here's an example of a LOE (Level of Effort) matrix for data engineering requirements for sourcing data from Adobe Analytics connector to AEP and S3. This matrix includes categorization by source feed and Adobe AEP data sets and levels of complexity ranging from simple to medium to complex.
+
+
+Source Feed / Adobe AEP Data Sets	Simple	Medium	Complex
+Adobe Analytics connector	1-2 weeks	2-4 weeks	4-8 weeks
+Adobe AEP data sets	2-4 weeks	4-8 weeks	8-12 weeks
+Combined data sources	4-6 weeks	8-12 weeks	12-16 weeks
+
+Note: These are rough estimates and the actual LOE may vary depending on the specific requirements and complexity of the project.
+
+The LOE estimates for each category are as follows:
+
+    Simple: This category includes basic data sourcing requirements with a low level of complexity. It involves sourcing data from a single source feed or Adobe AEP data set without any complex transformations or aggregations.
+
+    Medium: This category includes moderate data sourcing requirements with a moderate level of complexity. It involves sourcing data from multiple source feeds or Adobe AEP data sets and performing some basic transformations or aggregations.
+
+    Complex: This category includes advanced data sourcing requirements with a high level of complexity. It involves sourcing data from multiple source feeds or Adobe AEP data sets and performing complex transformations or aggregations. It may also involve integrating with other systems or technologies.
+
+By categorizing the LOE estimates by source feed and Adobe AEP data sets and levels of complexity, a data engineer can better estimate the time and resources required for a data engineering project and communicate the estimated LOE to stakeholders.
