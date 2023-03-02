@@ -1,0 +1,38 @@
+When preparing a data model for the Adobe XDM schema, there are several supporting details that can be added to data elements. These include:
+
+    Description: A description of the data element that provides more context and information about what it represents.
+
+    Example: An example of the data element that shows how it can be used in practice.
+
+    Type: The data type of the element (e.g., string, boolean, integer, date, etc.).
+
+    Constraints: Any constraints or limitations on the data element, such as a maximum length or allowed values.
+
+    Source: The source of the data element, such as where it was collected or generated.
+
+    Context: The context in which the data element is used, such as the business process or customer journey.
+
+    Relationships: Any relationships that the data element has with other elements in the data model, such as parent-child or sibling relationships.
+
+    Data Quality: Information about the quality of the data element, such as whether it is complete, accurate, or up-to-date.
+
+By including these supporting details, you can provide a more comprehensive and useful data model for the Adobe XDM schema.
+
+Here are some specific supporting details that can be added to data elements related to sourcing type, profile attributes, and segmentation:
+
+    Sourcing Type:
+        Source System: The system or platform that the data element originated from.
+        Data Collection Method: The method used to collect the data element, such as web tracking, mobile app tracking, or offline data import.
+        Data Collection Time: The time at which the data element was collected.
+
+    Profile Attributes:
+        Data Source: The source of the data for the profile attribute, such as customer registration, website behavior, or demographic data.
+        Update Frequency: How often the profile attribute is updated, such as daily, weekly, or monthly.
+        Privacy Considerations: Any privacy considerations related to the profile attribute, such as whether it contains sensitive information or is subject to data protection regulations.
+
+    Segmentation:
+        Segment Criteria: The criteria used to define the segment, such as user behavior, demographics, or purchase history.
+        Segment Size: The size of the segment, such as the number of users or customers who meet the segment criteria.
+        Segment Use Case: The use case or purpose for the segment, such as targeted marketing or personalized recommendations.
+
+By including these specific supporting details for sourcing type, profile attributes, and segmentation, you can provide a more detailed and informative data model for the Adobe XDM schema.
