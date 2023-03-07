@@ -11,3 +11,10 @@ As a senior data engineer working in consulting division of Adobe AEP, here are 
 
     Drive innovation: Finally, as a senior data engineer, you can drive innovation by exploring new technologies and techniques, sharing your knowledge with your team and clients, and participating in industry events and conferences. By staying up-to-date with the latest trends and technologies, you can help your clients stay ahead of the curve and achieve their business goals.
 
+
+
+Self Goals,
+
+    AWS Certified Machine Learning - Specialty: This certification is designed for individuals who have experience developing machine learning models using AWS services like Amazon SageMaker, AWS Deep Learning AMIs, and Amazon EC2. It demonstrates your expertise in building, training, and deploying  machine learning models using AWS cloud services.
+	
+	
