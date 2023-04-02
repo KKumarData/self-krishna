@@ -1,0 +1,83 @@
+Compute: Start by choosing the appropriate compute service based on your workload requirements. If you need a virtual machine, use Amazon EC2. For serverless computing, use AWS Lambda. For container orchestration, use Amazon ECS or EKS.
+
+Storage: Choose the appropriate storage service based on your data storage and access requirements. For object storage, use Amazon S3. For block storage, use Amazon EBS. For file storage, use Amazon EFS. For archival and backup storage, use Amazon Glacier.
+
+Database: Select the appropriate database service based on your data storage, management, and access requirements. For a relational database, use Amazon RDS. For a NoSQL database, use Amazon DynamoDB. For a data warehouse, use Amazon Redshift. For a graph database, use Amazon Neptune.
+
+Networking: Choose the appropriate networking service based on your networking requirements. For virtual private cloud (VPC), use Amazon VPC. For load balancing, use Amazon ELB. For content delivery, use Amazon CloudFront. For domain name system (DNS) management, use Amazon Route 53.
+
+Security: Finally, consider security throughout your architecture design. Use AWS security services such as AWS Identity and Access Management (IAM) for access control, AWS Key Management Service (KMS) for data encryption, and AWS Shield for DDoS protection. Also, follow AWS security best practices to secure your applications and data.
+
+
+##############################################################################
+Amazon Elastic Compute Cloud (EC2) Vs Amazon Elastic Container Service (ECS):
+##############################################################################
+
+ 
+Amazon EC2:
+	Pros:
+		Provides full control and flexibility over the server environment and configurations.
+		Supports a wide range of operating systems and applications.
+		Allows the use of custom machine images.
+		Offers various purchasing options, including On-Demand, Reserved, and Spot instances.
+	
+	Cons:
+		Requires manual configuration and maintenance of the underlying infrastructure.
+		May require more setup time and effort.
+		May be less scalable than container services.
+
+Amazon ECS and EKS:
+	Pros:	
+	Provides a managed platform for running containers and containerized applications.
+	Allows for easy scaling and management of container clusters.
+	Provides integration with other AWS services, such as Elastic Load Balancing, VPC, and CloudWatch.
+	Supports multiple container orchestration platforms, including ECS and EKS.
+	
+	Cons:
+	Requires containerization of applications and associated learning curve.
+	Less control and flexibility over the underlying infrastructure and configurations.
+	Limited to container-based workloads.
+	
+	In summary, Amazon EC2 is suitable for traditional workloads that require full control and flexibility over the infrastructure, while ECS and EKS are best suited for containerized workloads that require easy management and scalability. The choice between the two depends on your specific requirements and priorities.
+	
+	
+##############################################################################
+Amazon S3 (Simple Storage Service) VS  Amazon EBS (Elastic Block Store) :
+##############################################################################
+	
+Amazon S3 (Simple Storage Service) and Amazon EBS (Elastic Block Store) are both storage services offered by AWS, but they have different use cases, pros, and cons. Here are some points to consider:
+
+Amazon S3:
+
+Pros:
+	Provides scalable and durable object storage for data of any size and type.
+	Offers a simple web-based interface for easy data management and access.
+	Provides various storage classes, such as Standard, Standard-Infrequent Access, Glacier, and Intelligent-Tiering, to optimize cost and performance.
+	Offers built-in security features, such as server-side encryption, access control, and data lifecycle policies.
+	
+Cons:
+	Not suitable for high-performance, low-latency storage needs.
+	Not suitable for running applications directly from the storage.
+
+Amazon EBS:
+
+Pros:
+	Provides block-level storage volumes that can be attached to EC2 instances as persistent disks.
+	Offers high-performance storage options, such as Provisioned IOPS SSD and General Purpose SSD.
+	Supports various use cases, such as transactional databases, NoSQL databases, and boot volumes for EC2 instances.
+	Allows for snapshots and replication for data backup and disaster recovery.
+
+Cons:
+	Limited to use within a single availability zone.
+	Requires pre-provisioning of storage capacity, which may lead to wasted resources or performance issues if not properly sized.
+
+	In summary, Amazon S3 is suitable for scalable and durable object storage needs, while Amazon EBS is suitable for persistent block-level storage for EC2 instances. The choice between the two depends on your specific use case and requirements.	
+	
+	
+What is Block Storage:
+
+Persistent block-level storage refers to a type of storage where data is stored in fixed-sized blocks, and the blocks can be accessed and modified directly by the operating system or application. Each block has a unique identifier that allows it to be accessed and managed independently from other blocks. The data stored on persistent block-level storage remains intact even when the computer or application accessing the data is turned off.
+
+In the context of AWS, Amazon Elastic Block Store (EBS) is an example of persistent block-level storage. EBS volumes provide block-level storage that can be attached to Amazon EC2 instances as a persistent disk. The data stored on EBS volumes remains intact even when the associated EC2 instance is stopped or terminated.
+
+Persistent block-level storage is useful for many applications that require high-performance, low-latency storage. This includes transactional databases, NoSQL databases, and boot volumes for EC2 instances. It allows applications to access data quickly and efficiently, and provides a reliable and scalable storage solution for enterprise applications.	
