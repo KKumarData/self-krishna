@@ -169,3 +169,35 @@ def parse_config(feed_name, config_file):
 
 
 feed_name = 'feed1' config_file = 'config.yaml' parse_config(feed_name, config_file)
+
+
+
+import boto3
+import yaml
+import io
+
+def parse_config(feed_name, s3_bucket, s3_key):
+    s3 = boto3.client('s3')
+    response = s3.get_object(Bucket=s3_bucket, Key=s3_key)
+    content = response['Body'].read().decode('utf-8')
+    config = yaml.safe_load(content)
+
+    feed_config = config['feeds'][feed_name]
+    src_bucket_name = feed_config['src_bucket_name']
+    tgt_bucket_name = feed_config['tgt_bucket_name']
+    src_bucket_prefix = feed_config['src_bucket_prefix']
+    tgt_bucket_prefix = feed_config['tgt_bucket_prefix']
+    days_back = feed_config['days_back']
+    start_date = feed_config['start_date']
+    src_delimiter = feed_config['src_delimiter']
+    tgt_delimiter = feed_config['tgt_delimiter']
+    filename_prefix = feed_config['filename_prefix']
+
+    # Further processing...
+
+
+feed_name = 'feed1'
+s3_bucket = 'my-s3-bucket'
+s3_key = 'config.yaml'
+
+parse_config(feed_name, s3_bucket, s3_key)
