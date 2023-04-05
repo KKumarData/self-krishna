@@ -1,0 +1,171 @@
+[FEED_1]
+src_bucket_name = abc-data-dev
+tgt_bucket_name = abc-data-dev
+src_bucket_prefix = market
+tgt_bucket_prefix = edw_extracts
+days_back = 7
+start_date = 2023-12-12
+src_delimiter = ,
+tgt_delimiter = \t
+filename_prefix = file_prefix_value
+
+[FEED_2]
+src_bucket_name = def-data-dev
+tgt_bucket_name = def-data-dev
+src_bucket_prefix = sales
+tgt_bucket_prefix = edw_extracts
+days_back = 30
+start_date = 2023-11-01
+src_delimiter = |
+tgt_delimiter = ,
+filename_prefix = another_file_prefix_value
+
+
+
+import configparser
+
+def get_feed_params(feed_name):
+    # Create a ConfigParser object and read the configuration file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    # Get the section for the specified feed name
+    feed_section = config[feed_name]
+
+    # Get the values of the parameters for the specified feed
+    src_bucket_name = feed_section.get('src_bucket_name')
+    tgt_bucket_name = feed_section.get('tgt_bucket_name')
+
+    src_bucket_prefix = feed_section.get('src_bucket_prefix')
+    tgt_bucket_prefix = feed_section.get('tgt_bucket_prefix')
+
+    days_back = feed_section.getint('days_back')
+    start_date = feed_section.get('start_date')
+
+    src_delimiter = feed_section.get('src_delimiter')
+    tgt_delimiter = feed_section.get('tgt_delimiter')
+
+    filename_prefix = feed_section.get('filename_prefix')
+
+    return src_bucket_name, tgt_bucket_name, src_bucket_prefix, tgt_bucket_prefix, days_back, start_date, src_delimiter, tgt_delimiter, filename_prefix
+#################################################################################################
+
+FEED_1:
+  src_bucket_name: abc-data-dev
+  tgt_bucket_name: abc-data-dev
+  src_bucket_prefix: market
+  tgt_bucket_prefix: edw_extracts
+  days_back: 7
+  start_date: '2023-12-12'
+  src_delimiter: ','
+  tgt_delimiter: '\t'
+  filename_prefix: file_prefix_value
+
+FEED_2:
+  src_bucket_name: def-data-dev
+  tgt_bucket_name: def-data-dev
+  src_bucket_prefix: sales
+  tgt_bucket_prefix: edw_extracts
+  days_back: 30
+  start_date: '2023-11-01'
+  src_delimiter: '|'
+  tgt_delimiter: ','
+  filename_prefix: another_file_prefix_value
+
+
+import yaml
+
+with open('config.yaml', 'r') as f:
+    config = yaml.safe_load(f)
+
+src_bucket_name = config['FEED_1']['src_bucket_name']
+tgt_bucket_name = config['FEED_1']['tgt_bucket_name']
+# etc.
+########################################################################################
+
+{
+  "FEED_1": {
+    "src_bucket_name": "abc-data-dev",
+    "tgt_bucket_name": "abc-data-dev",
+    "src_bucket_prefix": "market",
+    "tgt_bucket_prefix": "edw_extracts",
+    "days_back": 7,
+    "start_date": "2023-12-12",
+    "src_delimiter": ",",
+    "tgt_delimiter": "\t",
+    "filename_prefix": "file_prefix_value"
+  },
+  "FEED_2": {
+    "src_bucket_name": "def-data-dev",
+    "tgt_bucket_name": "def-data-dev",
+    "src_bucket_prefix": "sales",
+    "tgt_bucket_prefix": "edw_extracts",
+    "days_back": 30,
+    "start_date": "2023-11-01",
+    "src_delimiter": "|",
+    "tgt_delimiter": ",",
+    "filename_prefix": "another_file_prefix_value"
+  }
+}
+
+
+import json
+
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
+src_bucket_name = config['FEED_1']['src_bucket_name']
+tgt_bucket_name = config['FEED_1']['tgt_bucket_name']
+# etc.
+
+######################################################################
+
+
+
+feeds:
+  feed1:
+    src_bucket_name: abc-data-dev
+    tgt_bucket_name: abc-data-dev
+    src_bucket_prefix: market
+    tgt_bucket_prefix: edw_extracts
+    days_back: 7
+    start_date: '2023-12-12'
+    src_delimiter: ','
+    tgt_delimiter: '\t'
+    filename_prefix: file_prefix_value
+
+  feed2:
+    src_bucket_name: def-data-dev
+    tgt_bucket_name: def-data-dev
+    src_bucket_prefix: sales
+    tgt_bucket_prefix: edw_extracts
+    days_back: 30
+    start_date: '2023-11-01'
+    src_delimiter: '|'
+    tgt_delimiter: ','
+    filename_prefix: another_file_prefix_value
+
+
+
+
+import yaml
+
+def parse_config(feed_name, config_file):
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+
+    feed_config = config['feeds'][feed_name]
+    src_bucket_name = feed_config['src_bucket_name']
+    tgt_bucket_name = feed_config['tgt_bucket_name']
+    src_bucket_prefix = feed_config['src_bucket_prefix']
+    tgt_bucket_prefix = feed_config['tgt_bucket_prefix']
+    days_back = feed_config['days_back']
+    start_date = feed_config['start_date']
+    src_delimiter = feed_config['src_delimiter']
+    tgt_delimiter = feed_config['tgt_delimiter']
+    filename_prefix = feed_config['filename_prefix']
+
+    # Further processing...
+
+
+feed_name = 'feed1' config_file = 'config.yaml' parse_config(feed_name, config_file)
