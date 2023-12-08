@@ -160,3 +160,54 @@ def list_batches_for_today(access_token, dataset_id):
     else:
         raise Exception(f"Failed to list batches. Status code: {response.status_code}")
 
+
+
+
+
+import requests
+import datetime
+
+# Define your AEP API endpoint and parameters
+aep_endpoint = "https://platform.adobe.io/data/foundation/catalog/batches"
+access_token = "YOUR_ACCESS_TOKEN"
+api_key = "YOUR_API_KEY"
+org_id = "YOUR_ORG_ID"
+sandbox_name = "YOUR_SANDBOX_NAME"
+dataset_id = "YOUR_DATASET_ID"
+
+# Set the start time to midnight UTC
+start_time_utc = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+
+# Convert the start time to a Unix timestamp
+start_timestamp = int(start_time_utc.timestamp())
+
+sort_by = "YOUR_SORT_BY"
+
+# Set up headers
+headers = {
+    "Authorization": f"Bearer {access_token}",
+    "x-api-key": api_key,
+    "x-gw-ims-org-id": org_id,
+    "x-sandbox-name": sandbox_name,
+}
+
+# Define query parameters to filter batches by dataset ID and createdAfter timestamp
+params = {
+    "dataSet": dataset_id,
+    "createdAfter": start_timestamp,
+    "sort": sort_by,
+}
+
+# Make the GET request to filter batches
+response = requests.get(aep_endpoint, headers=headers, params=params)
+
+if response.status_code == 200:
+    # Parse the JSON response
+    filtered_batches = response.json()
+    
+    # Print the filtered batches
+    print("Filtered Batches:")
+    for batch in filtered_batches:
+        print(f"Batch ID: {batch['id']}, Created Date: {batch['createdDate']}")
+else:
+    print(f"Error: {response.status_code} - {response.text}")
