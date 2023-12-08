@@ -211,3 +211,110 @@ if response.status_code == 200:
         print(f"Batch ID: {batch['id']}, Created Date: {batch['createdDate']}")
 else:
     print(f"Error: {response.status_code} - {response.text}")
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	import requests
+import datetime
+import time
+
+# Define your AEP API endpoint and parameters
+aep_endpoint = "https://platform.adobe.io/data/foundation/catalog/batches"
+access_token = "YOUR_ACCESS_TOKEN"
+api_key = "YOUR_API_KEY"
+org_id = "YOUR_ORG_ID"
+sandbox_name = "YOUR_SANDBOX_NAME"
+dataset_id = "YOUR_DATASET_ID"
+sort_by = "YOUR_SORT_BY"
+batch_limit = 1000  # The number of batches to retrieve per page
+page = 1  # Initialize the page number
+
+# Set the initial start time to the current time minus 2 minutes
+start_time_utc = datetime.datetime.utcnow() - datetime.timedelta(minutes=2)
+
+while True:
+    # Calculate the end time as the current time
+    end_time_utc = datetime.datetime.utcnow()
+
+    # Convert start and end times to Unix timestamps
+    start_timestamp = int(start_time_utc.timestamp())
+    end_timestamp = int(end_time_utc.timestamp())
+
+    # Set up headers
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "x-api-key": api_key,
+        "x-gw-ims-org-id": org_id,
+        "x-sandbox-name": sandbox_name,
+    }
+
+    # Define query parameters to filter batches by dataset ID, started, completed, and limit
+    params = {
+        "dataSet": dataset_id,
+        "started": f"{start_timestamp},{end_timestamp}",
+        "sort": sort_by,
+        "limit": batch_limit,
+        "page": page,
+    }
+
+    # Make the GET request to filter batches for the current time range
+    response = requests.get(aep_endpoint, headers=headers, params=params)
+
+    if response.status_code == 200:
+        # Parse the JSON response and append batches to the list
+        current_page_batches = response.json()
+        if len(current_page_batches) > 0:
+            print("Batches within the time range:")
+            for batch in current_page_batches:
+                print(f"Batch ID: {batch['id']}, Created Date: {batch['createdDate']}")
+
+        # If the number of retrieved batches is less than the batch limit, break the loop
+        if len(current_page_batches) < batch_limit:
+            break
+
+        # Increment the page number for the next request
+        page += 1
+
+        # Update the start time for the next iteration
+        start_time_utc = end_time_utc
+    else:
+        print(f"Error: {response.status_code} - {response.text}")
+
+    # Wait for 2 minutes before the next iteration
+    time.sleep(120)  # Sleep for 2 minutes (120 seconds)
+
