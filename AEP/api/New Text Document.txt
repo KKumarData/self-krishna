@@ -1,0 +1,162 @@
+import datetime
+import json
+
+import requests
+
+
+def get_access_token():
+"""
+Replace the following with your actual credentials
+"""
+# Define your organization ID and IMS Org ID
+org_id = "your_organization_id"
+ims_org_id = "your_ims_org_id"
+
+# Define your API key
+api_key = "your_api_key"
+
+# Define your sandbox name
+sandbox_name = "your_sandbox_name"
+
+# URL to generate access token
+token_url = f"https://ims.{sandbox_name}.adobe.io/ims/token/oauth2/token"
+
+# Payload for generating access token
+payload = {
+	"client_id": api_key,
+	"client_secret": "",  # Leave this blank for Experience Cloud APIs
+	"grant_type": "client_credentials",
+	"scope": "read_all"
+}
+
+# Make a POST request to get the access token
+response = requests.post(token_url, data=payload)
+response.raise_for_status()
+
+# Extract the access token from the response
+access_token = response.json()["access_token"]
+return access_token
+
+
+def list_batches(dataset_id, access_token):
+"""
+Lists all batches for a specific dataset ID on the current date
+"""
+# Define the base URL for the Data Access API
+base_url = "https://platform.adobe.io/data/foundation/export"
+
+# Today's date in YYYY-MM-DD format
+today = datetime.datetime.now().strftime("%Y-%m-%d")
+
+# Construct the URL for listing batches
+url = f"{base_url}/datasets/{dataset_id}/batches?status=succeeded&startDate={today}&endDate={today}"
+
+# Set the headers with the access token and other required information
+headers = {
+	"Authorization": f"Bearer {access_token}",
+	"x-gw-ims-org-id": ims_org_id,
+	"x-api-key": api_key,
+	"x-sandbox-name": sandbox_name,
+}
+
+# Make a GET request to list the batches
+response = requests.get(url, headers=headers)
+response.raise_for_status()
+
+# Parse the JSON response and return the list of batches
+return json.loads(response.content)["data"]
+
+
+def main():
+# Replace this with your actual dataset ID
+dataset_id = "your_dataset_id"
+
+# Get the access token
+access_token = get_access_token()
+
+# List the batches for today
+batches = list_batches(dataset_id, access_token)
+
+# Print the information about each batch
+print(f"Found a total of {len(batches)} batches for dataset {dataset_id} today:")
+for batch in batches:
+	print(f"\tBatch ID: {batch['id']}")
+	print(f"\tStatus: {batch['status']}")
+	print(f"\tCreated at: {batch['createdAt']}")
+
+
+if __name__ == "__main__":
+main()
+
+
+
+
+
+
+
+
+
+
+####################################################
+
+
+#chatgpt
+
+def get_access_token(client_id, client_secret, ims_org_id):
+auth_url = f"https://ims-na1.adobelogin.com/ims/exchange/jwt?client_id={client_id}&client_secret={client_secret}&jwt_token=your-jwt-token"
+response = requests.post(auth_url)
+if response.status_code == 200:
+	auth_data = response.json()
+	access_token = auth_data["access_token"]
+	return access_token
+else:
+	raise Exception(f"Failed to obtain access token. Status code: {response.status_code}")
+
+
+def list_batches_for_today(access_token, dataset_id):
+    today = datetime.date.today().isoformat()
+    base_url = f"https://platform.adobe.io/data/foundation/import/batches/{dataset_id}"
+    
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "x-api-key": client_id
+    }
+
+    params = {
+        "ims_org_id": ims_org_id,
+        "from": today,
+        "to": today
+    }
+
+    response = requests.get(base_url, headers=headers, params=params)
+
+    if response.status_code == 200:
+        batches = response.json()
+        return batches
+    else:
+        raise Exception(f"Failed to list batches. Status code: {response.status_code}")
+
+
+def list_batches_for_today(access_token, dataset_id):
+    today = datetime.date.today().isoformat()
+    base_url = f"https://platform.adobe.io/data/foundation/import/batches/{dataset_id}"
+    
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "x-api-key": client_id
+    }
+
+    params = {
+        "ims_org_id": ims_org_id,
+        "from": today,
+        "to": today
+    }
+
+    response = requests.get(base_url, headers=headers, params=params)
+
+    if response.status_code == 200:
+        batches = response.json()
+        return batches
+    else:
+        raise Exception(f"Failed to list batches. Status code: {response.status_code}")
+
