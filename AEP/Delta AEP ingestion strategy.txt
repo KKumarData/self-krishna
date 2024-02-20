@@ -1,0 +1,27 @@
+If a full dump of data is ingested into Adobe Experience Platform (AEP) every day, finding delta records (i.e., records that have changed since the previous ingestion) can be achieved through various approaches. Here are some possible ways:
+
+1. **Timestamp-Based Comparison**:
+   - Compare the timestamps of the records in the new full dump with the timestamps of the records ingested in the previous day's dump. Identify and extract records with timestamps newer than the latest timestamp from the previous day.
+
+2. **Incremental Load using Unique Identifiers**:
+   - Utilize unique identifiers (e.g., primary keys) present in the data to identify new or updated records. Compare the unique identifiers in the new full dump with those already present in AEP, and extract records with identifiers not found in the previous day's ingestion.
+
+3. **Hash-Based Comparison**:
+   - Calculate hashes (e.g., MD5, SHA-256) for the records in both the new full dump and the existing data in AEP. Identify records with different hashes, indicating changes, and extract only those records.
+
+4. **Change Data Capture (CDC)**:
+   - Implement CDC mechanisms to track changes in the source data since the last ingestion. Capture inserts, updates, and deletes from the source system's transaction log or change stream and apply these changes to AEP.
+
+5. **Data Versioning**:
+   - Maintain versioning information for each record in the data source. Compare the version numbers of records in the new full dump with those already ingested in AEP and extract records with higher version numbers.
+
+6. **Differential Files**:
+   - Generate differential files containing only the changes (delta) between the new full dump and the previous day's data. Ingest these differential files into AEP to update only the changed records.
+
+7. **Database Triggers**:
+   - Implement triggers in the source database to capture changes made to the data. Trigger-based mechanisms can capture inserts, updates, and deletes in real-time and feed these changes into AEP.
+
+8. **API Endpoints**:
+   - Expose API endpoints from the source system to retrieve only the delta records since the last ingestion. Query these endpoints to fetch incremental data and ingest it into AEP.
+
+The choice of method depends on factors such as the nature of the data, available resources, system architecture, and performance considerations. It's essential to evaluate each approach's suitability for your specific use case and implement the most efficient and reliable solution for detecting delta records in your daily ingestions into AEP.
