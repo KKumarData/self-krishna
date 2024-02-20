@@ -1,0 +1,15 @@
+Integration Name/Description: Brief name or description of the integration solution.
+Purpose/Objective: Main goal or purpose of the integration.
+Data Sources: List of data sources the integration interacts with.
+Data Destinations: Where the data processed by the integration is sent (within AEP or external systems).
+Integration Type: Indicates if the integration is real-time, batch, or both.
+Data Processing Logic: Description of specific data processing logic or transformations applied.
+Tools/Technologies Used: List of tools or technologies used to build and maintain the integration.
+Data Volume: Approximate volume of data processed by the integration (e.g., records per day).
+Frequency: How often the integration runs (e.g., hourly, daily, weekly).
+Dependencies: Any external dependencies or prerequisites required for the integration to function properly.
+Error Handling: Description of the error handling mechanism implemented within the integration.
+Monitoring/Alerting: How the performance and health of the integration is monitored, and any alerting mechanisms in place.
+Scalability: Assessment of how scalable the integration is and if it has been tested under high load scenarios.
+Documentation/Support: Availability of documentation for the integration and how support is provided to users.
+Customization/Configurability: Indicates if the integration can be easily customized or configured for different use cases.
