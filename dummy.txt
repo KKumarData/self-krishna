@@ -1,0 +1,22 @@
+Integration Name/Description:
+Profile Deletion Automation for MLB's AEP Implementation
+
+Purpose/Objective:
+The integration aims to automate the deletion of inactive profiles from Major League Baseball's (MLB) Adobe Experience Platform (AEP) environment. Specifically, it targets profiles older than 6 years with no associated event data, ensuring that outdated and inactive profiles are systematically removed to optimize platform performance and adhere to license limitations.
+
+Data Sources:
+Compressed, tab-delimited files containing profiles slated for deletion are uploaded by the customer to a dedicated Adobe S3 bucket. These files serve as the primary data source for identifying the profiles to be deleted.
+
+Data Destinations:
+The primary data destination is the profile store within Adobe Experience Platform (AEP). Profiles identified for deletion are systematically removed from the profile store, thereby ensuring that inactive profiles are excluded from segmentation and activation processes.
+
+Integration Type:
+The integration utilizes an automated process to invoke the profile delete API within Adobe Experience Platform (AEP). It operates as a scheduled task or batch process, systematically targeting and removing the specified profiles from the AEP environment.
+
+Data Processing Logic:
+1. Scheduled Execution: The integration runs on a scheduled basis to ensure regular deletion of inactive profiles.
+2. File Upload: Compressed, tab-delimited files containing profiles earmarked for deletion are uploaded to a dedicated Adobe S3 bucket by the customer.
+3. Identification of Profiles: The integration identifies profiles older than 6 years with no associated event data from the uploaded files.
+4. Profile Deletion API: Using the profile delete API provided by Adobe Experience Platform (AEP), the integration systematically invokes the deletion of the identified profiles.
+5. Removal from Profile Store: Deleted profiles are removed from the profile store within AEP, ensuring that inactive profiles are excluded from segmentation and activation processes.
+6. Compliance with License Limitations: By removing inactive profiles, the integration helps MLB adhere to license limitations, optimizing platform performance and cost efficiency.
